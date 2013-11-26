@@ -1,0 +1,114 @@
+body {
+	font-family: Segoe UI, Helvetica, Arial, sans-serif;
+}
+
+legend {
+	font-size: 20px;
+}
+
+.span4 {
+	position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-left: -130px;
+    width:260px;  
+	height:200px;
+}
+
+.span3 {
+	margin: 10px 0 10px 0;
+}
+
+.checkbox {
+	margin-top: 10px;
+}
+
+.btn {
+	margin: 10px auto auto auto;
+}
+
+#mainDiv {
+	width: 60%;
+	margin: 20px auto 0 auto;
+}
+
+.navbar-inner {
+	position: relative;
+}
+
+#userinfo {
+	height: 50%;
+	margin: auto;
+	position: absolute;
+	top: 0; bottom: 0; right: 0;
+}
+#userinfoSpan {
+	font-size: 12px;
+}
+
+#first,#previous,#next,#last {
+	width: 100px;
+}
+
+#tableAccounts thead {
+	font-size: 16px;
+	font-weight:300;
+	margin: 100px auto auto auto;
+}
+
+#notclientname {
+	width: 30%;
+}
+#clientname {
+	width: 30%;
+}
+
+#clientnamebtn {
+	width: 8%;
+	text-align:center;
+}
+
+#ibs {
+	color: #08c;
+}
+
+#create {
+	margin: 15px 0 15px 15px;
+}
+
+#onthispage {
+	margin: 0 0 0 15px;
+}
+
+#accListFrame {
+	margin: 15px 0 0 0;
+	height: 220px; /* 440px; */
+}
+
+#filter {
+	width: 30%;
+} 
+#criteria {
+	width: 68%;
+	color: #08c;
+}
+
+#spanStatus, #spanNumber, #spanAmount,#spanName {
+	color: #08c;
+}
+#commentButtons {
+	font-size: 10px;
+}
+
+
+.container#createshowinfo {
+	margin-top: -240px;
+	margin-left: 300px;
+	position: absolute;
+	bottom: 120px;
+}
+.container#createshowinfo form {
+    box-shadow: 0px 0px 10px #AAA;
+}
+
+

@@ -3,8 +3,12 @@ package com.ammed.AmMed.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "PATIENT")
 public class Patient implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -34,6 +38,10 @@ public class Patient implements Serializable {
 	private State employerState;
 	private String employerZip;
 	private String employerPhoneNumber;
+	
+	/*@ManyToOne
+	@JoinColumn(name = "ROLEID")
+	private Role role;*/
 
 	
 	public Patient() { }
