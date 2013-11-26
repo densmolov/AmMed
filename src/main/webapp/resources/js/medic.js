@@ -1,15 +1,11 @@
 var Views = { };
-var accounts;
-/******************/
-	var bankTransactions;
-	var AllTransView;
-	var TransView;
-/******************/
-var AllAccView;
-var AccView;
+var patients;
 
-var Account = Backbone.Model.extend({
-	urlRoot : '/bank/employee/accounts'			
+var AllPatientView;
+var PatientView;
+
+var Patient = Backbone.Model.extend({
+	urlRoot : '/AmMed/medic/patients'			
 });
 
 var header = [
@@ -23,10 +19,10 @@ var messages = [
 var totalCount=0;
 var totalPages;
 var index = 1;
-var paging = 10;
+var paging = 5;
 
-var AccList = Backbone.Collection.extend({
-    baseUrl: 'employee/accounts',
+var PatientList = Backbone.Collection.extend({
+    baseUrl: 'medic/patients',
     initialize: function() {
         _.bindAll(this, 'url');
         this.index = index;
@@ -38,33 +34,18 @@ var AccList = Backbone.Collection.extend({
     }
 });
 
-/*****************************/
-var TransList = Backbone.Collection.extend({
-	baseUrl: '/bank/employee/transactions',
-	//baseUrl: 'transactions',
-    initialize: function() {
-        _.bindAll(this, 'url');
-    },
-    url: function() {
-        return this.baseUrl;
-    }
-});
-/*****************************/
-
-
 
 
 /*        THE BEGINNING OF GREAT FUNCTION        */
 $(function () {
     updatePaging();
     Backbone.emulateJSON = false;
-    accounts = new AccList();
-    //           nameView : new NameView(),
+    patients = new PatientList();
     
     
     var MyRouter = Backbone.Router.extend({
        routes: {
-    	   "/accounts/:id": 'informMe',
+    	   "/patients/:id": 'informMe',
     	   "": 'start'
        },
         start: function() {
@@ -79,7 +60,7 @@ $(function () {
     
     var myRouter = new MyRouter();
     
-    Backbone.history.start({pushState: true, root: "/bank/employee"});
+    Backbone.history.start({pushState: true, root: "/AmMed/medic"});
     
     var Start = Backbone.View.extend({
         el: $(".content"),
@@ -94,7 +75,7 @@ $(function () {
             e.preventDefault();
             bankTransactions = new TransList();
             allTransView: new AllTransView();
-            //myRouter.navigate("/accounts/:id", {trigger: true} );
+            //myRouter.navigate("/patients/:id", {trigger: true} );
         },*/
         next: function(e) {
             e.preventDefault();
@@ -115,20 +96,30 @@ $(function () {
             e.preventDefault();
             index=totalPages;
             buttonClick();
+        },
+        search: function(e) {
+            e.preventDefault();
+            if($('#criteria').val()==="") {
+            search=false;
+            } else {
+                search=true;
+            }
+            index=1;
+            buttonClick();
         }
     });
     
     var start = new Start();
         
-    AccView = Backbone.View.extend({
+    PatientView = Backbone.View.extend({
         tagName: 'tr',
-        template: _.template($("#rowacc").html()),
+        template: _.template($("#rowpatient").html()),
         events: {
             "click #info": "clicked"
         },
         clicked: function(e){
             e.preventDefault();
-            myRouter.navigate('/accounts/' + this.model.get("accountId"), {trigger:true});
+            //myRouter.navigate('/patients/' + this.model.get("accountId"), {trigger:true});
         },
         initialize: function(){
             _.bind(this.render, this);
@@ -142,11 +133,11 @@ $(function () {
     });
 
         
-        /*     DETAILED ACCOUNT INFORMATION     */
+        /*     DETAILED Patient INFORMATION     */
 	var DetailedInfo = Backbone.View.extend({
-		//baseUrl: 'employee/accounts/:id',
-		baseUrl: 'employee/accounts/',
-    	el: $("#employeeTemplate"),
+		//baseUrl: 'medic/patients/:id',
+		baseUrl: 'medic/patients/',
+    	el: $("#patientTemplate"),
         template: _.template($("#showinfotemplate").html()),
         events: {
         	"click .btn-success#change_status_btn": "accept",
@@ -159,86 +150,55 @@ $(function () {
         },
         accept: function(e) {
         	e.preventDefault();
-        	toastr.success("Smth is happenning right now...") ;
+        	toastr.success("Changes applied") ;
         	myRouter.navigate("", {trigger: true} );
         },
         render: function(id) {
-        	var detailedAccount = new Account ( {id: id} );
+        	var detailedPatient = new Patient ( {id: id} );
         	var that = this;
-        	detailedAccount.fetch({
+        	detailedPatient.fetch({
         		success:function(){
-        			var element = that.template(detailedAccount.toJSON());
-        			console.log(detailedAccount.toJSON());
+        			var element = that.template(detailedPatient.toJSON());
+        			console.log(detailedPatient.toJSON());
         			$(that.el).html(element);
         					//bankTransactions = new TransList();
         					//allTransView = new AllTransView();
         		}
         	});
-        	bankTransactions = new TransList();
+/*        	bankTransactions = new TransList();
         	bankTransactions.fetch({
         		success:function(){
         			allTransView: new AllTransView();
         		}
-        	});
+        	});*/
         }	/*render*/
 	});
-	TransView = Backbone.View.extend({
-        tagName: 'tr',
-        template: _.template($("#rowtrans").html()),
-        initialize: function(){
-            _.bind(this.render, this);
-        },
-        render: function() {
-            var element = this.template(this.model.toJSON());
-            console.log(this.model.toJSON());
-            $(this.el).html(element);
-            return this;
-        }
-    });
-	AllTransView = Backbone.View.extend({
-        el : $('#transListFrame'),
-        initialize : function() {
-            _.bindAll(this, 'addOne', 'addAll', 'render');
-            bankTransactions.bind('reset', this.addAll);
-            bankTransactions.bind('add', this.addOne);
-            bankTransactions.fetch();
-        },
-        addOne : function(bankTransaction) {
-            var view = new TransView({
-                model : bankTransaction
-            });
-            this.$('#tableTransactions').append(view.render().el);
-        },
-        addAll : function() {
-        	bankTransactions.each(this.addOne);
-        }
-    });
-    /*     end DETAILED ACCOUNT INFORMATION ends     */
+    /*     end DETAILED Patient INFORMATION ends     */
 
 
         
-    AllAccView = Backbone.View.extend({
-        el : $('#accListFrame'),
+	AllPatientView = Backbone.View.extend({
+        el : $('#patientListFrame'),
         initialize : function() {
             _.bindAll(this, 'addOne', 'addAll', 'render');
-            accounts.bind('reset', this.addAll);
-            accounts.bind('add', this.addOne);
-            accounts.fetch();
+            patients.bind('reset', this.addAll);
+            patients.bind('add', this.addOne);
+            patients.fetch();
         },
-        addOne : function(account) {
-            var view = new AccView({
-                model : account
+        addOne : function(patient) {
+            var view = new PatientView({
+                model : patient
             });
-            this.$('#tableAccounts').append(view.render().el);
+            this.$('#tablePatients').append(view.render().el);
         },
         addAll : function() {
-            accounts.each(this.addOne);
+        	patients.each(this.addOne);
         }
     });        
         
     Views = {
             detailedInfo: new DetailedInfo(),
-            allAccView: new AllAccView()
+            allPatientView: new AllPatientView()
     };
 
 
@@ -262,18 +222,17 @@ $(function () {
 
 
 function buttonClick() {
-    accounts = new AccList();
-    accView = new AccView();
-                    //nameView = new NameView();
+	patients = new PatientList();
+	patientView = new PatientView();
     updatePaging();
-    Views.allAccView = new AllAccView();
+    Views.allPatientView = new AllPatientView();
     setTimeout(scrollDown, 100);
 }
 
 function updatePaging() {
     $.ajax({
             type: "GET",
-            url: "employee/getAccCount",
+            url: "medic/getPatientsCount",
             async: false,
             success:function(count) {
                 totalCount = count;
@@ -310,7 +269,7 @@ function updatePaging() {
     }
     $("#pageIndex").html(index);
     $("#totalPages").html(totalPages);
-    $("#accListFrame #tableAccounts tbody").html("");
+    $("#patientListFrame #tablePatients tbody").html("");
 }
 
 function scrollDown() {

@@ -12,6 +12,6 @@ public interface PatientDAO {
 	public Patient getPatientByLastName (String lastName);
 	public Patient getPatientByPhoneNumber (String patientPhoneNumber);
 	
-	public int getPatientCount();
+	public int getPatientsCount();
 
 }

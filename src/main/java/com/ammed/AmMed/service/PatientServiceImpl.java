@@ -42,8 +42,8 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Transactional
-	public int getPatientCount() {
-		return patientDAO.getPatientCount();
+	public int getPatientsCount() {
+		return patientDAO.getPatientsCount();
 	}
 
 }

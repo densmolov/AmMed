@@ -1,10 +1,6 @@
 var Views = { };
 var accounts;
-/******************/
-	var bankTransactions;
-	var AllTransView;
-	var TransView;
-/******************/
+
 var AllAccView;
 var AccView;
 
@@ -37,20 +33,6 @@ var AccList = Backbone.Collection.extend({
         });
     }
 });
-
-/*****************************/
-var TransList = Backbone.Collection.extend({
-	baseUrl: '/bank/employee/transactions',
-	//baseUrl: 'transactions',
-    initialize: function() {
-        _.bindAll(this, 'url');
-    },
-    url: function() {
-        return this.baseUrl;
-    }
-});
-/*****************************/
-
 
 
 
@@ -115,6 +97,16 @@ $(function () {
             e.preventDefault();
             index=totalPages;
             buttonClick();
+        },
+        search: function(e) {
+            e.preventDefault();
+            if($('#criteria').val()==="") {
+            search=false;
+            } else {
+                search=true;
+            }
+            index=1;
+            buttonClick();
         }
     });
     
@@ -128,7 +120,7 @@ $(function () {
         },
         clicked: function(e){
             e.preventDefault();
-            myRouter.navigate('/accounts/' + this.model.get("accountId"), {trigger:true});
+            myRouter.navigate('/patients/' + this.model.get("accountId"), {trigger:true});
         },
         initialize: function(){
             _.bind(this.render, this);
@@ -145,7 +137,7 @@ $(function () {
         /*     DETAILED ACCOUNT INFORMATION     */
 	var DetailedInfo = Backbone.View.extend({
 		//baseUrl: 'employee/accounts/:id',
-		baseUrl: 'employee/accounts/',
+		baseUrl: 'medic/patients/',
     	el: $("#employeeTemplate"),
         template: _.template($("#showinfotemplate").html()),
         events: {
@@ -264,7 +256,6 @@ $(function () {
 function buttonClick() {
     accounts = new AccList();
     accView = new AccView();
-                    //nameView = new NameView();
     updatePaging();
     Views.allAccView = new AllAccView();
     setTimeout(scrollDown, 100);
@@ -273,7 +264,7 @@ function buttonClick() {
 function updatePaging() {
     $.ajax({
             type: "GET",
-            url: "employee/getAccCount",
+            url: "medic/getPatientCount",
             async: false,
             success:function(count) {
                 totalCount = count;

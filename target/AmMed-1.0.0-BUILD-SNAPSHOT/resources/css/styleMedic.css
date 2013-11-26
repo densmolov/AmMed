@@ -72,9 +72,25 @@ legend {
 	color: #08c;
 }
 
+#create {
+	margin: 15px 0 15px 15px;
+}
+
+#onthispage {
+	margin: 0 0 0 15px;
+}
+
 #accListFrame {
 	margin: 15px 0 0 0;
-	height: 440px;
+	height: 220px; /* 440px; */
+}
+
+#filter {
+	width: 30%;
+} 
+#criteria {
+	width: 68%;
+	color: #08c;
 }
 
 #spanStatus, #spanNumber, #spanAmount,#spanName {

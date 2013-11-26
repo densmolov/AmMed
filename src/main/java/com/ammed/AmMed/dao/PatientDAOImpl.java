@@ -25,8 +25,8 @@ public class PatientDAOImpl implements PatientDAO {
 	public List<Patient> getAllPatients(int index) {
 		Session session = sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(Patient.class).addOrder(Order.asc("SSN") );
-		criteria.setFirstResult((index - 1) * 10);
-		criteria.setMaxResults(10);	
+		criteria.setFirstResult((index - 1) * 5);
+		criteria.setMaxResults(5);	
 		@SuppressWarnings("unchecked")
 		List<Patient> patients = (List<Patient>) criteria.list(); 
 		return patients;
@@ -92,7 +92,7 @@ public class PatientDAOImpl implements PatientDAO {
 
 	@Override
 	@Transactional
-	public int getPatientCount() {
+	public int getPatientsCount() {
 		Session session = sessionFactory.getCurrentSession();
 		return (Integer) session.createCriteria(Patient.class).setProjection(Projections.rowCount()).uniqueResult();
 	}

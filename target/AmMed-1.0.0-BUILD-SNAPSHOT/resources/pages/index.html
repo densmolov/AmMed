@@ -2,17 +2,17 @@
 <html lang="en"> 
 <head> 
 <meta charset="utf-8"> 
-<title>Internet Banking System - Employee's page</title>
-<meta name="description" content="Internet Banking System - Employee's page">
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
-    <link rel="stylesheet" href="css/styleEmployee.css" type="text/css"/>
+<title>Patient registration application</title>
+<meta name="description" content="Patient registration application">
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="css/styleMedic.css" type="text/css"/>
     <link rel="stylesheet" href="css/toastr.min.css" type="text/css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/underscore.js"></script>
     <script type="text/javascript" src="js/backbone.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/toastr.min.js"></script>
-    <script type="text/javascript" src="js/employee.js"></script>
+    <script type="text/javascript" src="js/medic.js"></script>
 </head>
 
 <body>
@@ -20,27 +20,50 @@
 
 <div class="navbar">
     <div class="navbar-inner">
-        <span class="brand"><span id="ibs">Internet Banking System - Employee's page</span></span>
+        <span class="brand"><span id="ibs">Patient registration application</span></span>
 
         <div id="userinfo">			
             <span id="userinfoSpan">Log out&nbsp;&nbsp;
             <a href="#" title="Log Out" id="buttonLogout"><img src="img/logout.png"/></a>&nbsp;&nbsp;&nbsp;</span>
-        </div>
+        </div>	
     </div>
 </div>
 
 <div class="content">
 	<div>
-	<div id="ThisPage">&nbsp;&nbsp;&nbsp;&nbsp;On this page you can see the list of all bank accounts</div>
+	<div id="onthispage">On this page you can register a new patient, edit 
+									existing patients and search the patients in the database</div>
 	</div>
+	
+	<a class="btn" id="create" href="">Register a new patient</a>
+	
+	<form class="form-inline well">
+        <legend>Search by</legend>
+        <div id="search">
+            <div id="search-data">
+                <select name="filter" id="filter">
+                	<option value="SSN">SSN</option>
+                    <option value="firstName">First name</option>
+                    <option value="lastName">Last name</option>
+					<option value="phone">Phone number</option>
+                </select>
+                
+                <input type="text" name="criteria" id="criteria"/>
+                
+            </div>	<!-- id="search-data" -->
+            <div id="search-button">
+                <a class="btn" href="#" id="search-btn">Search</a>
+            </div>
+        </div>	<!-- id="search" -->
+    </form>
 	
 	<div id="accListFrame">
 	<table class="table table-striped table-bordered" id="tableAccounts">
 			<thead>
             <tr>
-                <td id="clientname">Client's name</td>
-                <td id="notclientname">Account number</td>
-				<td id="notclientname">Account status</td>
+                <td id="clientname">SSN</td>
+                <td id="notclientname">Patient's name</td>
+				<td id="notclientname">Phone number</td>
 				<td id="clientnamebtn"></td>
             </tr>
             </thead>
