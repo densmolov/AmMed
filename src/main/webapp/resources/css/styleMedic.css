@@ -114,11 +114,6 @@ legend {
 	margin-top: 15px;
 }
 
-#closebutton {
-	float: right;
-	margin-top: 5px;
-}
-
 #firstcolumn {
 	width: 35%;
 }
@@ -128,9 +123,6 @@ legend {
 #thirdcolumn, #fifthcolumn {
 	width: 35%;
 	background-color: rgb(250, 250, 250);
-}
-#fourthcolumn {
-	
 }
 
 #smalllegend {
