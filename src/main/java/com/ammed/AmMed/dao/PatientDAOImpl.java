@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -17,6 +18,8 @@ import com.ammed.AmMed.entities.Patient;
 
 @Repository
 public class PatientDAOImpl implements PatientDAO {
+	
+	boolean searchDone = false;
 	
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -108,8 +111,39 @@ public class PatientDAOImpl implements PatientDAO {
 	@Override
 	@Transactional
 	public int getPatientsCount() {
+		/*****/
+		if (searchDone == true) {
+			System.out.println("   searchDone");
+		}
+		/*****/
 		Session session = sessionFactory.getCurrentSession();
 		return (Integer) session.createCriteria(Patient.class).setProjection(Projections.rowCount()).uniqueResult();
+	}
+
+	@Override
+	public void createPatient(Patient patient) {
+		sessionFactory.getCurrentSession().save(patient);
+	}
+
+	@Override
+	public void updatePatient(Patient patient) {
+		sessionFactory.getCurrentSession().update(patient);
+	}
+
+	@Override
+	public List<Patient> findPatient(String field, String value, int index) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(Patient.class);
+		criteria.setFirstResult((index - 1) * 5);
+		criteria.setMaxResults(5);
+		criteria.add( Restrictions.like(field, value, MatchMode.ANYWHERE) );
+		criteria.addOrder( Order.asc(field) );
+		@SuppressWarnings("unchecked")
+		List<Patient> findPatientList = (List<Patient>) criteria.list();
+		if(findPatientList!=null && findPatientList.size()!=0) {
+            return findPatientList;
+		}
+		return null;
 	}
 
 }

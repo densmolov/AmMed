@@ -128,3 +128,12 @@ legend {
 #smalllegend {
 	font-size: 14px;
 }
+
+#change_status_btn, #edit, #cancel {
+	width: 127px;
+}
+
+
+
+
+

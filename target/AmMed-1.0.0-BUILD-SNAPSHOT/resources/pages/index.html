@@ -45,7 +45,7 @@
                 	<option value="SSN">SSN</option>
                     <option value="firstName">First name</option>
                     <option value="lastName">Last name</option>
-					<option value="phone">Phone number</option>
+					<option value="patientPhoneNumber">Phone number</option>
                 </select>
                 
                 <input type="text" name="criteria" id="criteria"/>
@@ -114,14 +114,82 @@
 <script type="text/template" id="showinfotemplate">
 <div class="container" id="createshowinfo" title="Detailed account information">
 	<form class="form-horizontal well">
-		<div>
-		Status : <span id="spanStatus"> <%=firstName%> </span> <br/>
-		Number : <span id="spanNumber"> <%=firstName%> </span><br/>
-		Owner full name : <span id="spanName"> <%=firstName%> </span> <br/>		
-		Amount of money available : EURO <span id="spanAmount"> <%=firstName%> </span> <br/> <br/>
+	<legend>Full information on patient <span id="thename"><%=firstName + ' ' + lastName%></span></legend>
+<table class="table table-bordered table table-condensed">
+<tr>
+	<td id="firstcolumn">SSN</td>
+	<td id="secondcolumn"><%=ssn%></td>
+</tr>
+<tr>
+	<td id="firstcolumn">First name</td>
+	<td id="secondcolumn"><%=firstName%></td>
+</tr>
+<tr>
+	<td id="firstcolumn">Last name</td>
+	<td id="secondcolumn"><%=lastName%></td>
+</tr>
+<tr>
+	<td id="firstcolumn">Date of birth</td>
+	<td id="secondcolumn"><%=dateOfBirth%></td>
+</tr>
+<tr>
+	<td id="firstcolumn">Gender</td>
+	<td id="secondcolumn"><%=gender%></td>
+</tr>
+<tr>
+	<td id="firstcolumn">Marital status</td>
+	<td id="secondcolumn"><%=maritalStatus%></td>
+</tr>
+<tr>
+	<td id="firstcolumn">Race</td>
+	<td id="secondcolumn"><%=race%></td>
+</tr>
+<tr>
+	<td id="firstcolumn">Religion</td>
+	<td id="secondcolumn"><%=religion%></td>
+</tr>
+<tr>
+	<td id="firstcolumn">Language</td>
+	<td id="secondcolumn"><%=language%></td>
+</tr>
+</table>
+
+<legend id="smalllegend">Patient contacts:</legend>
+<table class="table table-bordered table table-condensed">
+<tr>
+	<td id="thirdcolumn"><%=firstName + ' ' + lastName%></td>
+	<td id="fourthcolumn">Full name (Employer name)</td>
+	<td id="fifthcolumn"><%=employerName%></td>
+</tr>
+<tr>
+	<td id="thirdcolumn"><%=patientAddress%></td>
+	<td id="fourthcolumn">Address</td>
+	<td id="fifthcolumn"><%=employerAddress%></td>
+</tr>
+<tr>
+	<td id="thirdcolumn"><%=patientCity%></td>
+	<td id="fourthcolumn">City</td>
+	<td id="fifthcolumn"><%=employerCity%></td>
+</tr>
+<tr>
+	<td id="thirdcolumn"><%=patientState%></td>
+	<td id="fourthcolumn">State</td>
+	<td id="fifthcolumn"><%=employerState%></td>
+</tr>
+<tr>
+	<td id="thirdcolumn"><%=patientZip%></td>
+	<td id="fourthcolumn">Zip</td>
+	<td id="fifthcolumn"><%=employerZip%></td>
+</tr>
+<tr>
+	<td id="thirdcolumn"><%=patientPhoneNumber%></td>
+	<td id="fourthcolumn">Phone number</td>
+	<td id="fifthcolumn"><%=employerPhoneNumber%></td>
+</tr>
+</table>
 		<a href="#" class="btn btn-success" id="change_status_btn">Confirm changes</a>
+		<a href="#" class="btn btn-info" id="edit">Edit profile</a>
 		<a href="#" class="btn btn-danger" id="cancel">Cancel</a>
-		</div>
 	</form>
 </div>
 </script>

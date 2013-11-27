@@ -21,6 +21,29 @@ var totalPages;
 var index = 1;
 var paging = 5;
 
+var search=false;
+
+var SearchPatientList = Backbone.Collection.extend({
+    baseUrl: 'medic/patients/find',
+    initialize: function() {
+        _.bindAll(this, 'url');
+        this.field=$('#filter').val();
+        this.value=$('#criteria').val();
+        //this.match=$('#method').val();
+        this.index = index;
+        //this.size = paging;
+    },
+    url: function() {
+        return this.baseUrl + '?' + $.param({
+            field: this.field,
+            value: this.value,
+            //match: this.match,
+            index: this.index,
+            //size: this.size
+        });
+    }
+});
+
 var PatientList = Backbone.Collection.extend({
     baseUrl: 'medic/patients',
     initialize: function() {
@@ -69,7 +92,8 @@ $(function () {
             "click #next": "next",
             "click #previous": "previous",
             "click #first": "first",
-            "click #last": "last"
+            "click #last": "last",
+            "click #search-btn": "search"
         },
         /*info: function(e) {
             e.preventDefault();
@@ -100,7 +124,7 @@ $(function () {
         search: function(e) {
             e.preventDefault();
             if($('#criteria').val()==="") {
-            search=false;
+            	search=false;
             } else {
                 search=true;
             }
@@ -119,7 +143,7 @@ $(function () {
         },
         clicked: function(e){
             e.preventDefault();
-            myRouter.navigate('/patients/' + this.model.get("id"), {trigger:true});
+            myRouter.navigate('/patients/' + this.model.get("patientId"), {trigger:true});
         },
         initialize: function(){
             _.bind(this.render, this);
@@ -222,7 +246,12 @@ $(function () {
 
 
 function buttonClick() {
-	patients = new PatientList();
+	if(search) {
+		patients = new SearchPatientList();
+    } else {
+    	patients = new PatientList();
+    }
+	//patients = new PatientList();
 	patientView = new PatientView();
     updatePaging();
     Views.allPatientView = new AllPatientView();

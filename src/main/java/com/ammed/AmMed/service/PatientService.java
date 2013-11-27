@@ -15,5 +15,11 @@ public interface PatientService {
 	public Patient getPatientByPhoneNumber (String patientPhoneNumber);
 	
 	public int getPatientsCount();
+	
+	public void createPatient(Patient patient);
+
+	public void updatePatient(Patient patient);
+     
+	public List<Patient> findPatient(String field, String value, int index);
 
 }

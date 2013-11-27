@@ -49,6 +49,21 @@ public class PatientServiceImpl implements PatientService {
 	@Transactional
 	public int getPatientsCount() {
 		return patientDAO.getPatientsCount();
+	}
+
+	@Transactional
+	public void createPatient(Patient patient) {
+		patientDAO.createPatient(patient);
+	}
+
+	@Transactional
+	public void updatePatient(Patient patient) {
+		patientDAO.updatePatient(patient);
+	}
+
+	@Transactional
+	public List<Patient> findPatient(String field, String value, int index) {
+		return patientDAO.findPatient(field, value, index);
 	}	
 
 }

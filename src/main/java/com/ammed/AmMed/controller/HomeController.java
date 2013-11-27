@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,5 +67,24 @@ public class HomeController {
     Patient getPatientById(@PathVariable("id") int patientId) {
             return patientService.getPatientById(patientId);
     }
+	
+	@RequestMapping(value = "/medic/create", method = RequestMethod.POST)
+	public String createUser(@RequestBody Patient patient) {
+			System.out.println(patient);
+		patientService.createPatient(patient);
+		return "redirect:/medic";
+	}
+
+	@RequestMapping(value = "/medic/update")	//?????????????????????????????????????????? refresh ??
+	public String updateUser(@ModelAttribute Patient patient, BindingResult result) {
+		patientService.updatePatient(patient);
+		return "redirect:/medic";
+	}
+	
+	@RequestMapping(value = "/medic/patients/find", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Patient> list(@RequestParam String field, @RequestParam String value, @RequestParam int index) {
+		return patientService.findPatient(field, value, index);
+	}
 	
 }
