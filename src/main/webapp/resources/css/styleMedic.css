@@ -125,16 +125,12 @@ legend {
 #secondcolumn {
 	background-color: rgb(250, 250, 250);
 }
-#thirdcolumn {
+#thirdcolumn, #fifthcolumn {
 	width: 35%;
 	background-color: rgb(250, 250, 250);
 }
 #fourthcolumn {
 	
-}
-#fifthcolumn {
-	width: 35%;
-	background-color: rgb(250, 250, 250);
 }
 
 #smalllegend {
