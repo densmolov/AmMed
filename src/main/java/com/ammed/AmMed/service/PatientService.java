@@ -8,6 +8,7 @@ public interface PatientService {
 	
 	public List<Patient> getAllPatients(int index);
 	
+	public Patient getPatientById (int patientId);
 	public Patient getPatientBySSN (String SSN);
 	public Patient getPatientByFirstName (String firstName);
 	public Patient getPatientByLastName (String lastName);

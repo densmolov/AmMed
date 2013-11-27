@@ -1,9 +1,11 @@
 package com.ammed.AmMed.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,6 +16,8 @@ public class Patient implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int patientId;
 	private String SSN;
 	private String firstName;
 	private String lastName;
@@ -82,6 +86,13 @@ public class Patient implements Serializable {
 	}
 
 	
+	public int getPatientId() {
+		return patientId;
+	}
+	public void setPatientId(int patientId) {
+		this.patientId = patientId;
+	}
+
 	public String getSSN() {
 		return SSN;
 	}
@@ -110,22 +121,22 @@ public class Patient implements Serializable {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public Gender getGender() {
-		return gender;
+	public String getGender() {
+		return gender.toString().toLowerCase();
 	}
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 
-	public MaritalStatus getMaritalStatus() {
-		return maritalStatus;
+	public String getMaritalStatus() {
+		return maritalStatus.toString().toLowerCase();
 	}
 	public void setMaritalStatus(MaritalStatus maritalStatus) {
 		this.maritalStatus = maritalStatus;
 	}
 
-	public Race getRace() {
-		return race;
+	public String getRace() {
+		return race.toString().toLowerCase();
 	}
 	public void setRace(Race race) {
 		this.race = race;

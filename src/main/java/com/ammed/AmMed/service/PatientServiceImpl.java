@@ -22,6 +22,11 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Transactional
+	public Patient getPatientById(int patientId) {
+		return patientDAO.getPatientById(patientId);
+	}
+	
+	@Transactional
 	public Patient getPatientBySSN(String SSN) {
 		return patientDAO.getPatientBySSN(SSN);
 	}
@@ -44,6 +49,6 @@ public class PatientServiceImpl implements PatientService {
 	@Transactional
 	public int getPatientsCount() {
 		return patientDAO.getPatientsCount();
-	}
+	}	
 
 }

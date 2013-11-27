@@ -1,18 +1,16 @@
 var errors = [
-    "Enter your username !",	//1
-    "Enter your password !",	//2
+    "Enter your username !",
+    "Enter your password !",
 ];
 
 
 $(function () {
-    //Login error
     var req = new XMLHttpRequest();
     req.open('GET', document.location, false);
     req.send(null);
     str = req.getResponseHeader("message");
     if(str!=undefined && str.trim()!="") {
     toastr.error(str);
-    //alert(str);
     }
 });
 

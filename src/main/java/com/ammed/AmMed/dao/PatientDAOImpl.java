@@ -28,10 +28,25 @@ public class PatientDAOImpl implements PatientDAO {
 		criteria.setFirstResult((index - 1) * 5);
 		criteria.setMaxResults(5);	
 		@SuppressWarnings("unchecked")
-		List<Patient> patients = (List<Patient>) criteria.list(); 
+		List<Patient> patients = (List<Patient>) criteria.list();
 		return patients;
 	}
 
+	@Override
+	public Patient getPatientById(int patientId) {
+		Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Patient.class).add(Restrictions.eq("patientId", patientId));
+        @SuppressWarnings("unchecked")
+        List<Patient> patients = (List<Patient>) criteria.list();
+        if(patients!=null && patients.size()!=0) {
+        	/***********/
+        	System.out.println("	first" + patients.get(0).toString());
+        	/*******************/
+                return patients.get(0);
+        }
+        return null;
+	}
+	
 	@Override
 	public Patient getPatientBySSN(String SSN) {
 		Session session = sessionFactory.getCurrentSession();
@@ -52,7 +67,7 @@ public class PatientDAOImpl implements PatientDAO {
         criteria.add( Restrictions.eq("firstName", firstName) );
         criteria.addOrder(Order.asc("firstName") );
         //criteria.setFirstResult((index - 1) * 10);
-        criteria.setMaxResults(10);
+        //criteria.setMaxResults(10);
         @SuppressWarnings("unchecked")
         List<Patient> patients = (List<Patient>) criteria.list();
         if(patients!=null && patients.size()!=0) {
@@ -69,7 +84,7 @@ public class PatientDAOImpl implements PatientDAO {
         criteria.add(Restrictions.eq("lastName", lastName));
         criteria.addOrder(Order.asc("lastName") );
         //criteria.setFirstResult((index - 1) * 10);
-        criteria.setMaxResults(10);
+        //criteria.setMaxResults(10);
         @SuppressWarnings("unchecked")
         List<Patient> patients = (List<Patient>) criteria.list();
         if(patients!=null && patients.size()!=0) {

@@ -119,7 +119,7 @@ $(function () {
         },
         clicked: function(e){
             e.preventDefault();
-            //myRouter.navigate('/patients/' + this.model.get("accountId"), {trigger:true});
+            myRouter.navigate('/patients/' + this.model.get("patientId"), {trigger:true});
         },
         initialize: function(){
             _.bind(this.render, this);

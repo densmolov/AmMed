@@ -59,10 +59,10 @@ public class HomeController {
 		return patientService.getAllPatients(index);
 	}
 	
-	@RequestMapping(value = "/medic/patients/{SSN}", method = RequestMethod.GET)
+	@RequestMapping(value = "/medic/patients/{id}", method = RequestMethod.GET)
     public @ResponseBody
-    Patient getPatientBySSN(@PathVariable("SSN") String SSN) {
-            return patientService.getPatientBySSN(SSN);
+    Patient getPatientById(@PathVariable("id") int patientId) {
+            return patientService.getPatientById(patientId);
     }
 	
 }

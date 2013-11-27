@@ -50,20 +50,20 @@ legend {
 	width: 100px;
 }
 
-#tableAccounts thead {
+#tablePatients thead {
 	font-size: 16px;
 	font-weight:300;
 	margin: 100px auto auto auto;
 }
 
-#notclientname {
+#namename, #phonephone {
 	width: 30%;
 }
-#clientname {
+#ssnssn {
 	width: 30%;
 }
 
-#clientnamebtn {
+#patientbtn {
 	width: 8%;
 	text-align:center;
 }
@@ -80,7 +80,7 @@ legend {
 	margin: 0 0 0 15px;
 }
 
-#accListFrame {
+#patientListFrame {
 	margin: 15px 0 0 0;
 	height: 220px; /* 440px; */
 }
@@ -110,5 +110,10 @@ legend {
 .container#createshowinfo form {
     box-shadow: 0px 0px 10px #AAA;
 }
+
+#pages {
+	margin-top: 15px;
+}
+
 
 
