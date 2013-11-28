@@ -126,8 +126,8 @@ $(function () {
             if($('#criteria').val()==="") {
             	search=false;
             } else {
-                search=true;
-            }
+                search=true;	// сюда написать quantity
+                }
             index=1;
             buttonClick();
         }
@@ -245,15 +245,34 @@ $(function () {
 /*        THE END OF THE GREAT FUNCTION        */
 
 
+	/*	ORIGINAL :
 function buttonClick() {
 	if(search) {
 		patients = new SearchPatientList();
     } else {
-    	patients = new PatientList();
+		patients = new PatientList();
     }
-	//patients = new PatientList();
 	patientView = new PatientView();
     updatePaging();
+    Views.allPatientView = new AllPatientView();
+    setTimeout(scrollDown, 100);
+}*/
+
+function buttonClick() {
+	if(search) {
+		patients = new SearchPatientList();
+		patientView = new PatientView();
+	    updatePaging222();
+		/*patientView = new PatientView({
+			success: function(){
+				updatePaging222();
+			}
+		});*/
+    } else {
+    	patients = new PatientList();
+    	patientView = new PatientView();
+    	updatePaging();
+    }
     Views.allPatientView = new AllPatientView();
     setTimeout(scrollDown, 100);
 }
@@ -265,7 +284,49 @@ function updatePaging() {
             async: false,
             success:function(count) {
                 totalCount = count;
-                console.log(totalCount);
+                console.log('totalCount is ' + totalCount);
+            }
+        }
+    ).responseText;
+    totalPages = Math.ceil(totalCount/paging);
+    console.log('totalPages is ' + totalPages + ', totalCount is ' + totalCount + ', paging is ' + paging);
+    $("#previous").attr("disabled", false);
+    $("#next").attr("disabled", false);
+    $("#first").attr("disabled", false);
+    $("#last").attr("disabled", false);
+    if(totalPages===0) {
+            $("#previous").attr("disabled", true);
+            $("#next").attr("disabled", true);
+        $("#first").attr("disabled", true);
+        $("#last").attr("disabled", true);
+        totalPages = "NONE";
+    }
+    if(totalPages===1) {
+        $("#first").attr("disabled", true);
+        $("#last").attr("disabled", true);
+        $("#previous").attr("disabled", true);
+            $("#next").attr("disabled", true);
+    }
+    if(index===1) {
+        $("#previous").attr("disabled", true);
+        $("#first").attr("disabled", true);
+    }
+    if(index===totalPages) {
+        $("#next").attr("disabled", true);
+        $("#last").attr("disabled", true);
+    }
+    $("#pageIndex").html(index);
+    $("#totalPages").html(totalPages);
+    $("#patientListFrame #tablePatients tbody").html("");
+}
+function updatePaging222() {
+    $.ajax({
+            type: "GET",
+            url: "medic/getPatientsCount222",
+            async: false,
+            success:function(count) {
+                totalCount = count;
+                console.log('totalCount is ' + totalCount);
             }
         }
     ).responseText;
@@ -300,6 +361,7 @@ function updatePaging() {
     $("#totalPages").html(totalPages);
     $("#patientListFrame #tablePatients tbody").html("");
 }
+
 
 function scrollDown() {
     $('html, body').animate({scrollTop: $("#foot").offset().top}, 1);

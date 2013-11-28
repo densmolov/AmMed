@@ -19,8 +19,6 @@ import com.ammed.AmMed.entities.Patient;
 @Repository
 public class PatientDAOImpl implements PatientDAO {
 	
-	boolean searchDone = false;
-	
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -43,9 +41,9 @@ public class PatientDAOImpl implements PatientDAO {
         List<Patient> patients = (List<Patient>) criteria.list();
         if(patients!=null && patients.size()!=0) {
         	/***********/
-        	System.out.println("	first" + patients.get(0).toString());
+        	System.out.println("	getPatientById " + patients.get(0).toString());
         	/*******************/
-                return patients.get(0);
+        	return patients.get(0);
         }
         return null;
 	}
@@ -111,11 +109,6 @@ public class PatientDAOImpl implements PatientDAO {
 	@Override
 	@Transactional
 	public int getPatientsCount() {
-		/*****/
-		if (searchDone == true) {
-			System.out.println("   searchDone");
-		}
-		/*****/
 		Session session = sessionFactory.getCurrentSession();
 		return (Integer) session.createCriteria(Patient.class).setProjection(Projections.rowCount()).uniqueResult();
 	}
@@ -135,15 +128,25 @@ public class PatientDAOImpl implements PatientDAO {
 		Session session = sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(Patient.class);
 		criteria.setFirstResult((index - 1) * 5);
-		criteria.setMaxResults(5);
 		criteria.add( Restrictions.like(field, value, MatchMode.ANYWHERE) );
 		criteria.addOrder( Order.asc(field) );
+		criteria.setMaxResults(5);
 		@SuppressWarnings("unchecked")
 		List<Patient> findPatientList = (List<Patient>) criteria.list();
 		if(findPatientList!=null && findPatientList.size()!=0) {
             return findPatientList;
 		}
 		return null;
+	}
+
+	@Override
+	public int findPatientsQuantity(String field, String value) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(Patient.class);
+		criteria.add( Restrictions.like(field, value, MatchMode.ANYWHERE) );
+		@SuppressWarnings("unchecked")
+		List<Patient> findPatientList = (List<Patient>) criteria.list();
+		return findPatientList.size();
 	}
 
 }

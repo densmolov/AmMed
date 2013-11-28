@@ -64,6 +64,10 @@ public class PatientServiceImpl implements PatientService {
 	@Transactional
 	public List<Patient> findPatient(String field, String value, int index) {
 		return patientDAO.findPatient(field, value, index);
+	}
+	@Transactional
+	public int findPatientsQuantity(String field, String value) {
+		return patientDAO.findPatientsQuantity(field, value);
 	}	
 
 }
