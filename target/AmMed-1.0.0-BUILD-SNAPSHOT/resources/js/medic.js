@@ -262,7 +262,7 @@ function buttonClick() {
 	if(search) {
 		patients = new SearchPatientList();
 		patientView = new PatientView();
-	    updatePaging222();
+		updatePagingAfterSearch();
 		/*patientView = new PatientView({
 			success: function(){
 				updatePaging222();
@@ -294,35 +294,50 @@ function updatePaging() {
     $("#next").attr("disabled", false);
     $("#first").attr("disabled", false);
     $("#last").attr("disabled", false);
+    /*****/
+    $("#totalPages").html(totalPages);
+    /*****/
     if(totalPages===0) {
             $("#previous").attr("disabled", true);
             $("#next").attr("disabled", true);
         $("#first").attr("disabled", true);
         $("#last").attr("disabled", true);
         totalPages = "NONE";
+        /*****/
+        $("#totalPages").html(totalPages);
+        /*****/
     }
     if(totalPages===1) {
         $("#first").attr("disabled", true);
         $("#last").attr("disabled", true);
         $("#previous").attr("disabled", true);
-            $("#next").attr("disabled", true);
+        $("#next").attr("disabled", true);
+        /*****/
+        $("#totalPages").html(totalPages);
+        /*****/
     }
     if(index===1) {
         $("#previous").attr("disabled", true);
         $("#first").attr("disabled", true);
+        /*****/
+        $("#totalPages").html(totalPages);
+        /*****/
     }
     if(index===totalPages) {
         $("#next").attr("disabled", true);
         $("#last").attr("disabled", true);
+        /*****/
+        $("#totalPages").html(totalPages);
+        /*****/
     }
     $("#pageIndex").html(index);
     $("#totalPages").html(totalPages);
     $("#patientListFrame #tablePatients tbody").html("");
 }
-function updatePaging222() {
+function updatePagingAfterSearch() {
     $.ajax({
             type: "GET",
-            url: "medic/getPatientsCount222",
+            url: "medic/getPatientsCountAfterSearch",
             async: false,
             success:function(count) {
                 totalCount = count;

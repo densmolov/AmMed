@@ -5,7 +5,7 @@ var AllPatientView;
 var PatientView;
 
 var Patient = Backbone.Model.extend({
-	urlRoot : '/AmMed/medic/patients'			
+        urlRoot : '/AmMed/medic/patients'                        
 });
 
 var header = [
@@ -68,16 +68,16 @@ $(function () {
     
     var MyRouter = Backbone.Router.extend({
        routes: {
-    	   "/patients/:id": 'informMe',
-    	   "": 'start'
+               "/patients/:id": 'informMe',
+               "": 'start'
        },
         start: function() {
           closeModal();
           closeDetailedInfo();
         },
         informMe: function(id) {
-        	this.id = id;
-        	Views.detailedInfo.render(id);
+                this.id = id;
+                Views.detailedInfo.render(id);
         }
     });
     
@@ -124,9 +124,9 @@ $(function () {
         search: function(e) {
             e.preventDefault();
             if($('#criteria').val()==="") {
-            	search=false;
+                    search=false;
             } else {
-                search=true;	// ñþäà íàïèñàòü quantity
+                search=true;        // Ã±Ã¾Ã¤Ã  Ã­Ã Ã¯Ã¨Ã±Ã Ã²Ã¼ quantity
                 }
             index=1;
             buttonClick();
@@ -158,50 +158,50 @@ $(function () {
 
         
         /*     DETAILED Patient INFORMATION     */
-	var DetailedInfo = Backbone.View.extend({
-		//baseUrl: 'medic/patients/:id',
-		baseUrl: 'medic/patients/',
-    	el: $("#patientTemplate"),
+        var DetailedInfo = Backbone.View.extend({
+                //baseUrl: 'medic/patients/:id',
+                baseUrl: 'medic/patients/',
+            el: $("#patientTemplate"),
         template: _.template($("#showinfotemplate").html()),
         events: {
-        	"click .btn-success#change_status_btn": "accept",
-        	"click .btn-danger#cancel": "cancel"
+                "click .btn-success#change_status_btn": "accept",
+                "click .btn-danger#cancel": "cancel"
         },
         cancel: function(e) {
-        	e.preventDefault();
-        	toastr.warning("Closing with no changes") ;
-        	myRouter.navigate("", {trigger: true} );
+                e.preventDefault();
+                toastr.warning("Closing with no changes") ;
+                myRouter.navigate("", {trigger: true} );
         },
         accept: function(e) {
-        	e.preventDefault();
-        	toastr.success("Changes applied") ;
-        	myRouter.navigate("", {trigger: true} );
+                e.preventDefault();
+                toastr.success("Changes applied") ;
+                myRouter.navigate("", {trigger: true} );
         },
         render: function(id) {
-        	var detailedPatient = new Patient ( {id: id} );
-        	var that = this;
-        	detailedPatient.fetch({
-        		success:function(){
-        			var element = that.template(detailedPatient.toJSON());
-        			console.log(detailedPatient.toJSON());
-        			$(that.el).html(element);
-        					//bankTransactions = new TransList();
-        					//allTransView = new AllTransView();
-        		}
-        	});
-/*        	bankTransactions = new TransList();
-        	bankTransactions.fetch({
-        		success:function(){
-        			allTransView: new AllTransView();
-        		}
-        	});*/
-        }	/*render*/
-	});
+                var detailedPatient = new Patient ( {id: id} );
+                var that = this;
+                detailedPatient.fetch({
+                        success:function(){
+                                var element = that.template(detailedPatient.toJSON());
+                                console.log(detailedPatient.toJSON());
+                                $(that.el).html(element);
+                                                //bankTransactions = new TransList();
+                                                //allTransView = new AllTransView();
+                        }
+                });
+/*                bankTransactions = new TransList();
+                bankTransactions.fetch({
+                        success:function(){
+                                allTransView: new AllTransView();
+                        }
+                });*/
+        }        /*render*/
+        });
     /*     end DETAILED Patient INFORMATION ends     */
 
 
         
-	AllPatientView = Backbone.View.extend({
+        AllPatientView = Backbone.View.extend({
         el : $('#patientListFrame'),
         initialize : function() {
             _.bindAll(this, 'addOne', 'addAll', 'render');
@@ -216,7 +216,7 @@ $(function () {
             this.$('#tablePatients').append(view.render().el);
         },
         addAll : function() {
-        	patients.each(this.addOne);
+                patients.each(this.addOne);
         }
     });        
         
@@ -245,33 +245,33 @@ $(function () {
 /*        THE END OF THE GREAT FUNCTION        */
 
 
-	/*	ORIGINAL :
+        /*        ORIGINAL :
 function buttonClick() {
-	if(search) {
-		patients = new SearchPatientList();
+        if(search) {
+                patients = new SearchPatientList();
     } else {
-		patients = new PatientList();
+                patients = new PatientList();
     }
-	patientView = new PatientView();
+        patientView = new PatientView();
     updatePaging();
     Views.allPatientView = new AllPatientView();
     setTimeout(scrollDown, 100);
 }*/
 
 function buttonClick() {
-	if(search) {
-		patients = new SearchPatientList();
-		patientView = new PatientView();
-	    updatePaging222();
-		/*patientView = new PatientView({
-			success: function(){
-				updatePaging222();
-			}
-		});*/
+        if(search) {
+                patients = new SearchPatientList();
+                patientView = new PatientView();
+            updatePaging222();
+                /*patientView = new PatientView({
+                        success: function(){
+                                updatePaging222();
+                        }
+                });*/
     } else {
-    	patients = new PatientList();
-    	patientView = new PatientView();
-    	updatePaging();
+            patients = new PatientList();
+            patientView = new PatientView();
+            updatePaging();
     }
     Views.allPatientView = new AllPatientView();
     setTimeout(scrollDown, 100);

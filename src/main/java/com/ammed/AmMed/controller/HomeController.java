@@ -24,92 +24,92 @@ import com.ammed.AmMed.service.PatientService;
 
 @Controller
 public class HomeController {
-	
-	@Autowired
-	private PatientService patientService;
-	
-	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public String loginPage(Locale locale, Model model, HttpServletResponse response, @RequestParam(required=false) Integer error) {
-		if(error!=null) {
-			response.setHeader("message", "Incorrect login or password!");
-		}
-		return "forward:/pages/login.html";
-	}
+        
+        @Autowired
+        private PatientService patientService;
+        
+        @RequestMapping(value = "login", method = RequestMethod.GET)
+        public String loginPage(Locale locale, Model model, HttpServletResponse response, @RequestParam(required=false) Integer error) {
+                if(error!=null) {
+                        response.setHeader("message", "Incorrect login or password!");
+                }
+                return "forward:/pages/login.html";
+        }
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, HttpServletRequest request) {
-		if (request.isUserInRole("ROLE_MEDIC")) {
-			return "redirect:/medic";
-		}
-		return "redirect:/login";
-	}
+        @RequestMapping(value = "/", method = RequestMethod.GET)
+        public String home(Locale locale, Model model, HttpServletRequest request) {
+                if (request.isUserInRole("ROLE_MEDIC")) {
+                        return "redirect:/medic";
+                }
+                return "redirect:/login";
+        }
 
-	@RequestMapping(value = "/medic", method = RequestMethod.GET)
-	public String employee(Locale locale, Model model) {
-		return "forward:/pages/index.html";
-	}
-		
-	@RequestMapping(value = "/medic/getPatientsCount", method = RequestMethod.GET)
-	public @ResponseBody
-	Integer getPatientsCount() {
-		//if (searchDone) {
-			//System.out.println("	searchQuantity o5 = " + searchQuantity);
-			//return searchQuantity;
-		//}
-		System.out.println("	getPatientsCount returns " + patientService.getPatientsCount());
-		return patientService.getPatientsCount();
-	}	
-	
-	int searchQuantity = 0;
-	//boolean searchDone = false;
-	
-	@RequestMapping(value = "/medic/getPatientsCount222", method = RequestMethod.GET)
-	public @ResponseBody
-	Integer getPatientsCount222() {
-			System.out.println("	searchQuantity from  getPatientsCount222 = " + searchQuantity);
-			return searchQuantity;
-	}
-	
-	@RequestMapping(value = "/medic/patients/find", method = RequestMethod.GET)
-	public @ResponseBody
-	List<Patient> list(@RequestParam String field, @RequestParam String value, @RequestParam int index) {
-		//searchDone = true;
-		if (value == "") {
-			searchQuantity = patientService.getPatientsCount();
-		} else {
-			try {
-				searchQuantity = patientService.findPatientsQuantity(field, value);	// ALWAYS A FIVE !!!!!!!!!!!!!!!!!!
-				System.out.println("	searchQuantity = " + searchQuantity);
-			} catch (NullPointerException e) {
-				System.out.println("	searchQuantity is ZEROED");
-			}
-		}		
-		return patientService.findPatient(field, value, index);
-	}
-	
-	@RequestMapping(value = "/medic/patients", method = RequestMethod.GET)
-	public @ResponseBody
-	List<Patient> list(@RequestParam int index) {
-		return patientService.getAllPatients(index);
-	}
-	
-	@RequestMapping(value = "/medic/patients/{id}", method = RequestMethod.GET)
+        @RequestMapping(value = "/medic", method = RequestMethod.GET)
+        public String employee(Locale locale, Model model) {
+                return "forward:/pages/index.html";
+        }
+                
+        @RequestMapping(value = "/medic/getPatientsCount", method = RequestMethod.GET)
+        public @ResponseBody
+        Integer getPatientsCount() {
+                //if (searchDone) {
+                        //System.out.println("        searchQuantity o5 = " + searchQuantity);
+                        //return searchQuantity;
+                //}
+                System.out.println("        getPatientsCount returns " + patientService.getPatientsCount());
+                return patientService.getPatientsCount();
+        }        
+        
+        int searchQuantity = 0;
+        //boolean searchDone = false;
+        
+        @RequestMapping(value = "/medic/getPatientsCount222", method = RequestMethod.GET)
+        public @ResponseBody
+        Integer getPatientsCount222() {
+                        System.out.println("        searchQuantity from  getPatientsCount222 = " + searchQuantity);
+                        return searchQuantity;
+        }
+        
+        @RequestMapping(value = "/medic/patients/find", method = RequestMethod.GET)
+        public @ResponseBody
+        List<Patient> list(@RequestParam String field, @RequestParam String value, @RequestParam int index) {
+                //searchDone = true;
+                if (value == "") {
+                        searchQuantity = patientService.getPatientsCount();
+                } else {
+                        try {
+                                searchQuantity = patientService.findPatientsQuantity(field, value);        // ALWAYS A FIVE !!!!!!!!!!!!!!!!!!
+                                System.out.println("        searchQuantity = " + searchQuantity);
+                        } catch (NullPointerException e) {
+                                System.out.println("        searchQuantity is ZEROED");
+                        }
+                }                
+                return patientService.findPatient(field, value, index);
+        }
+        
+        @RequestMapping(value = "/medic/patients", method = RequestMethod.GET)
+        public @ResponseBody
+        List<Patient> list(@RequestParam int index) {
+                return patientService.getAllPatients(index);
+        }
+        
+        @RequestMapping(value = "/medic/patients/{id}", method = RequestMethod.GET)
     public @ResponseBody
     Patient getPatientById(@PathVariable("id") int patientId) {
             return patientService.getPatientById(patientId);
     }
-	
-	@RequestMapping(value = "/medic/create", method = RequestMethod.POST)
-	public String createUser(@RequestBody Patient patient) {
-			System.out.println(patient);
-		patientService.createPatient(patient);
-		return "redirect:/medic";
-	}
+        
+        @RequestMapping(value = "/medic/create", method = RequestMethod.POST)
+        public String createUser(@RequestBody Patient patient) {
+                        System.out.println(patient);
+                patientService.createPatient(patient);
+                return "redirect:/medic";
+        }
 
-	@RequestMapping(value = "/medic/update")	//?????????????????????????????????????????? refresh ??
-	public String updateUser(@ModelAttribute Patient patient, BindingResult result) {
-		patientService.updatePatient(patient);
-		return "redirect:/medic";
-	}
-	
+        @RequestMapping(value = "/medic/update")        //?????????????????????????????????????????? refresh ??
+        public String updateUser(@ModelAttribute Patient patient, BindingResult result) {
+                patientService.updatePatient(patient);
+                return "redirect:/medic";
+        }
+        
 }
