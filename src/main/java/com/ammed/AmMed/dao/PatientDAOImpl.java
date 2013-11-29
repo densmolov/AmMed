@@ -131,14 +131,14 @@ public class PatientDAOImpl implements PatientDAO {
                 criteria.add( Restrictions.like(field, value, MatchMode.ANYWHERE) );
                 criteria.addOrder( Order.asc(field) );
                 /*****/
-                quantity = criteria.list().size();
-                changed = true;
+                	quantity = criteria.list().size();
+                	changed = true;
                 /*****/
                 criteria.setMaxResults(5);
                 @SuppressWarnings("unchecked")
                 List<Patient> findPatientList = (List<Patient>) criteria.list();
                 if(findPatientList!=null && findPatientList.size()!=0) {
-            return findPatientList;
+                	return findPatientList;
                 }
                 return null;
         }
@@ -153,14 +153,15 @@ public class PatientDAOImpl implements PatientDAO {
                 return findPatientList.size();
         }*/
         
-        int quantity = 0;
+        int quantity = (-1);
         boolean changed = false;
 
         @Override
         public int findPatientsQuantity() {
         	if (changed) {
-        		System.out.println("	Bingo !!!");
+        		System.out.println("	quantity is (from DAO) " + quantity);
         	}
+        	changed = false;        	
         	return quantity;
         }
 

@@ -17,6 +17,9 @@ var messages = [
 ];
 
 var totalCount=0;
+/***********/
+var totalCount2=0;
+/************/
 var totalPages;
 var index = 1;
 var paging = 5;
@@ -126,7 +129,7 @@ $(function () {
             if($('#criteria').val()==="") {
                     search=false;
             } else {
-                search=true;        // ñþäà íàïèñàòü quantity
+                search=true;
                 }
             index=1;
             buttonClick();
@@ -247,7 +250,7 @@ $(function () {
 
         /*        ORIGINAL :
 function buttonClick() {
-        if(search) {
+	if(search) {
                 patients = new SearchPatientList();
     } else {
                 patients = new PatientList();
@@ -259,10 +262,13 @@ function buttonClick() {
 }*/
 
 function buttonClick() {
-        if(search) {
-                patients = new SearchPatientList();
-                patientView = new PatientView();
-                updatePagingAfterSearch();
+	if(search) {
+		patients = new SearchPatientList();
+		patientView = new PatientView();
+		$.when( updatePagingAfterSearch() ).then(
+				Views.allPatientView = new AllPatientView()
+		);
+		setTimeout(scrollDown, 100);
                 /*patientView = new PatientView({
                         success: function(){
                                 updatePaging222();
@@ -271,10 +277,55 @@ function buttonClick() {
     } else {
             patients = new PatientList();
             patientView = new PatientView();
-            updatePaging();
+            $.when( updatePaging() ).then(
+            		Views.allPatientView = new AllPatientView()
+            );
+            setTimeout(scrollDown, 100);
     }
-    Views.allPatientView = new AllPatientView();
-    setTimeout(scrollDown, 100);
+}
+
+
+function updatePagingAfterSearch() {
+    $.ajax({
+    	type: "GET",
+        url: "medic/getPatientsCountAfterSearch",
+        async: false,
+        success:function(count) {
+        	totalCount = count;
+            console.log('totalCount is ' + totalCount);
+        }
+	}
+).responseText;    
+totalPages = Math.ceil(totalCount/paging);
+console.log('AfterSearch: totalPages is ' + totalPages + ', totalCount is ' + totalCount + ', paging is ' + paging);
+$("#previous").attr("disabled", false);
+$("#next").attr("disabled", false);
+$("#first").attr("disabled", false);
+$("#last").attr("disabled", false);
+if(totalPages===0) {
+        $("#previous").attr("disabled", true);
+        $("#next").attr("disabled", true);
+    $("#first").attr("disabled", true);
+    $("#last").attr("disabled", true);
+    totalPages = "NONE";
+}
+if(totalPages===1) {
+    $("#first").attr("disabled", true);
+    $("#last").attr("disabled", true);
+    $("#previous").attr("disabled", true);
+        $("#next").attr("disabled", true);
+}
+if(index===1) {
+    $("#previous").attr("disabled", true);
+    $("#first").attr("disabled", true);
+}
+if(index===totalPages) {
+    $("#next").attr("disabled", true);
+    $("#last").attr("disabled", true);
+}
+$("#pageIndex").html(index);
+$("#totalPages").html(totalPages);
+$("#patientListFrame #tablePatients tbody").html("");
 }
 
 function updatePaging() {
@@ -290,48 +341,6 @@ function updatePaging() {
     ).responseText;
     totalPages = Math.ceil(totalCount/paging);
     console.log('totalPages is ' + totalPages + ', totalCount is ' + totalCount + ', paging is ' + paging);
-    $("#previous").attr("disabled", false);
-    $("#next").attr("disabled", false);
-    $("#first").attr("disabled", false);
-    $("#last").attr("disabled", false);
-    if(totalPages===0) {
-            $("#previous").attr("disabled", true);
-            $("#next").attr("disabled", true);
-        $("#first").attr("disabled", true);
-        $("#last").attr("disabled", true);
-        totalPages = "NONE";
-    }
-    if(totalPages===1) {
-        $("#first").attr("disabled", true);
-        $("#last").attr("disabled", true);
-        $("#previous").attr("disabled", true);
-            $("#next").attr("disabled", true);
-    }
-    if(index===1) {
-        $("#previous").attr("disabled", true);
-        $("#first").attr("disabled", true);
-    }
-    if(index===totalPages) {
-        $("#next").attr("disabled", true);
-        $("#last").attr("disabled", true);
-    }
-    $("#pageIndex").html(index);
-    $("#totalPages").html(totalPages);
-    $("#patientListFrame #tablePatients tbody").html("");
-}
-function updatePagingAfterSearch() {
-    $.ajax({
-            type: "GET",
-            url: "medic/getPatientsCountAfterSearch",
-            async: false,
-            success:function(count) {
-                totalCount = count;
-                console.log('totalCount is ' + totalCount);
-            }
-        }
-    ).responseText;
-    totalPages = Math.ceil(totalCount/paging);
-    console.log('AfterSearch: totalPages is ' + totalPages + ', totalCount is ' + totalCount + ', paging is ' + paging);
     $("#previous").attr("disabled", false);
     $("#next").attr("disabled", false);
     $("#first").attr("disabled", false);

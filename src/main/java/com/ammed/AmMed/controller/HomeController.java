@@ -58,13 +58,14 @@ public class HomeController {
 
         @RequestMapping(value = "/medic/getPatientsCountAfterSearch", method = RequestMethod.GET)
         public @ResponseBody
-        Integer getPatientsCountAfterSearch(/*@RequestParam String field, @RequestParam String value*/) {
-        	return patientService.findPatientsQuantity(/*field, value*/);
+        Integer getPatientsCountAfterSearch() {
+        	System.out.println("        getPatientsCountAfterSearch returns " + patientService.findPatientsQuantity());
+        	return patientService.findPatientsQuantity();
         }
-        
+
         @RequestMapping(value = "/medic/patients/find", method = RequestMethod.GET)
         public @ResponseBody
-        List<Patient> list(@RequestParam String field, @RequestParam String value, @RequestParam int index) {           
+        List<Patient> list(@RequestParam String field, @RequestParam String value, @RequestParam int index) {
         	return patientService.findPatient(field, value, index);
         }
         
@@ -75,10 +76,10 @@ public class HomeController {
         }
         
         @RequestMapping(value = "/medic/patients/{id}", method = RequestMethod.GET)
-    public @ResponseBody
-    Patient getPatientById(@PathVariable("id") int patientId) {
+        public @ResponseBody
+        Patient getPatientById(@PathVariable("id") int patientId) {
             return patientService.getPatientById(patientId);
-    }
+        }
         
         @RequestMapping(value = "/medic/create", method = RequestMethod.POST)
         public String createUser(@RequestBody Patient patient) {
