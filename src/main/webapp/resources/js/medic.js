@@ -198,7 +198,7 @@ $(function () {
 			success:function(){
 				var element = that.template(detailedPatient.toJSON());
 				console.log(detailedPatient.toJSON());
-				$(that.el).html(element);
+				$(that.el).html(element); 
 				//bankTransactions = new TransList();
 				//allTransView = new AllTransView();
 			}
