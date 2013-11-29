@@ -262,7 +262,7 @@ function buttonClick() {
         if(search) {
                 patients = new SearchPatientList();
                 patientView = new PatientView();
-            updatePaging222();
+                updatePagingAfterSearch();
                 /*patientView = new PatientView({
                         success: function(){
                                 updatePaging222();
@@ -319,10 +319,10 @@ function updatePaging() {
     $("#totalPages").html(totalPages);
     $("#patientListFrame #tablePatients tbody").html("");
 }
-function updatePaging222() {
+function updatePagingAfterSearch() {
     $.ajax({
             type: "GET",
-            url: "medic/getPatientsCount222",
+            url: "medic/getPatientsCountAfterSearch",
             async: false,
             success:function(count) {
                 totalCount = count;
@@ -331,7 +331,7 @@ function updatePaging222() {
         }
     ).responseText;
     totalPages = Math.ceil(totalCount/paging);
-    console.log(totalPages,totalCount, paging);
+    console.log('AfterSearch: totalPages is ' + totalPages + ', totalCount is ' + totalCount + ', paging is ' + paging);
     $("#previous").attr("disabled", false);
     $("#next").attr("disabled", false);
     $("#first").attr("disabled", false);

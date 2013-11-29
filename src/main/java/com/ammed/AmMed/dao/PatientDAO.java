@@ -21,6 +21,6 @@ public interface PatientDAO {
 	public void updatePatient(Patient patient);
 
 	public List<Patient> findPatient(String field, String value, int index);
-	public int findPatientsQuantity(String field, String value);	
-
+	public int findPatientsQuantity(/*String field, String value*/);
+	
 }

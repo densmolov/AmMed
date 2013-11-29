@@ -52,39 +52,20 @@ public class HomeController {
         @RequestMapping(value = "/medic/getPatientsCount", method = RequestMethod.GET)
         public @ResponseBody
         Integer getPatientsCount() {
-                //if (searchDone) {
-                        //System.out.println("        searchQuantity o5 = " + searchQuantity);
-                        //return searchQuantity;
-                //}
                 System.out.println("        getPatientsCount returns " + patientService.getPatientsCount());
                 return patientService.getPatientsCount();
         }        
-        
-        int searchQuantity = 0;
-        //boolean searchDone = false;
-        
-        @RequestMapping(value = "/medic/getPatientsCount222", method = RequestMethod.GET)
+
+        @RequestMapping(value = "/medic/getPatientsCountAfterSearch", method = RequestMethod.GET)
         public @ResponseBody
-        Integer getPatientsCount222() {
-                        System.out.println("        searchQuantity from  getPatientsCount222 = " + searchQuantity);
-                        return searchQuantity;
+        Integer getPatientsCountAfterSearch(/*@RequestParam String field, @RequestParam String value*/) {
+        	return patientService.findPatientsQuantity(/*field, value*/);
         }
         
         @RequestMapping(value = "/medic/patients/find", method = RequestMethod.GET)
         public @ResponseBody
-        List<Patient> list(@RequestParam String field, @RequestParam String value, @RequestParam int index) {
-                //searchDone = true;
-                if (value == "") {
-                        searchQuantity = patientService.getPatientsCount();
-                } else {
-                        try {
-                                searchQuantity = patientService.findPatientsQuantity(field, value);        // ALWAYS A FIVE !!!!!!!!!!!!!!!!!!
-                                System.out.println("        searchQuantity = " + searchQuantity);
-                        } catch (NullPointerException e) {
-                                System.out.println("        searchQuantity is ZEROED");
-                        }
-                }                
-                return patientService.findPatient(field, value, index);
+        List<Patient> list(@RequestParam String field, @RequestParam String value, @RequestParam int index) {           
+        	return patientService.findPatient(field, value, index);
         }
         
         @RequestMapping(value = "/medic/patients", method = RequestMethod.GET)
