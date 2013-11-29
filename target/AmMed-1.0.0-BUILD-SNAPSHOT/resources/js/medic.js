@@ -16,6 +16,10 @@ var messages = [
     "Are you sure you want to log out from the application?",
 ];
 
+/*var creationModel =  {
+		
+};*/
+
 var totalCount=0;
 var totalPages;
 var index = 1;
@@ -29,17 +33,13 @@ var SearchPatientList = Backbone.Collection.extend({
         _.bindAll(this, 'url');
         this.field=$('#filter').val();
         this.value=$('#criteria').val();
-        //this.match=$('#method').val();
         this.index = index;
-        //this.size = paging;
     },
     url: function() {
         return this.baseUrl + '?' + $.param({
             field: this.field,
             value: this.value,
-            //match: this.match,
-            index: this.index,
-            //size: this.size
+            index: this.index
         });
     }
 });
@@ -70,6 +70,8 @@ $(function () {
        routes: {
                "/patients/:id": 'informMe',
                "": 'start'
+            	   /*,
+               "edit": 'edit'*/
        },
         start: function() {
           closeModal();
@@ -78,7 +80,13 @@ $(function () {
         informMe: function(id) {
                 this.id = id;
                 Views.detailedInfo.render(id);
-        }
+        }/*,
+        edit: function() {
+            closeUserEditor();
+            if(Views.detailedInfo!=null) {
+                Views.detailedInfo.render(creationModel);
+            }
+        }*/
     });
     
     var myRouter = new MyRouter();
@@ -126,7 +134,7 @@ $(function () {
             if($('#criteria').val()==="") {
                     search=false;
             } else {
-                search=true;        // ñþäà íàïèñàòü quantity
+                search=true;
                 }
             index=1;
             buttonClick();
@@ -158,45 +166,51 @@ $(function () {
 
         
         /*     DETAILED Patient INFORMATION     */
-        var DetailedInfo = Backbone.View.extend({
-                //baseUrl: 'medic/patients/:id',
-                baseUrl: 'medic/patients/',
-            el: $("#patientTemplate"),
-        template: _.template($("#showinfotemplate").html()),
-        events: {
-                "click .btn-success#change_status_btn": "accept",
-                "click .btn-danger#cancel": "cancel"
-        },
-        cancel: function(e) {
-                e.preventDefault();
-                toastr.warning("Closing with no changes") ;
-                myRouter.navigate("", {trigger: true} );
-        },
-        accept: function(e) {
-                e.preventDefault();
-                toastr.success("Changes applied") ;
-                myRouter.navigate("", {trigger: true} );
-        },
-        render: function(id) {
-                var detailedPatient = new Patient ( {id: id} );
-                var that = this;
-                detailedPatient.fetch({
-                        success:function(){
-                                var element = that.template(detailedPatient.toJSON());
-                                console.log(detailedPatient.toJSON());
-                                $(that.el).html(element);
-                                                //bankTransactions = new TransList();
-                                                //allTransView = new AllTransView();
-                        }
-                });
-/*                bankTransactions = new TransList();
-                bankTransactions.fetch({
-                        success:function(){
-                                allTransView: new AllTransView();
-                        }
-                });*/
-        }        /*render*/
-        });
+	var DetailedInfo = Backbone.View.extend({
+		//baseUrl: 'medic/patients/:id',
+		baseUrl: 'medic/patients/',
+		el: $("#patientTemplate"),
+	template: _.template($("#showinfotemplate").html()),
+	events: {
+		"click .btn-success#change_status_btn": "accept",
+		//"click .btn-success#edit_btn": "edit",
+		"click .btn-danger#cancel_btn": "cancel"
+	},
+	cancel: function(e) {
+		e.preventDefault();
+		toastr.warning("Closing with no changes") ;
+		myRouter.navigate("", {trigger: true} );
+	},
+	accept: function(e) {
+		e.preventDefault();
+		toastr.success("Changes applied") ;
+		myRouter.navigate("", {trigger: true} );
+	},
+	/*edit: function(e) {
+		e.preventDefault();
+		toastr.success("Changes applied") ;
+		myRouter.navigate("", {trigger: true} );
+	},*/
+	render: function(id) {
+		var detailedPatient = new Patient ( {id: id} );
+		var that = this;
+		detailedPatient.fetch({
+			success:function(){
+				var element = that.template(detailedPatient.toJSON());
+				console.log(detailedPatient.toJSON());
+				$(that.el).html(element);
+				//bankTransactions = new TransList();
+				//allTransView = new AllTransView();
+			}
+		});
+	}
+	});
+/*	bankTransactions = new TransList();
+	bankTransactions.fetch({
+		success:function(){
+			allTransView: new AllTransView();
+		}
+	});*/
     /*     end DETAILED Patient INFORMATION ends     */
 
 
@@ -260,43 +274,43 @@ function buttonClick() {
 
 function buttonClick() {
 	if(search) {
-                patients = new SearchPatientList();
-                patientView = new PatientView();
-                /*****/
-                $.when( ajax1() ).then(function( data, textStatus, jqXHR ) {
-                    // the code here will be executed when ajax request resolves
-                	Views.allPatientView = new AllPatientView();
-                    setTimeout(scrollDown, 100);
-                });
-                /*****/
-                //updatePagingAfterSearch();
-                /*patientView = new PatientView({
-                        success: function(){
-                                updatePaging222();
-                        }
-                });*/
-    } else {
-            patients = new PatientList();
-            patientView = new PatientView();
-            updatePaging();
+		/*patients = new SearchPatientList();
+		patientView = new PatientView();
+		$.when( updatePagingAfterSearch() ).then(
+			Views.allPatientView = new AllPatientView()
+		);
+		setTimeout(scrollDown, 100);*/
+		/*****/
+		$.when( patients = new SearchPatientList() ).done(function (x) {
+			patientView = new PatientView();
+			$.when( updatePagingAfterSearch() ).then(
+					Views.allPatientView = new AllPatientView()
+			);
+			setTimeout(scrollDown, 100);
+		});
+		/*****/
+	} else {
+		patients = new PatientList();
+		patientView = new PatientView();
+		$.when( updatePaging() ).then(
+				Views.allPatientView = new AllPatientView()
+		);
+		setTimeout(scrollDown, 100);
     }
-    /*Views.allPatientView = new AllPatientView();
-    setTimeout(scrollDown, 100);*/
 }
 
-function ajax1() {
-    // NOTE:  This function must return the value 
-    //        from calling the $.ajax() method.
-    return $.ajax({
+
+function updatePagingAfterSearch() {
+    $.ajax({
     	type: "GET",
         url: "medic/getPatientsCountAfterSearch",
         async: false,
         success:function(count) {
-            totalCount = count;
+        	totalCount = count;
             console.log('totalCount is ' + totalCount);
         }
-    }
-).responseText;
+	}
+).responseText;    
 totalPages = Math.ceil(totalCount/paging);
 console.log('AfterSearch: totalPages is ' + totalPages + ', totalCount is ' + totalCount + ', paging is ' + paging);
 $("#previous").attr("disabled", false);
@@ -371,49 +385,7 @@ function updatePaging() {
     $("#totalPages").html(totalPages);
     $("#patientListFrame #tablePatients tbody").html("");
 }
-/*function updatePagingAfterSearch() {
-    $.ajax({
-            type: "GET",
-            url: "medic/getPatientsCountAfterSearch",
-            async: false,
-            success:function(count) {
-                totalCount = count;
-                console.log('totalCount is ' + totalCount);
-            }
-        }
-    ).responseText;
-    totalPages = Math.ceil(totalCount/paging);
-    console.log('AfterSearch: totalPages is ' + totalPages + ', totalCount is ' + totalCount + ', paging is ' + paging);
-    $("#previous").attr("disabled", false);
-    $("#next").attr("disabled", false);
-    $("#first").attr("disabled", false);
-    $("#last").attr("disabled", false);
-    if(totalPages===0) {
-            $("#previous").attr("disabled", true);
-            $("#next").attr("disabled", true);
-        $("#first").attr("disabled", true);
-        $("#last").attr("disabled", true);
-        totalPages = "NONE";
-    }
-    if(totalPages===1) {
-        $("#first").attr("disabled", true);
-        $("#last").attr("disabled", true);
-        $("#previous").attr("disabled", true);
-            $("#next").attr("disabled", true);
-    }
-    if(index===1) {
-        $("#previous").attr("disabled", true);
-        $("#first").attr("disabled", true);
-    }
-    if(index===totalPages) {
-        $("#next").attr("disabled", true);
-        $("#last").attr("disabled", true);
-    }
-    $("#pageIndex").html(index);
-    $("#totalPages").html(totalPages);
-    $("#patientListFrame #tablePatients tbody").html("");
-}
-*/
+
 
 function scrollDown() {
     $('html, body').animate({scrollTop: $("#foot").offset().top}, 1);

@@ -66,7 +66,7 @@ public class HomeController {
         @RequestMapping(value = "/medic/patients/find", method = RequestMethod.GET)
         public @ResponseBody
         List<Patient> list(@RequestParam String field, @RequestParam String value, @RequestParam int index) {
-        	return patientService.findPatient(field, value, index);
+			return patientService.findPatient(field, value, index);
         }
         
         @RequestMapping(value = "/medic/patients", method = RequestMethod.GET)

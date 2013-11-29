@@ -132,7 +132,7 @@ public class PatientDAOImpl implements PatientDAO {
                 criteria.addOrder( Order.asc(field) );
                 /*****/
                 	quantity = criteria.list().size();
-                	changed = true;
+                	System.out.println("	quantity is shown for the first time ... " + quantity);
                 /*****/
                 criteria.setMaxResults(5);
                 @SuppressWarnings("unchecked")
@@ -143,25 +143,10 @@ public class PatientDAOImpl implements PatientDAO {
                 return null;
         }
 
-        /*@Override
-        public int findPatientsQuantity(String field, String value) {
-                Session session = sessionFactory.getCurrentSession();
-                Criteria criteria = session.createCriteria(Patient.class);
-                criteria.add( Restrictions.like(field, value, MatchMode.ANYWHERE) );
-                @SuppressWarnings("unchecked")
-                List<Patient> findPatientList = (List<Patient>) criteria.list();
-                return findPatientList.size();
-        }*/
-        
-        int quantity = (-1);
-        boolean changed = false;
-
+        int quantity;
         @Override
         public int findPatientsQuantity() {
-        	if (changed) {
-        		System.out.println("	quantity is (from DAO) " + quantity);
-        	}
-        	changed = false;        	
+        	System.out.println("	quantity is (from DAO) " + quantity);
         	return quantity;
         }
 
