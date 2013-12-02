@@ -274,13 +274,13 @@ function buttonClick() {
 
 function buttonClick() {
 	if(search) {
-		/*patients = new SearchPatientList();
+		patients = new SearchPatientList();
 		patientView = new PatientView();
 		$.when( updatePagingAfterSearch() ).then(
 			Views.allPatientView = new AllPatientView()
 		);
-		setTimeout(scrollDown, 100);*/
-		/*****/
+		setTimeout(scrollDown, 100);
+		/*
 		$.when( patients = new SearchPatientList() ).done(function (x) {
 			patientView = new PatientView();
 			$.when( updatePagingAfterSearch() ).then(
@@ -288,7 +288,7 @@ function buttonClick() {
 			);
 			setTimeout(scrollDown, 100);
 		});
-		/*****/
+		*/
 	} else {
 		patients = new PatientList();
 		patientView = new PatientView();
