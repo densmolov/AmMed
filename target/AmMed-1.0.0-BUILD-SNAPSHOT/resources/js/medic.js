@@ -16,10 +16,6 @@ var messages = [
     "Are you sure you want to log out from the application?",
 ];
 
-/*var creationModel =  {
-		
-};*/
-
 var totalCount=0;
 var totalPages;
 var index = 1;
@@ -61,25 +57,30 @@ var PatientList = Backbone.Collection.extend({
 
 /*        THE BEGINNING OF GREAT FUNCTION        */
 $(function () {
-    updatePaging();
+	updatePaging();
     Backbone.emulateJSON = false;
     patients = new PatientList();
     
     
     var MyRouter = Backbone.Router.extend({
        routes: {
-               "/patients/:id": 'informMe',
-               "": 'start'
-            	   /*,
-               "edit": 'edit'*/
+    	   "/patients/:id": 'informMe',
+    	   "": 'start',
+    	   "/create": "create",
+    	   //"/patients/edit": 'edit'
        },
         start: function() {
           closeModal();
           closeDetailedInfo();
+          closeDetailedInfoCreator();
         },
         informMe: function(id) {
-                this.id = id;
-                Views.detailedInfo.render(id);
+        	this.id = id;
+        	Views.detailedInfo.render(id);
+        },
+        create: function() {
+        	console.log('I am here');
+        	Views.detailedInfoCreator.render();
         }/*,
         edit: function() {
             closeUserEditor();
@@ -97,6 +98,8 @@ $(function () {
         el: $(".content"),
         events: {
             //"click #info": "info",
+        	//"click a.edit": "edit",
+        	"click #createNewPatient-btn": "create",
             "click #next": "next",
             "click #previous": "previous",
             "click #first": "first",
@@ -108,6 +111,14 @@ $(function () {
             bankTransactions = new TransList();
             allTransView: new AllTransView();
             //myRouter.navigate("/patients/:id", {trigger: true} );
+        },*/
+        create: function(e) {
+            e.preventDefault();
+            myRouter.navigate("/create", {trigger: true} );
+        },
+        /*edit: function(e) {
+            e.preventDefault();
+            myRouter.navigate("/patients/edit", true);
         },*/
         next: function(e) {
             e.preventDefault();
@@ -166,7 +177,8 @@ $(function () {
 
         
         /*     DETAILED Patient INFORMATION     */
-	var DetailedInfo = Backbone.View.extend({
+    
+var DetailedInfo = Backbone.View.extend({
 		//baseUrl: 'medic/patients/:id',
 		baseUrl: 'medic/patients/',
 		el: $("#patientTemplate"),
@@ -185,12 +197,7 @@ $(function () {
 		e.preventDefault();
 		toastr.success("Changes applied") ;
 		myRouter.navigate("", {trigger: true} );
-	},
-	/*edit: function(e) {
-		e.preventDefault();
-		toastr.success("Changes applied") ;
-		myRouter.navigate("", {trigger: true} );
-	},*/
+	},	
 	render: function(id) {
 		var detailedPatient = new Patient ( {id: id} );
 		var that = this;
@@ -198,24 +205,84 @@ $(function () {
 			success:function(){
 				var element = that.template(detailedPatient.toJSON());
 				console.log(detailedPatient.toJSON());
-				$(that.el).html(element); 
-				//bankTransactions = new TransList();
-				//allTransView = new AllTransView();
+				$(that.el).html(element);
 			}
 		});
 	}
 	});
-/*	bankTransactions = new TransList();
-	bankTransactions.fetch({
-		success:function(){
-			allTransView: new AllTransView();
-		}
-	});*/
+
+var DetailedInfoCreator = Backbone.View.extend({
+		baseUrl: 'medic/create',
+		el: $("#patientTemplateCreate"),
+	template: _.template($("#showinfotemplateCreate").html()),
+	events: {
+		"click #create_patient_btn": "create",
+		"click #cancel_patient_btn": "cancel",
+	},
+	cancel: function(e) {
+		e.preventDefault();
+		toastr.warning("Creating new patient cancelled") ;
+		myRouter.navigate("", {trigger: true} );
+	},
+	create: function() {
+        //e.preventDefault();
+        //if(validate()) {
+        	var newPatient = new Patient({
+        		SSN:$('SSN').val(),
+                firstName:$('#firstName').val(),
+                lastName:$('#lastName').val(),
+                gender: {
+                	gender: $("input:radio[name ='gender']:checked").val(),
+                },
+                maritalStatus: {
+                	maritalStatus: $("input:radio[name ='maritalStatus']:checked").val(),
+                },
+                race: {
+                	race: $("input:radio[name ='race']:checked").val(),
+                },
+                religion:$('#religion').val(),
+                language:$('#language').val(),
+                
+                //Patient contacts:
+                language:$('#patientAddress').val(),
+                language:$('#patientCity').val(),
+                patientState: {
+                	patientState: $("input:radio[name ='patientState']:checked").val(),	//patientStateID
+                },
+                language:$('#patientZip').val(),
+                language:$('#patientPhoneNumber').val(),
+                
+                //Employer contacts:
+                language:$('#employerName').val(),
+                language:$('#employerAddress').val(),
+                language:$('#employerCity').val(),
+                employerState: {
+                	employerState: $("input:radio[name ='employerState']:checked").val(),
+                },
+                language:$('#employerZip').val(),
+                language:$('#employerPhoneNumber').val()
+                });
+           console.log(newPatient);
+           newPatient.save();
+           toastr.success("New patient was successfully added!") ;
+           buttonClick();
+           /*****/
+           //$(this.el).html(newPatient);
+           /*****/
+           myRouter.navigate("", {trigger: true} );
+        //}
+    },
+    render: function(model) {
+        $(this.el).html(this.template(model));
+    }
+});
+	
+
     /*     end DETAILED Patient INFORMATION ends     */
 
 
         
-        AllPatientView = Backbone.View.extend({
+	AllPatientView = Backbone.View.extend({
         el : $('#patientListFrame'),
         initialize : function() {
             _.bindAll(this, 'addOne', 'addAll', 'render');
@@ -236,6 +303,7 @@ $(function () {
         
     Views = {
             detailedInfo: new DetailedInfo(),
+            detailedInfoCreator: new DetailedInfoCreator(),
             allPatientView: new AllPatientView()
     };
 
@@ -258,19 +326,6 @@ $(function () {
 });
 /*        THE END OF THE GREAT FUNCTION        */
 
-
-        /*        ORIGINAL :
-function buttonClick() {
-	if(search) {
-                patients = new SearchPatientList();
-    } else {
-                patients = new PatientList();
-    }
-        patientView = new PatientView();
-    updatePaging();
-    Views.allPatientView = new AllPatientView();
-    setTimeout(scrollDown, 100);
-}*/
 
 function buttonClick() {
 	if(search) {
@@ -416,3 +471,11 @@ function showModal(head, message, id) {
 function closeDetailedInfo() {
     $(".container#createshowinfo").fadeOut();
 }
+function closeDetailedInfoCreator() {
+    $(".container#createshowinfoCreate").fadeOut();
+}
+
+
+
+
+

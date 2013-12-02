@@ -48,6 +48,13 @@ public class HomeController {
         public String employee(Locale locale, Model model) {
                 return "forward:/pages/index.html";
         }
+        
+        @RequestMapping(value = "/medic/create", method = RequestMethod.POST)
+        public String createUser(@RequestBody Patient patient) {
+        	System.out.println("	I want to stop here");
+        	patientService.createPatient(patient);
+        	return "redirect:/medic";
+        }
                 
         @RequestMapping(value = "/medic/getPatientsCount", method = RequestMethod.GET)
         public @ResponseBody
@@ -79,14 +86,7 @@ public class HomeController {
         public @ResponseBody
         Patient getPatientById(@PathVariable("id") int patientId) {
             return patientService.getPatientById(patientId);
-        }
-        
-        @RequestMapping(value = "/medic/create", method = RequestMethod.POST)
-        public String createUser(@RequestBody Patient patient) {
-        	System.out.println("	I want to stop here");
-        	patientService.createPatient(patient);
-        	return "redirect:/medic";
-        }
+        }        
 
         @RequestMapping(value = "/medic/update")        //?????????????????????????????????????????? refresh ??
         public String updateUser(@ModelAttribute Patient patient, BindingResult result) {

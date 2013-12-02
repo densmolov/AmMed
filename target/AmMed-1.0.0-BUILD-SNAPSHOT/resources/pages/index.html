@@ -1,5 +1,5 @@
-<!DOCTYPE html> 
-<html lang="en"> 
+<!DOCTYPE html>
+<html lang="en">
 <head> 
 <meta charset="utf-8"> 
 <title>Patient registration application</title>
@@ -24,7 +24,7 @@
 
         <div id="userinfo">			
             <span id="userinfoSpan">Log out&nbsp;&nbsp;
-            <a href="#" title="Log Out" id="buttonLogout"><img src="img/logout.png"/></a>&nbsp;&nbsp;&nbsp;</span>
+            <a href="" title="Log Out" id="buttonLogout"><img src="img/logout.png"/></a>&nbsp;&nbsp;&nbsp;</span>
         </div>	
     </div>
 </div>
@@ -35,7 +35,7 @@
 									existing patients and search the patients in the database</div>
 	</div>
 	
-	<a class="btn" id="create" href="">Register a new patient</a>
+	<a class="btn" id="createNewPatient-btn" href="">Register a new patient</a>
 	
 	<form class="form-inline well">
         <legend>Search by</legend>
@@ -52,7 +52,7 @@
                 
             </div>	<!-- id="search-data" -->
             <div id="search-button">
-                <a class="btn" href="#" id="search-btn">Search</a>
+                <a class="btn" href="" id="search-btn">Search</a>
             </div>
         </div>	<!-- id="search" -->
     </form>
@@ -103,8 +103,8 @@
         <p></p>
     </div>
     <div class="modal-footer">
-        <a href="#" class="btn btn-primary">Yes</a>
-        <a href="#" class="btn" id="no">No</a>
+        <a href="" class="btn btn-primary">Yes</a>
+        <a href="" class="btn" id="no">No</a>
     </div>
 </div>
 
@@ -187,9 +187,216 @@
 	<td id="fifthcolumn"><%=employerPhoneNumber%></td>
 </tr>
 </table>
-		<a href="#" class="btn btn-success" id="change_status_btn">Confirm changes</a>
-		<a href="#" class="btn btn-info" id="edit_btn">Edit profile</a>
-		<a href="#" class="btn btn-danger" id="cancel_btn">Cancel</a>
+		<a href="" class="btn btn-success" id="change_status_btn">Confirm changes</a>
+		<a href="" class="btn btn-info" id="edit_btn">Edit profile</a>
+		<a href="" class="btn btn-danger" id="cancel_btn">Cancel</a>
+	</form>
+</div>
+</script>
+
+
+<!--
+____________________________________________________________________________________________
+-->
+
+
+<div id="patientTemplateCreate"></div>
+
+<script type="text/template" id="showinfotemplateCreate">
+<div class="container" id="createshowinfoCreate" title="Detailed account information">
+	<form class="form-horizontal well">
+	<legend id="ibs">Creating a new patient</legend>
+<table class="table table-bordered table table-condensed">
+<tr>
+	<td id="columnCreate1">SSN :&nbsp;&nbsp;</td>
+	<td id="columnCreate2"><input type="text" name="ssn" id="ssn"/></td>
+	<td id="columnCreate3">Date of birth :&nbsp;&nbsp;</td>
+	<td id="columnCreate4">
+		<select name="dateOfBirth" id="dateOfBirth">
+		<option value="all">All Columns</option>
+		<option value="login">User Name</option>
+		<option value="firstName">First Name</option>
+		</select></td>
+</tr>
+<tr>
+	<td id="columnCreate1">First name :&nbsp;&nbsp;</td>
+	<td id="columnCreate2"><input type="text" name="firstName" id="firstName"/></td>
+	<td id="columnCreate3">Gender :&nbsp;&nbsp;</td>
+	<td id="columnCreate4">
+		<select name="gender" id="gender">
+		<option value="male">male</option>
+		<option value="female">female</option>
+		</select></td>
+</tr>
+<tr>
+	<td id="columnCreate1">Last name :&nbsp;&nbsp;</td>
+	<td id="columnCreate2"><input type="text" name="lastName" id="lastName"/></td>
+	<td id="columnCreate3">Marital status :&nbsp;&nbsp;</td>
+	<td id="columnCreate4">
+		<select name="maritalStatus" id="maritalStatus">
+		<option value="married">married</option>
+		<option value="single">single</option>
+		</select></td>
+</tr>
+<tr>
+	<td id="columnCreate1">Religion :&nbsp;&nbsp;</td>
+	<td id="columnCreate2"><input type="text" name="religion" id="religion"/></td>
+	<td id="columnCreate3">Race :&nbsp;&nbsp;</td>
+	<td id="columnCreate4">
+		<select name="race" id="race">
+		<option value="white">white</option>
+		<option value="black">black</option>
+		<option value="asian">asian</option>
+		</select></td>
+</tr>
+<tr>
+	<td id="columnCreate1">Language :&nbsp;&nbsp;</td>
+	<td id="columnCreate2"><input type="text" name="language" id="language"/></td>
+	<td id="columnCreate3">Employer name :&nbsp;&nbsp;</td>
+	<td id="columnCreate4"><input type="text" name="employerName" id="employerName"/></td>
+</tr>
+</table>
+
+<legend id="smalllegend">Patient contacts:</legend>
+<table class="table table-bordered table table-condensed">
+<tr>
+	<td id="columnCreate5"><input type="text" name="patientAddress" id="patientAddress" placeholder="Patient"/></td>
+	<td id="columnCreate6">&nbsp;&nbsp;Address :</td>
+	<td id="columnCreate7"><input type="text" name="employerAddress" id="employerAddress" placeholder="Employer"/></td>
+</tr>
+<tr>
+	<td id="columnCreate5"><input type="text" name="patientCity" id="patientCity"/></td>
+	<td id="columnCreate6">&nbsp;&nbsp;City :</td>
+	<td id="columnCreate7"><input type="text" name="employerCity" id="employerCity"/></td>
+</tr>
+<tr>
+	<td id="columnCreate5">
+<select name="patientState" id="patientState">
+
+<option value="AL">&nbsp;&nbsp;&nbsp;Alabama</option>
+<option value="AK">&nbsp;&nbsp;&nbsp;Alaska</option>
+<option value="AZ">&nbsp;&nbsp;&nbsp;Arizona</option>
+<option value="AR">&nbsp;&nbsp;&nbsp;Arkansas</option>
+<option value="CA">&nbsp;&nbsp;&nbsp;California</option>
+<option value="CO">&nbsp;&nbsp;&nbsp;Colorado</option>
+<option value="CT">&nbsp;&nbsp;&nbsp;Connecticut</option>
+<option value="DE">&nbsp;&nbsp;&nbsp;Delaware</option>
+<option value="FL">&nbsp;&nbsp;&nbsp;Florida</option>
+<option value="GA">&nbsp;&nbsp;&nbsp;Georgia</option>
+<option value="HI">&nbsp;&nbsp;&nbsp;Hawaii</option>
+<option value="ID">&nbsp;&nbsp;&nbsp;Idaho</option>
+<option value="IL">&nbsp;&nbsp;&nbsp;Illinois</option>
+<option value="IN">&nbsp;&nbsp;&nbsp;Indiana</option>
+<option value="IA">&nbsp;&nbsp;&nbsp;Iowa</option>
+<option value="KS">&nbsp;&nbsp;&nbsp;Kansas</option>
+<option value="KY">&nbsp;&nbsp;&nbsp;Kentucky</option>
+<option value="LA">&nbsp;&nbsp;&nbsp;Louisiana</option>
+<option value="ME">&nbsp;&nbsp;&nbsp;Maine</option>
+<option value="MD">&nbsp;&nbsp;&nbsp;Maryland</option>
+<option value="MA">&nbsp;&nbsp;&nbsp;Massachusetts</option>
+<option value="MI">&nbsp;&nbsp;&nbsp;Michigan</option>
+<option value="MN">&nbsp;&nbsp;&nbsp;Minnesota</option>
+<option value="MS">&nbsp;&nbsp;&nbsp;Mississippi</option>
+<option value="MO">&nbsp;&nbsp;&nbsp;Missouri</option>
+<option value="MT">&nbsp;&nbsp;&nbsp;Montana</option>
+<option value="NE">&nbsp;&nbsp;&nbsp;Nebraska</option>
+<option value="NV">&nbsp;&nbsp;&nbsp;Nevada</option>
+<option value="NH">&nbsp;&nbsp;&nbsp;New Hampshire</option>
+<option value="NJ">&nbsp;&nbsp;&nbsp;New Jersey</option>
+<option value="NM">&nbsp;&nbsp;&nbsp;New Mexico</option>
+<option value="NY">&nbsp;&nbsp;&nbsp;New York</option>
+<option value="NC">&nbsp;&nbsp;&nbsp;North Carolina</option>
+<option value="ND">&nbsp;&nbsp;&nbsp;North Dakota</option>
+<option value="OH">&nbsp;&nbsp;&nbsp;Ohio</option>
+<option value="OK">&nbsp;&nbsp;&nbsp;Oklahoma</option>
+<option value="OR">&nbsp;&nbsp;&nbsp;Oregon</option>
+<option value="PA">&nbsp;&nbsp;&nbsp;Pennsylvania</option>
+<option value="RI">&nbsp;&nbsp;&nbsp;Rhode Island</option>
+<option value="SC">&nbsp;&nbsp;&nbsp;South Carolina</option>
+<option value="SD">&nbsp;&nbsp;&nbsp;South Dakota</option>
+<option value="TN">&nbsp;&nbsp;&nbsp;Tennessee</option>
+<option value="TX">&nbsp;&nbsp;&nbsp;Texas</option>
+<option value="UT">&nbsp;&nbsp;&nbsp;Utah</option>
+<option value="VT">&nbsp;&nbsp;&nbsp;Vermont</option>
+<option value="VA">&nbsp;&nbsp;&nbsp;Virginia</option>
+<option value="WA">&nbsp;&nbsp;&nbsp;Washington</option>
+<option value="WV">&nbsp;&nbsp;&nbsp;West Virginia</option>
+<option value="WI">&nbsp;&nbsp;&nbsp;Wisconsin</option>
+<option value="WY">&nbsp;&nbsp;&nbsp;Wyoming</option>
+
+		</select>
+</td>
+	<td id="columnCreate6">&nbsp;&nbsp;State :</td>
+	<td id="columnCreate7">
+<select name="employerState" id="employerState">
+
+<option value="AL">&nbsp;&nbsp;&nbsp;Alabama</option>
+<option value="AK">&nbsp;&nbsp;&nbsp;Alaska</option>
+<option value="AZ">&nbsp;&nbsp;&nbsp;Arizona</option>
+<option value="AR">&nbsp;&nbsp;&nbsp;Arkansas</option>
+<option value="CA">&nbsp;&nbsp;&nbsp;California</option>
+<option value="CO">&nbsp;&nbsp;&nbsp;Colorado</option>
+<option value="CT">&nbsp;&nbsp;&nbsp;Connecticut</option>
+<option value="DE">&nbsp;&nbsp;&nbsp;Delaware</option>
+<option value="FL">&nbsp;&nbsp;&nbsp;Florida</option>
+<option value="GA">&nbsp;&nbsp;&nbsp;Georgia</option>
+<option value="HI">&nbsp;&nbsp;&nbsp;Hawaii</option>
+<option value="ID">&nbsp;&nbsp;&nbsp;Idaho</option>
+<option value="IL">&nbsp;&nbsp;&nbsp;Illinois</option>
+<option value="IN">&nbsp;&nbsp;&nbsp;Indiana</option>
+<option value="IA">&nbsp;&nbsp;&nbsp;Iowa</option>
+<option value="KS">&nbsp;&nbsp;&nbsp;Kansas</option>
+<option value="KY">&nbsp;&nbsp;&nbsp;Kentucky</option>
+<option value="LA">&nbsp;&nbsp;&nbsp;Louisiana</option>
+<option value="ME">&nbsp;&nbsp;&nbsp;Maine</option>
+<option value="MD">&nbsp;&nbsp;&nbsp;Maryland</option>
+<option value="MA">&nbsp;&nbsp;&nbsp;Massachusetts</option>
+<option value="MI">&nbsp;&nbsp;&nbsp;Michigan</option>
+<option value="MN">&nbsp;&nbsp;&nbsp;Minnesota</option>
+<option value="MS">&nbsp;&nbsp;&nbsp;Mississippi</option>
+<option value="MO">&nbsp;&nbsp;&nbsp;Missouri</option>
+<option value="MT">&nbsp;&nbsp;&nbsp;Montana</option>
+<option value="NE">&nbsp;&nbsp;&nbsp;Nebraska</option>
+<option value="NV">&nbsp;&nbsp;&nbsp;Nevada</option>
+<option value="NH">&nbsp;&nbsp;&nbsp;New Hampshire</option>
+<option value="NJ">&nbsp;&nbsp;&nbsp;New Jersey</option>
+<option value="NM">&nbsp;&nbsp;&nbsp;New Mexico</option>
+<option value="NY">&nbsp;&nbsp;&nbsp;New York</option>
+<option value="NC">&nbsp;&nbsp;&nbsp;North Carolina</option>
+<option value="ND">&nbsp;&nbsp;&nbsp;North Dakota</option>
+<option value="OH">&nbsp;&nbsp;&nbsp;Ohio</option>
+<option value="OK">&nbsp;&nbsp;&nbsp;Oklahoma</option>
+<option value="OR">&nbsp;&nbsp;&nbsp;Oregon</option>
+<option value="PA">&nbsp;&nbsp;&nbsp;Pennsylvania</option>
+<option value="RI">&nbsp;&nbsp;&nbsp;Rhode Island</option>
+<option value="SC">&nbsp;&nbsp;&nbsp;South Carolina</option>
+<option value="SD">&nbsp;&nbsp;&nbsp;South Dakota</option>
+<option value="TN">&nbsp;&nbsp;&nbsp;Tennessee</option>
+<option value="TX">&nbsp;&nbsp;&nbsp;Texas</option>
+<option value="UT">&nbsp;&nbsp;&nbsp;Utah</option>
+<option value="VT">&nbsp;&nbsp;&nbsp;Vermont</option>
+<option value="VA">&nbsp;&nbsp;&nbsp;Virginia</option>
+<option value="WA">&nbsp;&nbsp;&nbsp;Washington</option>
+<option value="WV">&nbsp;&nbsp;&nbsp;West Virginia</option>
+<option value="WI">&nbsp;&nbsp;&nbsp;Wisconsin</option>
+<option value="WY">&nbsp;&nbsp;&nbsp;Wyoming</option>
+
+		</select>
+</td>
+</tr>
+<tr>
+	<td id="columnCreate5"><input type="text" name="patientZip" id="patientZip"/></td>
+	<td id="columnCreate6">&nbsp;&nbsp;Zip :</td>
+	<td id="columnCreate7"><input type="text" name="employerZip" id="employerZip"/></td>
+</tr>
+<tr>
+	<td id="columnCreate5"><input type="text" name="patientPhoneNumber" id="patientPhoneNumber"/></td>
+	<td id="columnCreate6">&nbsp;&nbsp;Phone number :</td>
+	<td id="columnCreate7"><input type="text" name="employerPhoneNumber" id="employerPhoneNumber"/></td>
+</tr>
+</table>
+		<a href="" class="btn btn-success" id="create_patient_btn">Ok</a>
+		<a href="" class="btn btn-danger" id="cancel_patient_btn">Cancel</a>
 	</form>
 </div>
 </script>
