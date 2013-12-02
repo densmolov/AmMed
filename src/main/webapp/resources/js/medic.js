@@ -216,38 +216,51 @@ var DetailedInfoCreator = Backbone.View.extend({
 		el: $("#patientTemplateCreate"),
 	template: _.template($("#showinfotemplateCreate").html()),
 	events: {
-		"click .btn-success#change_status_btn": "accept",
-		"click .btn-danger#cancel_btn": "cancel",
-		"click .btn-primary#create-btn": "create"
+		"click #create_patient_btn": "create",
+		"click #cancel_patient_btn": "cancel",
 	},
 	cancel: function(e) {
 		e.preventDefault();
-		toastr.warning("Closing with no changes") ;
-		myRouter.navigate("", {trigger: true} );
-	},
-	accept: function(e) {
-		e.preventDefault();
-		toastr.success("Changes applied") ;
+		toastr.warning("Creating new patient cancelled") ;
 		myRouter.navigate("", {trigger: true} );
 	},
 	create: function() {
         //e.preventDefault();
         //if(validate()) {
         	var newPatient = new Patient({
-        		ssn:$('SSN').val(),
+        		SSN:$('SSN').val(),
                 firstName:$('#firstName').val(),
                 lastName:$('#lastName').val(),
-                religion:$('#religion').val(),
-                language:$('#language').val(),
                 gender: {
-                	genderroleId: $("input:radio[name ='gender']:checked").val()
+                	gender: $("input:radio[name ='gender']:checked").val(),
                 },
                 maritalStatus: {
-                	maritalStatusroleId: $("input:radio[name ='maritalStatus']:checked").val()
+                	maritalStatus: $("input:radio[name ='maritalStatus']:checked").val(),
                 },
                 race: {
-                	raceroleId: $("input:radio[name ='race']:checked").val()
-                }
+                	race: $("input:radio[name ='race']:checked").val(),
+                },
+                religion:$('#religion').val(),
+                language:$('#language').val(),
+                
+                //Patient contacts:
+                language:$('#patientAddress').val(),
+                language:$('#patientCity').val(),
+                patientState: {
+                	patientState: $("input:radio[name ='patientState']:checked").val(),	//patientStateID
+                },
+                language:$('#patientZip').val(),
+                language:$('#patientPhoneNumber').val(),
+                
+                //Employer contacts:
+                language:$('#employerName').val(),
+                language:$('#employerAddress').val(),
+                language:$('#employerCity').val(),
+                employerState: {
+                	employerState: $("input:radio[name ='employerState']:checked").val(),
+                },
+                language:$('#employerZip').val(),
+                language:$('#employerPhoneNumber').val()
                 });
            console.log(newPatient);
            //newPatient.save();
@@ -256,24 +269,13 @@ var DetailedInfoCreator = Backbone.View.extend({
            /*****/
            //$(this.el).html(newPatient);
            /*****/
-           myRouter.navigate("", true);
+           myRouter.navigate("", {trigger: true} );
         //}
     },
     render: function(model) {
         $(this.el).html(this.template(model));
-    }/*,
-	render: function(id) {
-		var detailedPatient = new Patient ( {id: id} );
-		var that = this;
-		detailedPatient.fetch({
-			success:function(){
-				var element = that.template(detailedPatient.toJSON());
-				console.log(detailedPatient.toJSON());
-				$(that.el).html(element);
-			}
-		});
-	}*/
-	});
+    }
+});
 	
 
     /*     end DETAILED Patient INFORMATION ends     */

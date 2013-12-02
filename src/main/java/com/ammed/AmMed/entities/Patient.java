@@ -18,10 +18,11 @@ public class Patient implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int patientId;
+	
 	private String SSN;
 	private String firstName;
 	private String lastName;
-	private Date dateOfBirth;	//
+	private Date dateOfBirth;
 	private Gender gender;
 	private MaritalStatus maritalStatus;
 	private Race race;
