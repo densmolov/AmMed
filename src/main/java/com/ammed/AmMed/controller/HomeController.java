@@ -83,9 +83,9 @@ public class HomeController {
         
         @RequestMapping(value = "/medic/create", method = RequestMethod.POST)
         public String createUser(@RequestBody Patient patient) {
-                        System.out.println(patient);
-                patientService.createPatient(patient);
-                return "redirect:/medic";
+        	System.out.println("	I want to stop here");
+        	patientService.createPatient(patient);
+        	return "redirect:/medic";
         }
 
         @RequestMapping(value = "/medic/update")        //?????????????????????????????????????????? refresh ??

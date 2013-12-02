@@ -127,12 +127,11 @@ public class PatientDAOImpl implements PatientDAO {
         public List<Patient> findPatient(String field, String value, int index) {
                 Session session = sessionFactory.getCurrentSession();
                 Criteria criteria = session.createCriteria(Patient.class);
-                //criteria.setFirstResult((index - 1) * 5);
                 criteria.add( Restrictions.like(field, value, MatchMode.ANYWHERE) );
                 criteria.addOrder( Order.asc(field) );
                 /*****/
                 	quantity = criteria.list().size();
-                	System.out.println("	quantity is shown for the first time ... " + quantity);
+                	System.out.println("	quantity should be shown for the first time ... " + quantity);
                 /*****/
                 criteria.setFirstResult((index - 1) * 5);
                 criteria.setMaxResults(5);
