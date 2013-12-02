@@ -79,7 +79,7 @@ $(function () {
         	Views.detailedInfo.render(id);
         },
         create: function() {
-        	console.log('	I am here');
+        	console.log('I am here');
         	Views.detailedInfoCreator.render();
         }/*,
         edit: function() {
@@ -263,7 +263,7 @@ var DetailedInfoCreator = Backbone.View.extend({
                 language:$('#employerPhoneNumber').val()
                 });
            console.log(newPatient);
-           //newPatient.save();
+           newPatient.save();
            toastr.success("New patient was successfully added!") ;
            buttonClick();
            /*****/
