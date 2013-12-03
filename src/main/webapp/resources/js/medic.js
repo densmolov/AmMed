@@ -235,32 +235,25 @@ var DetailedInfoCreator = Backbone.View.extend({
         		ssn:$('#ssn').val(),
                 firstName:$('#firstName').val(),
                 lastName:$('#lastName').val(),
-                /*gender: {
-                	gender: $("input:radio[name ='gender']:checked").val(),
-                },
-                maritalStatus: {
-                	maritalStatus: $("input:radio[name ='maritalStatus']:checked").val(),
-                },
-                race: {
-                	race: $("input:radio[name ='race']:checked").val(),
-                },*/
+                
+                //dateOfBirth
+                
+                gender:$('#gender').val(),
+                maritalStatus:$('#maritalStatus').val(),
+                race:$('#race').val(),
                 religion:$('#religion').val(),
                 language:$('#language').val(),                
                 //Patient contacts:
                 patientAddress:$('#patientAddress').val(),
                 patientCity:$('#patientCity').val(),
-                /*patientState: {
-                	patientState: $("input:radio[name ='patientState']:checked").val(),	//patientStateID
-                },*/
+                patientState:$('#patientState').val(),
                 patientZip:$('#patientZip').val(),
                 patientPhoneNumber:$('#patientPhoneNumber').val(),                
                 //Employer contacts:
                 employerName:$('#employerName').val(),
                 employerAddress:$('#employerAddress').val(),
-                employerCity:$('#employerCity').val(),
-                /*employerState: {
-                	employerState: $("input:radio[name ='employerState']:checked").val(),
-                },*/
+                employerCity:$('#employerCity').val(),                
+                employerState:$('#employerState').val(),
                 employerZip:$('#employerZip').val(),
                 employerPhoneNumber:$('#employerPhoneNumber').val()
                 });

@@ -51,7 +51,6 @@ public class HomeController {
         
         @RequestMapping(value = "/medic/create", method = RequestMethod.POST)
         public String createUser(@RequestBody Patient patient) {
-        	System.out.println("	I want to stop here");
         	patientService.createPatient(patient);
         	return "redirect:/medic";
         }
