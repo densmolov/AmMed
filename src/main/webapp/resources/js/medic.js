@@ -5,7 +5,10 @@ var AllPatientView;
 var PatientView;
 
 var Patient = Backbone.Model.extend({
-        urlRoot : '/AmMed/medic/patients'                        
+		urlRoot : '/AmMed/medic/patients'
+});
+var PatientCreate = Backbone.Model.extend({
+	urlRoot : '/AmMed/medic/create'
 });
 
 var header = [
@@ -223,15 +226,16 @@ var DetailedInfoCreator = Backbone.View.extend({
 		e.preventDefault();
 		toastr.warning("Creating new patient cancelled") ;
 		myRouter.navigate("", {trigger: true} );
+		buttonClick();	// ADDED
 	},
-	create: function() {
-        //e.preventDefault();
+	create: function(e) {
+        e.preventDefault();
         //if(validate()) {
-        	var newPatient = new Patient({
+        	var newPatientCreate = new PatientCreate({
         		SSN:$('SSN').val(),
                 firstName:$('#firstName').val(),
                 lastName:$('#lastName').val(),
-                gender: {
+                /*gender: {
                 	gender: $("input:radio[name ='gender']:checked").val(),
                 },
                 maritalStatus: {
@@ -239,37 +243,33 @@ var DetailedInfoCreator = Backbone.View.extend({
                 },
                 race: {
                 	race: $("input:radio[name ='race']:checked").val(),
-                },
+                },*/
                 religion:$('#religion').val(),
-                language:$('#language').val(),
-                
+                language:$('#language').val(),                
                 //Patient contacts:
                 language:$('#patientAddress').val(),
                 language:$('#patientCity').val(),
-                patientState: {
+                /*patientState: {
                 	patientState: $("input:radio[name ='patientState']:checked").val(),	//patientStateID
-                },
+                },*/
                 language:$('#patientZip').val(),
-                language:$('#patientPhoneNumber').val(),
-                
+                language:$('#patientPhoneNumber').val(),                
                 //Employer contacts:
                 language:$('#employerName').val(),
                 language:$('#employerAddress').val(),
                 language:$('#employerCity').val(),
-                employerState: {
+                /*employerState: {
                 	employerState: $("input:radio[name ='employerState']:checked").val(),
-                },
+                },*/
                 language:$('#employerZip').val(),
                 language:$('#employerPhoneNumber').val()
                 });
-           console.log(newPatient);
-           newPatient.save();
+           console.log(newPatientCreate);
+           newPatientCreate.save();
            toastr.success("New patient was successfully added!") ;
-           buttonClick();
-           /*****/
-           //$(this.el).html(newPatient);
-           /*****/
+           //updatePaging();	// ADDED
            myRouter.navigate("", {trigger: true} );
+           buttonClick();
         //}
     },
     render: function(model) {

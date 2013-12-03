@@ -44,11 +44,6 @@ public class Patient implements Serializable {
 	private String employerZip;
 	private String employerPhoneNumber;
 	
-	/*@ManyToOne
-	@JoinColumn(name = "ROLEID")
-	private Role role;*/
-
-	
 	public Patient() { }
 	
 	public Patient(String firstName, String lastName, String SSN, Date dateOfBirth, Gender gender,
@@ -122,22 +117,31 @@ public class Patient implements Serializable {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public String getGender() {
+	/*public String getGender() {
 		return gender.toString().toLowerCase();
+	}*/
+	public Gender getGender() {
+		return gender;
 	}
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 
-	public String getMaritalStatus() {
+	/*public String getMaritalStatus() {
 		return maritalStatus.toString().toLowerCase();
+	}*/
+	public MaritalStatus getMaritalStatus() {
+		return maritalStatus;
 	}
 	public void setMaritalStatus(MaritalStatus maritalStatus) {
 		this.maritalStatus = maritalStatus;
 	}
 
-	public String getRace() {
+	/*public String getRace() {
 		return race.toString().toLowerCase();
+	}*/
+	public Race getRace() {
+		return race;
 	}
 	public void setRace(Race race) {
 		this.race = race;

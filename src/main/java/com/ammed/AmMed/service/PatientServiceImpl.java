@@ -53,7 +53,7 @@ public class PatientServiceImpl implements PatientService {
 
         @Transactional
         public void createPatient(Patient patient) {
-                patientDAO.createPatient(patient);
+        	patientDAO.createPatient(patient);
         }
 
         @Transactional
