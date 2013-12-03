@@ -168,7 +168,7 @@ legend {
 #employerAddress, #employerCity, #employerZip, #employerPhoneNumber {
 	width: 96%;
 }
-#employerName  {
+#employerName, #date  {
 	width: 95%;
 }
 #dateOfBirth, #gender, #maritalStatus, #race, #employerState, #patientState {
