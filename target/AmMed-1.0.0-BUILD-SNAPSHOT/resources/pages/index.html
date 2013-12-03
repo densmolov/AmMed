@@ -7,12 +7,17 @@
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
     <link rel="stylesheet" href="css/styleMedic.css" type="text/css"/>
     <link rel="stylesheet" href="css/toastr.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/jquery-ui.css" type="text/css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
     <script type="text/javascript" src="js/underscore.js"></script>
     <script type="text/javascript" src="js/backbone.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/toastr.min.js"></script>
     <script type="text/javascript" src="js/medic.js"></script>
+    <!-- _________ -->
+    <script type="text/javascript" src="js/date.js"></script>
+    <!-- _________ -->
 </head>
 
 <body>
@@ -118,7 +123,7 @@
 <table class="table table-bordered table table-condensed">
 <tr>
 	<td id="firstcolumn">SSN</td>
-	<td id="secondcolumn">ssssn<!--<%=ssn%>--></td>
+	<td id="secondcolumn"><%=ssn%></td>
 </tr>
 <tr>
 	<td id="firstcolumn">First name</td>
@@ -134,15 +139,15 @@
 </tr>
 <tr>
 	<td id="firstcolumn">Gender</td>
-	<td id="secondcolumn"><%=gender%></td>
+	<td id="secondcolumn"><%=gender.toLowerCase()%></td>
 </tr>
 <tr>
 	<td id="firstcolumn">Marital status</td>
-	<td id="secondcolumn"><%=maritalStatus%></td>
+	<td id="secondcolumn"><%=maritalStatus.toLowerCase()%></td>
 </tr>
 <tr>
 	<td id="firstcolumn">Race</td>
-	<td id="secondcolumn"><%=race%></td>
+	<td id="secondcolumn"><%=race.toLowerCase()%></td>
 </tr>
 <tr>
 	<td id="firstcolumn">Religion</td>
@@ -209,14 +214,10 @@ ________________________________________________________________________________
 <table class="table table-bordered table table-condensed">
 <tr>
 	<td id="columnCreate1">SSN :&nbsp;&nbsp;</td>
-	<td id="columnCreate2">sssssn<!--input type="text" name="SSN" id="SSN"/--></td>
+	<td id="columnCreate2"><input type="text" name="ssn" id="ssn"/></td>
 	<td id="columnCreate3">Date of birth :&nbsp;&nbsp;</td>
-	<td id="columnCreate4">dfgdfgdfgdfgdfgdfgdfg
-		<!--select name="dateOfBirth" id="dateOfBirth">
-		<option value="all">All Columns</option>
-		<option value="login">User Name</option>
-		<option value="firstName">First Name</option>
-		</select--></td>
+	<td id="columnCreate4"><input type="text" name="date" id="date"/></td>
+	<!--td id="columnCreate4"><input type="text" id="datepicker"></td-->
 </tr>
 <tr>
 	<td id="columnCreate1">First name :&nbsp;&nbsp;</td>
@@ -271,7 +272,7 @@ ________________________________________________________________________________
 </tr>
 <tr>
 	<td id="columnCreate5">
-<!--<select name="patientState" id="patientState">
+<select name="patientState" id="patientState">
 
 <option value="AL">&nbsp;&nbsp;&nbsp;Alabama</option>
 <option value="AK">&nbsp;&nbsp;&nbsp;Alaska</option>
@@ -323,11 +324,11 @@ ________________________________________________________________________________
 <option value="WV">&nbsp;&nbsp;&nbsp;West Virginia</option>
 <option value="WI">&nbsp;&nbsp;&nbsp;Wisconsin</option>
 <option value="WY">&nbsp;&nbsp;&nbsp;Wyoming</option>
-		</select-->
+		</select>
 </td>
 	<td id="columnCreate6">&nbsp;&nbsp;State :</td>
 	<td id="columnCreate7">
-<!--<select name="employerState" id="employerState">
+<select name="employerState" id="employerState">
 
 <option value="AL">&nbsp;&nbsp;&nbsp;Alabama</option>
 <option value="AK">&nbsp;&nbsp;&nbsp;Alaska</option>
@@ -379,7 +380,7 @@ ________________________________________________________________________________
 <option value="WV">&nbsp;&nbsp;&nbsp;West Virginia</option>
 <option value="WI">&nbsp;&nbsp;&nbsp;Wisconsin</option>
 <option value="WY">&nbsp;&nbsp;&nbsp;Wyoming</option>
-		</select-->
+		</select>
 </td>
 </tr>
 <tr>
@@ -399,6 +400,15 @@ ________________________________________________________________________________
 </div>
 </script>
 
+<!-- script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  });
+</script -->
+
 
 <script id="rowpatient" type="text/template">
     <td><%=ssn%></td>
@@ -406,6 +416,19 @@ ________________________________________________________________________________
 	<td><%=patientPhoneNumber%></td>
 	<td><a href="" title="Full info on this patient" id="info">Details</a></td>
 </script>
+
+<!-- <p>Date: <input type="text" id="datepicker"></p>
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+    	dateFormat : 'mm/dd/yy',
+        changeMonth : true,
+        changeYear : true,
+        yearRange: '-100y:c+nn',
+        maxDate: '-1d'
+    });
+  });
+  </script> -->
 
 </body>
 

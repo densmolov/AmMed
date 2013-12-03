@@ -236,8 +236,25 @@ var DetailedInfoCreator = Backbone.View.extend({
                 firstName:$('#firstName').val(),
                 lastName:$('#lastName').val(),
                 
-                //dateOfBirth
+                //dateOfBirth:$('#date').val(),
                 
+                dateOfBirth:Date.parse( $('#date').val() ),
+                
+                /*dateOfBirth:$(function() {
+                    $( "#datepicker" ).datepicker({
+                    	dateFormat : 'mm/dd/yy',
+                        changeMonth : true,
+                        changeYear : true,
+                        yearRange: '-100y:c+nn',
+                        maxDate: '-1d'
+                    });
+                  }),*/
+                
+                /*$("event tab ID").click(function(){
+                    $( "#displayallformshow #describestartdate" ).datepicker();
+                   $( "#displayallformshow #describeenddate" ).datepicker();
+               });*/
+
                 gender:$('#gender').val(),
                 maritalStatus:$('#maritalStatus').val(),
                 race:$('#race').val(),
@@ -269,7 +286,7 @@ var DetailedInfoCreator = Backbone.View.extend({
         $(this.el).html(this.template(model));
     }
 });
-	
+
 
     /*     end DETAILED Patient INFORMATION ends     */
 

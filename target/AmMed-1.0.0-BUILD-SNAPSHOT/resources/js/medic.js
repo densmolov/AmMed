@@ -232,35 +232,45 @@ var DetailedInfoCreator = Backbone.View.extend({
         e.preventDefault();
         //if(validate()) {
         	var newPatientCreate = new PatientCreate({
-        		SSN:$('#SSN').val(),
+        		ssn:$('#ssn').val(),
                 firstName:$('#firstName').val(),
                 lastName:$('#lastName').val(),
-                /*gender: {
-                	gender: $("input:radio[name ='gender']:checked").val(),
-                },
-                maritalStatus: {
-                	maritalStatus: $("input:radio[name ='maritalStatus']:checked").val(),
-                },
-                race: {
-                	race: $("input:radio[name ='race']:checked").val(),
-                },*/
+                
+                //dateOfBirth:$('#date').val(),
+                
+                dateOfBirth:Date.parse( $('#date').val() ),
+                
+                /*dateOfBirth:$(function() {
+                    $( "#datepicker" ).datepicker({
+                    	dateFormat : 'mm/dd/yy',
+                        changeMonth : true,
+                        changeYear : true,
+                        yearRange: '-100y:c+nn',
+                        maxDate: '-1d'
+                    });
+                  }),*/
+                
+                /*$("event tab ID").click(function(){
+                    $( "#displayallformshow #describestartdate" ).datepicker();
+                   $( "#displayallformshow #describeenddate" ).datepicker();
+               });*/
+
+                gender:$('#gender').val(),
+                maritalStatus:$('#maritalStatus').val(),
+                race:$('#race').val(),
                 religion:$('#religion').val(),
                 language:$('#language').val(),                
                 //Patient contacts:
                 patientAddress:$('#patientAddress').val(),
                 patientCity:$('#patientCity').val(),
-                /*patientState: {
-                	patientState: $("input:radio[name ='patientState']:checked").val(),	//patientStateID
-                },*/
+                patientState:$('#patientState').val(),
                 patientZip:$('#patientZip').val(),
                 patientPhoneNumber:$('#patientPhoneNumber').val(),                
                 //Employer contacts:
                 employerName:$('#employerName').val(),
                 employerAddress:$('#employerAddress').val(),
-                employerCity:$('#employerCity').val(),
-                /*employerState: {
-                	employerState: $("input:radio[name ='employerState']:checked").val(),
-                },*/
+                employerCity:$('#employerCity').val(),                
+                employerState:$('#employerState').val(),
                 employerZip:$('#employerZip').val(),
                 employerPhoneNumber:$('#employerPhoneNumber').val()
                 });
@@ -276,7 +286,7 @@ var DetailedInfoCreator = Backbone.View.extend({
         $(this.el).html(this.template(model));
     }
 });
-	
+
 
     /*     end DETAILED Patient INFORMATION ends     */
 
