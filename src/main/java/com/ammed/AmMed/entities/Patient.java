@@ -117,9 +117,6 @@ public class Patient implements Serializable {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	/*public String getGender() {
-		return gender.toString().toLowerCase();
-	}*/
 	public Gender getGender() {
 		return gender;
 	}
@@ -127,9 +124,6 @@ public class Patient implements Serializable {
 		this.gender = gender;
 	}
 
-	/*public String getMaritalStatus() {
-		return maritalStatus.toString().toLowerCase();
-	}*/
 	public MaritalStatus getMaritalStatus() {
 		return maritalStatus;
 	}
@@ -137,9 +131,6 @@ public class Patient implements Serializable {
 		this.maritalStatus = maritalStatus;
 	}
 
-	/*public String getRace() {
-		return race.toString().toLowerCase();
-	}*/
 	public Race getRace() {
 		return race;
 	}

@@ -232,7 +232,7 @@ var DetailedInfoCreator = Backbone.View.extend({
         e.preventDefault();
         //if(validate()) {
         	var newPatientCreate = new PatientCreate({
-        		SSN:$('SSN').val(),
+        		SSN:$('#SSN').val(),
                 firstName:$('#firstName').val(),
                 lastName:$('#lastName').val(),
                 /*gender: {
@@ -247,22 +247,22 @@ var DetailedInfoCreator = Backbone.View.extend({
                 religion:$('#religion').val(),
                 language:$('#language').val(),                
                 //Patient contacts:
-                language:$('#patientAddress').val(),
-                language:$('#patientCity').val(),
+                patientAddress:$('#patientAddress').val(),
+                patientCity:$('#patientCity').val(),
                 /*patientState: {
                 	patientState: $("input:radio[name ='patientState']:checked").val(),	//patientStateID
                 },*/
-                language:$('#patientZip').val(),
-                language:$('#patientPhoneNumber').val(),                
+                patientZip:$('#patientZip').val(),
+                patientPhoneNumber:$('#patientPhoneNumber').val(),                
                 //Employer contacts:
-                language:$('#employerName').val(),
-                language:$('#employerAddress').val(),
-                language:$('#employerCity').val(),
+                employerName:$('#employerName').val(),
+                employerAddress:$('#employerAddress').val(),
+                employerCity:$('#employerCity').val(),
                 /*employerState: {
                 	employerState: $("input:radio[name ='employerState']:checked").val(),
                 },*/
-                language:$('#employerZip').val(),
-                language:$('#employerPhoneNumber').val()
+                employerZip:$('#employerZip').val(),
+                employerPhoneNumber:$('#employerPhoneNumber').val()
                 });
            console.log(newPatientCreate);
            newPatientCreate.save();
