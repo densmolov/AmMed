@@ -53,8 +53,17 @@ public class PatientServiceImpl implements PatientService {
 
         @Transactional
         public void createPatient(Patient patient) {
-        	patientDAO.createPatient(patient);
+        	if (isPatientValid(patient)) {
+        		patientDAO.createPatient(patient);
+        	}
         }
+        
+        @Transactional
+        public boolean isPatientValid(Patient patient) {
+        	if ( patientDAO.isPatientValid(patient) ) {
+        		return true;
+        	} else { return false; }
+		}
 
         @Transactional
         public void updatePatient(Patient patient) {

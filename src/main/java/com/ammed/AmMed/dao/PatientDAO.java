@@ -17,10 +17,11 @@ public interface PatientDAO {
 	public int getPatientsCount();
 
 	public void createPatient(Patient patient);
+	public boolean isPatientValid(Patient patient);
 
 	public void updatePatient(Patient patient);
 
 	public List<Patient> findPatient(String field, String value, int index);
-	public int findPatientsQuantity();
+	public int findPatientsQuantity();	
 		
 }

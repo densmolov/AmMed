@@ -35,7 +35,7 @@ public class PatientDAOImpl implements PatientDAO {
 
         @Override
         public Patient getPatientById(int patientId) {
-                Session session = sessionFactory.getCurrentSession();
+        	Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Patient.class).add(Restrictions.eq("patientId", patientId));
         @SuppressWarnings("unchecked")
         List<Patient> patients = (List<Patient>) criteria.list();
@@ -50,104 +50,115 @@ public class PatientDAOImpl implements PatientDAO {
         
         @Override
         public Patient getPatientBySSN(String SSN) {
-                Session session = sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(Patient.class).add(Restrictions.eq("SSN", SSN));
-        @SuppressWarnings("unchecked")
-        List<Patient> patients = (List<Patient>) criteria.list();
-        if(patients!=null && patients.size()!=0) {
-                return patients.get(0);
-        }
-        return null;
+        	Session session = sessionFactory.getCurrentSession();
+        	Criteria criteria = session.createCriteria(Patient.class).add(Restrictions.eq("SSN", SSN));
+        	@SuppressWarnings("unchecked")
+        	List<Patient> patients = (List<Patient>) criteria.list();
+        	if(patients!=null && patients.size()!=0) {
+        		return patients.get(0);
+        	}
+        	return null;
         }
 
         @Override
         public Patient getPatientByFirstName(String firstName) {
         //public List<Patient> getPatientByFirstName(String firstName, int index) {
-                Session session = sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(Patient.class);
-        criteria.add( Restrictions.eq("firstName", firstName) );
-        criteria.addOrder(Order.asc("firstName") );
-        //criteria.setFirstResult((index - 1) * 10);
-        //criteria.setMaxResults(10);
-        @SuppressWarnings("unchecked")
-        List<Patient> patients = (List<Patient>) criteria.list();
-        if(patients!=null && patients.size()!=0) {
-            return patients.get(0);                                // NOT ONE BUT SEVERAL CAN BE FOUND
-        }
-        return null;
+        	Session session = sessionFactory.getCurrentSession();
+        	Criteria criteria = session.createCriteria(Patient.class);
+        	criteria.add( Restrictions.eq("firstName", firstName) );
+        	criteria.addOrder(Order.asc("firstName") );
+        	//criteria.setFirstResult((index - 1) * 10);
+        	//criteria.setMaxResults(10);
+        	@SuppressWarnings("unchecked")
+        	List<Patient> patients = (List<Patient>) criteria.list();
+        	if(patients!=null && patients.size()!=0) {
+        		return patients.get(0);                                // NOT ONE BUT SEVERAL CAN BE FOUND
+        	}
+        	return null;
         }
 
         @Override
         public Patient getPatientByLastName(String lastName) {
         //public List<Patient> getPatientByLastName(String lastName, int index) {
-                Session session = sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(Patient.class);
-        criteria.add(Restrictions.eq("lastName", lastName));
-        criteria.addOrder(Order.asc("lastName") );
-        //criteria.setFirstResult((index - 1) * 10);
-        //criteria.setMaxResults(10);
-        @SuppressWarnings("unchecked")
-        List<Patient> patients = (List<Patient>) criteria.list();
-        if(patients!=null && patients.size()!=0) {
-                return patients.get(0);                                // NOT ONE BUT SEVERAL CAN BE FOUND
-        }
-        return null;
+        	Session session = sessionFactory.getCurrentSession();
+        	Criteria criteria = session.createCriteria(Patient.class);
+        	criteria.add(Restrictions.eq("lastName", lastName));
+        	criteria.addOrder(Order.asc("lastName") );
+        	//criteria.setFirstResult((index - 1) * 10);
+        	//criteria.setMaxResults(10);
+        	@SuppressWarnings("unchecked")
+        	List<Patient> patients = (List<Patient>) criteria.list();
+        	if(patients!=null && patients.size()!=0) {
+        		return patients.get(0);                                // NOT ONE BUT SEVERAL CAN BE FOUND
+        	}
+        	return null;
         }
 
         @Override
         public Patient getPatientByPhoneNumber(String patientPhoneNumber) {
-                Session session = sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(Patient.class).add(Restrictions.eq("patientPhoneNumber", patientPhoneNumber));
-        @SuppressWarnings("unchecked")
-        List<Patient> patients = (List<Patient>) criteria.list();
-        if(patients!=null && patients.size()!=0) {
-                return patients.get(0);
-        }
-        return null;
+        	Session session = sessionFactory.getCurrentSession();
+        	Criteria criteria = session.createCriteria(Patient.class).add(Restrictions.eq("patientPhoneNumber", patientPhoneNumber));
+        	@SuppressWarnings("unchecked")
+        	List<Patient> patients = (List<Patient>) criteria.list();
+        	if(patients!=null && patients.size()!=0) {
+        		return patients.get(0);
+        	}
+        	return null;
         }
 
         @Override
         @Transactional
         public int getPatientsCount() {
-                Session session = sessionFactory.getCurrentSession();
-                return (Integer) session.createCriteria(Patient.class).setProjection(Projections.rowCount()).uniqueResult();
+        	Session session = sessionFactory.getCurrentSession();
+        	return (Integer) session.createCriteria(Patient.class).setProjection(Projections.rowCount()).uniqueResult();
         }
 
         @Override
         public void createPatient(Patient patient) {
-                sessionFactory.getCurrentSession().save(patient);
+        	sessionFactory.getCurrentSession().save(patient);
         }
+        
+        @Override
+		public boolean isPatientValid(Patient patient) {
+			// TODO Auto-generated method stub
+        	// TODO Auto-generated method stub
+        	// TODO Auto-generated method stub
+        	// TODO Auto-generated method stub
+        	// TODO Auto-generated method stub
+			return true;
+		}
 
         @Override
         public void updatePatient(Patient patient) {
-                sessionFactory.getCurrentSession().update(patient);
+        	sessionFactory.getCurrentSession().update(patient);
         }
 
         @Override
         public List<Patient> findPatient(String field, String value, int index) {
-                Session session = sessionFactory.getCurrentSession();
-                Criteria criteria = session.createCriteria(Patient.class);
-                criteria.add( Restrictions.like(field, value, MatchMode.ANYWHERE) );
-                criteria.addOrder( Order.asc(field) );
-                /*****/
-                	quantity = criteria.list().size();
-                	System.out.println("	quantity should be shown for the first time ... " + quantity);
-                /*****/
-                criteria.setFirstResult((index - 1) * 5);
-                criteria.setMaxResults(5);
-                @SuppressWarnings("unchecked")
-                List<Patient> findPatientList = (List<Patient>) criteria.list();
-                if(findPatientList!=null && findPatientList.size()!=0) {
-                	return findPatientList;
-                }
-                return null;
+        	Session session = sessionFactory.getCurrentSession();
+        	Criteria criteria = session.createCriteria(Patient.class);
+        	criteria.add( Restrictions.like(field, value, MatchMode.ANYWHERE) );
+        	criteria.addOrder( Order.asc(field) );
+        	/*****/
+        	quantity = criteria.list().size();
+        	System.out.println("	quantity should be shown for the first time ... " + quantity);
+        	/*****/
+        	criteria.setFirstResult((index - 1) * 5);
+        	criteria.setMaxResults(5);
+        	@SuppressWarnings("unchecked")
+        	List<Patient> findPatientList = (List<Patient>) criteria.list();
+        	if(findPatientList!=null && findPatientList.size()!=0) {
+        		return findPatientList;
+        	}
+        	return null;
         }
 
         int quantity;
+        
         @Override
         public int findPatientsQuantity() {
         	System.out.println("	quantity is (from DAO) " + quantity);
         	return quantity;
-        }
+        }		
 
 }

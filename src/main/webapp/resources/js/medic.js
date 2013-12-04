@@ -230,12 +230,15 @@ var DetailedInfoCreator = Backbone.View.extend({
 	},
 	create: function(e) {
         e.preventDefault();
-        //if(validate()) {
+        if ( validate() ) {
         	var newPatientCreate = new PatientCreate({
         		ssn:$('#ssn').val(),
                 firstName:$('#firstName').val(),
                 lastName:$('#lastName').val(),
-                dateOfBirth:Date.parse( $('#date').val() ),
+                
+                dateOfBirth:Date.parse( $('#dateOfBirth').val() ),
+                /*dateOfBirth:$('#req').val(),*/
+                
                 gender:$('#gender').val(),
                 maritalStatus:$('#maritalStatus').val(),
                 race:$('#race').val(),
@@ -259,7 +262,7 @@ var DetailedInfoCreator = Backbone.View.extend({
            updatePaging();
            myRouter.navigate("", {trigger: true} );
            buttonClick();
-        //}
+        }
     },
     render: function(model) {
         $(this.el).html(this.template(model));
@@ -465,6 +468,16 @@ function closeDetailedInfoCreator() {
 }
 
 
+		//VALIDATION
+
+	function validate() {
+		if ($('#registerPatientForm').validationEngine('validate')) {
+			return true;
+		}
+	}
+
+	
 
 
 
+	

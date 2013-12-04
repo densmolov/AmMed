@@ -26,8 +26,8 @@ public class Patient implements Serializable {
 	private Gender gender;
 	private MaritalStatus maritalStatus;
 	private Race race;
-	private String religion;
-	private String language;
+	private Religion religion;
+	private Language language;
 	
 	//Patient contacts:
 	private String patientAddress;
@@ -47,7 +47,7 @@ public class Patient implements Serializable {
 	public Patient() { }
 	
 	public Patient(String firstName, String lastName, String SSN, Date dateOfBirth, Gender gender,
-				MaritalStatus maritalStatus, Race race, String religion, String language,
+				MaritalStatus maritalStatus, Race race, Religion religion, Language language,
 				String patientAddress, String patientCity, State patientState, String patientZip, String patientPhoneNumber,
 				String employerName, String employerAddress, String employerCity, State employerState,
 				String employerZip, String employerPhoneNumber) {
@@ -138,17 +138,17 @@ public class Patient implements Serializable {
 		this.race = race;
 	}
 
-	public String getReligion() {
+	public Religion getReligion() {
 		return religion;
 	}
-	public void setReligion(String religion) {
+	public void setReligion(Religion religion) {
 		this.religion = religion;
 	}
 
-	public String getLanguage() {
+	public Language getLanguage() {
 		return language;
 	}
-	public void setLanguage(String language) {
+	public void setLanguage(Language language) {
 		this.language = language;
 	}
 

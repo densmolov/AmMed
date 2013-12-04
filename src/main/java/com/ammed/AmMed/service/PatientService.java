@@ -17,6 +17,7 @@ public interface PatientService {
 	public int getPatientsCount();
 	
 	public void createPatient(Patient patient);
+	public boolean isPatientValid(Patient patient);
 
 	public void updatePatient(Patient patient);
      

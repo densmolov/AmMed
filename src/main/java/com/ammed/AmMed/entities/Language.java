@@ -1,0 +1,7 @@
+package com.ammed.AmMed.entities;
+
+public enum Language {
+	
+	ENGLISH, SPANISH, FRENCH, ARABIC, CHINESE, DUTCH, VIETNAMESE, FINNISH, GERMAN, RUSSIAN, INDIAN, ITALIAN, OTHER
+
+}
