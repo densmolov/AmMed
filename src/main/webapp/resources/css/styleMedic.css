@@ -134,50 +134,49 @@ legend {
 }
 
 #columnCreate1 {
-	width: 15%;
+	width: 17%;
 	text-align: right;
 	vertical-align: middle;
 }
 #columnCreate2 {
 	background-color: rgb(250, 250, 250);
-	width: 40%;
+	width: 33%;
 }
 #columnCreate3 {
-	width: 15%;
+	width: 17%;
 	text-align: right;
 	vertical-align: middle;
 }
 #columnCreate4 {
 	background-color: rgb(250, 250, 250);
-	width: 30%;
+	width: 33%;
 }
 
 #columnCreate5 {
-	width: 20%;
+	width: 17%;
 	text-align: right;
 	vertical-align: middle;
 }
 #columnCreate6 {
 	background-color: rgb(250, 250, 250);
-	width: 30%;
+	width: 33%;
 }
 #columnCreate7 {
-	width: 20%;
+	width: 17%;
 	text-align: right;
 	vertical-align: middle;
 }
 #columnCreate8 {
 	background-color: rgb(250, 250, 250);
-	width: 30%;
+	width: 33%;
 }
 
+#dateOfBirth, #ssn, #firstName, #lastName,
 #patientAddress, #patientCity, #patientZip, #patientPhoneNumber,
 #employerAddress, #employerCity, #employerZip, #employerPhoneNumber, #employerName {
-	width: 95%;
-}
-#dateOfBirth, #ssn, #firstName, #lastName {
 	width: 96%;
 }
+
 #gender, #maritalStatus, #race, #employerState, #patientState, #religion, #language {
 	width: 100%;
 }
@@ -191,30 +190,44 @@ legend {
 	width: 127px;
 }
 
-#registerDivasfdasfdsfdsfdsfdsfdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsds {
-	width: 100%;
-}
-
-#createshowinfoCreate .table {
+#registerLeftTopTable {
 	width: 50%;
 	display: inline-block;
 	vertical-align: top;
 }
-
-#createshowinfoCreate .table .td {
+#registerLeftTopTable .td {
 	vertical-align: top;
+}
+
+#registerRightTopTable {
+	width: 49%;
+	display: inline-block;
+	vertical-align: top;
+}
+#registerRightTopTable .td {
+	vertical-align: top;
+}
+
+#registerLeftBottomTable {
+	width: 50%;
+	display: inline-block;
+	vertical-align: bottom;
+}
+#registerLeftBottomTable .td {
+	vertical-align: bottom;
+}
+
+#registerRightBottomTable {
+	width: 49%;
+	display: inline-block;
+	vertical-align: bottom;
+}
+#registerRightBottomTable .td {
+	vertical-align: bottom;
 }
 
 .clear {	/* ???????????????????? */
 	clear: both;
-}
-
-#leftTable {
-	
-}
-
-#rightTable {
-	
 }
 
 

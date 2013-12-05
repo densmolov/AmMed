@@ -214,116 +214,35 @@
 <form class="form-horizontal well" id="registerPatientForm" >
 
 	<legend id="ibs">Creating a new patient</legend>
-<!--
-<table class="table table-bordered table table-condensed">
-<tr>
-	<td id="columnCreate1">SSN :&nbsp;&nbsp;</td>
-	<td id="columnCreate2"> <input type="text" name="ssn" id="ssn" placeholder="format: 123-12-1234" 
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input" /></td>
-	<td id="columnCreate3">Language :&nbsp;&nbsp;</td>
-	<td id="columnCreate4">
-		<select name="language" id="language">
-			<option value="ENGLISH">&nbsp;&nbsp;&nbsp;English</option>
-			<option value="SPANISH">&nbsp;&nbsp;&nbsp;Spanish</option>
-			<option value="FRENCH">&nbsp;&nbsp;&nbsp;French</option>
-			<option value="ARABIC">&nbsp;&nbsp;&nbsp;Arabic</option>
-			<option value="CHINESE">&nbsp;&nbsp;&nbsp;Chinese</option>
-			<option value="DUTCH">&nbsp;&nbsp;&nbsp;Dutch</option>
-			<option value="VIETNAMESE">&nbsp;&nbsp;&nbsp;Vietnamese</option>
-			<option value="FINNISH">&nbsp;&nbsp;&nbsp;Finnish</option>
-			<option value="GERMAN">&nbsp;&nbsp;&nbsp;German</option>
-			<option value="RUSSIAN">&nbsp;&nbsp;&nbsp;Russian</option>
-			<option value="INDIAN">&nbsp;&nbsp;&nbsp;Indian</option>
-			<option value="ITALIAN">&nbsp;&nbsp;&nbsp;Italian</option>
-			<option value="OTHER">&nbsp;&nbsp;&nbsp;other</option>
-		</select></td>
-</tr>
-<tr>
-	<td id="columnCreate1">First name :&nbsp;&nbsp;</td>
-	<td id="columnCreate2"> <input type="text" name="firstName" id="firstName" 
-			value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
-	<td id="columnCreate3">Gender :&nbsp;&nbsp;</td>
-	<td id="columnCreate4">
-		<select name="gender" id="gender">
-			<option value="MALE">&nbsp;&nbsp;&nbsp;male</option>
-			<option value="FEMALE">&nbsp;&nbsp;&nbsp;female</option>
-		</select></td>
-</tr>
-<tr>
-	<td id="columnCreate1">Last name :&nbsp;&nbsp;</td>
-	<td id="columnCreate2"> <input type="text" name="lastName" id="lastName" 
-			value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
-	<td id="columnCreate3">Race :&nbsp;&nbsp;</td>
-	<td id="columnCreate4">
-		<select name="race" id="race">
-			<option value="WHITE">&nbsp;&nbsp;&nbsp;white</option>
-			<option value="BLACK">&nbsp;&nbsp;&nbsp;black</option>
-			<option value="ASIAN">&nbsp;&nbsp;&nbsp;asian</option>
-		</select>
-		</td>
-</tr>
-<tr>
-	<td id="columnCreate1">Date of birth :&nbsp;&nbsp;</td>
-	<td id="columnCreate2"> <input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="format: YYYY-MM-DD" 
-			value="" class="validate[required,custom[date]] text-input"/></td>
--->
-<!-- for datepicker
-<input type="text" id="req" name="req" class="validate[required] text-input datepicker" value=""> -->
-<!--
-	<td id="columnCreate3">Marital status :&nbsp;&nbsp;</td>	
-	<td id="columnCreate4">
-		<select name="maritalStatus" id="maritalStatus">
-			<option value="MARRIED">&nbsp;&nbsp;&nbsp;married</option>
-			<option value="SINGLE">&nbsp;&nbsp;&nbsp;single</option>
-		</select>
-		</td>
-</tr>
-<tr>
-	<td id="columnCreate1">Patient ID :&nbsp;&nbsp;</td>
-	<td id="columnCreate2">q</td>
-	<td id="columnCreate3">Religion :&nbsp;&nbsp;</td>
-	<td id="columnCreate4">
-		<select name="religion" id="religion">
-			<option value="ATHEIST">&nbsp;&nbsp;&nbsp;atheist</option>
-			<option value="CHRISTIANITY">&nbsp;&nbsp;&nbsp;Christianity</option>
-			<option value="ISLAM">&nbsp;&nbsp;&nbsp;Islam</option>
-			<option value="HINDUISM">&nbsp;&nbsp;&nbsp;Hinduism</option>
-			<option value="SHENISM">&nbsp;&nbsp;&nbsp;Shenism</option>
-			<option value="BUDDHISM">&nbsp;&nbsp;&nbsp;Buddhism</option>
-			<option value="OTHER">&nbsp;&nbsp;&nbsp;other</option>
-		</select></td>
-</tr>
-</table>-->
-<!----------------------------------------------------------------------------------------------------------------------------------->
-<!----------------------------------------------------------------------------------------------------------------------------------->
-<!----------------------------------------------------------------------------------------------------------------------------------->
-<legend id="smalllegend">Patient contacts:</legend>
 
-<!--<div id="registerDiv">-->
-		<table class="table table-bordered table table-condensed" id="leftTable">
+		<table class="table table-bordered table-condensed" id="registerLeftTopTable">
 		<tr>
-			<td id="columnCreate1">SSN :&nbsp;&nbsp;</td>
+			<td id="columnCreate1">SSN :</td>
 			<td id="columnCreate2"> <input type="text" name="ssn" id="ssn" placeholder="format: 123-12-1234" 
 				value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input" /></td>
 		</tr>
 		<tr>
-			<td id="columnCreate1">First name :&nbsp;&nbsp;</td>
+			<td id="columnCreate1">First name :</td>
 			<td id="columnCreate2"> <input type="text" name="firstName" id="firstName" 
 				value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
 		</tr>
 		<tr>
-			<td id="columnCreate1">Last name :&nbsp;&nbsp;</td>
+			<td id="columnCreate1">Last name :</td>
 			<td id="columnCreate2"> <input type="text" name="lastName" id="lastName" 
 				value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
 		</tr>
 		<tr>
-			<td id="columnCreate1">Date of birth :&nbsp;&nbsp;</td>
+			<td id="columnCreate1">Date of birth :</td>
 			<td id="columnCreate2"> <input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="format: YYYY-MM-DD" 
 				value="" class="validate[required,custom[date]] text-input"/></td>
 		</tr>
-		</table><table class="table table-bordered table table-condensed" id="rightTable">
+
+
+	</table><table class="table table-bordered table-condensed" id="registerRightTopTable">
+
+
 		<tr>
-			<td id="columnCreate3">Language :&nbsp;&nbsp;</td>
+			<td id="columnCreate3">Language :</td>
 			<td id="columnCreate4">
 			<select name="language" id="language">
 			<option value="ENGLISH">&nbsp;&nbsp;&nbsp;English</option>
@@ -342,7 +261,7 @@
 			</select></td>
 		</tr>
 		<tr>
-			<td id="columnCreate3">Gender :&nbsp;&nbsp;</td>
+			<td id="columnCreate3">Gender :</td>
 			<td id="columnCreate4">
 			<select name="gender" id="gender">
 			<option value="MALE">&nbsp;&nbsp;&nbsp;male</option>
@@ -350,7 +269,7 @@
 			</select></td>
 		</tr>
 		<tr>
-			<td id="columnCreate3">Race :&nbsp;&nbsp;</td>
+			<td id="columnCreate3">Race :</td>
 			<td id="columnCreate4">
 			<select name="race" id="race">
 			<option value="WHITE">&nbsp;&nbsp;&nbsp;white</option>
@@ -360,7 +279,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td id="columnCreate3">Marital status :&nbsp;&nbsp;</td>	
+			<td id="columnCreate3">Marital status :</td>	
 			<td id="columnCreate4">
 			<select name="maritalStatus" id="maritalStatus">
 			<option value="MARRIED">&nbsp;&nbsp;&nbsp;married</option>
@@ -369,7 +288,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td id="columnCreate3">Religion :&nbsp;&nbsp;</td>
+			<td id="columnCreate3">Religion :</td>
 			<td id="columnCreate4">
 			<select name="religion" id="religion">
 			<option value="ATHEIST">&nbsp;&nbsp;&nbsp;atheist</option>
@@ -381,255 +300,127 @@
 			<option value="OTHER">&nbsp;&nbsp;&nbsp;other</option>
 			</select></td>
 			</tr>
-		</table>
-<!--</div>-->
 
 
+	</table></br><p><legend id="smalllegend">Patient contacts:</legend></p><table class="table table-bordered table-condensed" 
+																								id="registerLeftBottomTable">
 
 
-
-
-<!--<tr>
-	<td id="columnCreate1">SSN :&nbsp;&nbsp;</td>
-	<td id="columnCreate2"> <input type="text" name="ssn" id="ssn" placeholder="format: 123-12-1234" 
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input" /></td>
-	<td id="columnCreate3">Language :&nbsp;&nbsp;</td>
-	<td id="columnCreate4">
-		<select name="language" id="language">
-			<option value="ENGLISH">&nbsp;&nbsp;&nbsp;English</option>
-			<option value="SPANISH">&nbsp;&nbsp;&nbsp;Spanish</option>
-			<option value="FRENCH">&nbsp;&nbsp;&nbsp;French</option>
-			<option value="ARABIC">&nbsp;&nbsp;&nbsp;Arabic</option>
-			<option value="CHINESE">&nbsp;&nbsp;&nbsp;Chinese</option>
-			<option value="DUTCH">&nbsp;&nbsp;&nbsp;Dutch</option>
-			<option value="VIETNAMESE">&nbsp;&nbsp;&nbsp;Vietnamese</option>
-			<option value="FINNISH">&nbsp;&nbsp;&nbsp;Finnish</option>
-			<option value="GERMAN">&nbsp;&nbsp;&nbsp;German</option>
-			<option value="RUSSIAN">&nbsp;&nbsp;&nbsp;Russian</option>
-			<option value="INDIAN">&nbsp;&nbsp;&nbsp;Indian</option>
-			<option value="ITALIAN">&nbsp;&nbsp;&nbsp;Italian</option>
-			<option value="OTHER">&nbsp;&nbsp;&nbsp;other</option>
-		</select></td>
-</tr>
-<tr>
-	<td id="columnCreate1">First name :&nbsp;&nbsp;</td>
-	<td id="columnCreate2"> <input type="text" name="firstName" id="firstName" 
-			value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
-	<td id="columnCreate3">Gender :&nbsp;&nbsp;</td>
-	<td id="columnCreate4">
-		<select name="gender" id="gender">
-			<option value="MALE">&nbsp;&nbsp;&nbsp;male</option>
-			<option value="FEMALE">&nbsp;&nbsp;&nbsp;female</option>
-		</select></td>
-</tr>
-<tr>
-	<td id="columnCreate1">Last name :&nbsp;&nbsp;</td>
-	<td id="columnCreate2"> <input type="text" name="lastName" id="lastName" 
-			value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
-	<td id="columnCreate3">Race :&nbsp;&nbsp;</td>
-	<td id="columnCreate4">
-		<select name="race" id="race">
-			<option value="WHITE">&nbsp;&nbsp;&nbsp;white</option>
-			<option value="BLACK">&nbsp;&nbsp;&nbsp;black</option>
-			<option value="ASIAN">&nbsp;&nbsp;&nbsp;asian</option>
-		</select>
-		</td>
-</tr>
-<tr>
-	<td id="columnCreate1">Date of birth :&nbsp;&nbsp;</td>
-	<td id="columnCreate2"> <input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="format: YYYY-MM-DD" 
-			value="" class="validate[required,custom[date]] text-input"/></td>
-	<td id="columnCreate3">Marital status :&nbsp;&nbsp;</td>	
-	<td id="columnCreate4">
-		<select name="maritalStatus" id="maritalStatus">
-			<option value="MARRIED">&nbsp;&nbsp;&nbsp;married</option>
-			<option value="SINGLE">&nbsp;&nbsp;&nbsp;single</option>
-		</select>
-		</td>
-</tr>
-<tr>
-	<td id="columnCreate1">Religion :&nbsp;&nbsp;</td>
-	<td id="columnCreate2">
-		<select name="religion" id="religion">
-			<option value="ATHEIST">&nbsp;&nbsp;&nbsp;atheist</option>
-			<option value="CHRISTIANITY">&nbsp;&nbsp;&nbsp;Christianity</option>
-			<option value="ISLAM">&nbsp;&nbsp;&nbsp;Islam</option>
-			<option value="HINDUISM">&nbsp;&nbsp;&nbsp;Hinduism</option>
-			<option value="SHENISM">&nbsp;&nbsp;&nbsp;Shenism</option>
-			<option value="BUDDHISM">&nbsp;&nbsp;&nbsp;Buddhism</option>
-			<option value="OTHER">&nbsp;&nbsp;&nbsp;other</option>
-		</select></td>
-</tr>-->
-</table>
-<!----------------------------------------------------------------------------------------------------------------------------------->
-<!----------------------------------------------------------------------------------------------------------------------------------->
-<!----------------------------------------------------------------------------------------------------------------------------------->
-<!--<legend id="smalllegend">Patient contacts:</legend>
-<table class="table table-bordered table table-condensed">-->
-
-
-					<!--td id="columnCreate1"> :&nbsp;&nbsp;</td>
-						<td id="columnCreate2"> <input type="text" name="employerName" id="employerName" 
-								value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>		
-						<td id="columnCreate3">Race :&nbsp;&nbsp;</td-->
-
-<!--
-<tr>
-	<td id="columnCreate5">&nbsp;&nbsp;Oh, la-la ! :</td>
-	<td id="columnCreate6">aaa</td>
-	<td id="columnCreate7">&nbsp;&nbsp;Employer name :</td>
-	<td id="columnCreate8"> <input type="text" name="employerName" id="employerName"
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
-</tr>
 <tr>
 	<td id="columnCreate5">&nbsp;&nbsp;Patient address :</td>
 	<td id="columnCreate6"> <input type="text" name="patientAddress" id="patientAddress"
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
-	<td id="columnCreate7">&nbsp;&nbsp;Employer address :</td>
-	<td id="columnCreate8"> <input type="text" name="employerAddress" id="employerAddress"
 			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
 </tr>
 <tr>
 	<td id="columnCreate5">&nbsp;&nbsp;Patient city :</td>
 	<td id="columnCreate6"> <input type="text" name="patientCity" id="patientCity" 
 			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
-	<td id="columnCreate7">&nbsp;&nbsp;Employer city :</td>
-	<td id="columnCreate8"> <input type="text" name="employerCity" id="employerCity" 
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
 </tr>
 <tr>
 	<td id="columnCreate5">&nbsp;&nbsp;Patient state :</td>
 	<td id="columnCreate6">
 <select name="patientState" id="patientState">
-
 <option value="noState">Choose state</option>
-<option value="AL">&nbsp;&nbsp;&nbsp;Alabama</option>
-<option value="AK">&nbsp;&nbsp;&nbsp;Alaska</option>
-<option value="AZ">&nbsp;&nbsp;&nbsp;Arizona</option>
-<option value="AR">&nbsp;&nbsp;&nbsp;Arkansas</option>
-<option value="CA">&nbsp;&nbsp;&nbsp;California</option>
-<option value="CO">&nbsp;&nbsp;&nbsp;Colorado</option>
-<option value="CT">&nbsp;&nbsp;&nbsp;Connecticut</option>
-<option value="DE">&nbsp;&nbsp;&nbsp;Delaware</option>
-<option value="FL">&nbsp;&nbsp;&nbsp;Florida</option>
-<option value="GA">&nbsp;&nbsp;&nbsp;Georgia</option>
-<option value="HI">&nbsp;&nbsp;&nbsp;Hawaii</option>
-<option value="ID">&nbsp;&nbsp;&nbsp;Idaho</option>
-<option value="IL">&nbsp;&nbsp;&nbsp;Illinois</option>
-<option value="IN">&nbsp;&nbsp;&nbsp;Indiana</option>
-<option value="IA">&nbsp;&nbsp;&nbsp;Iowa</option>
-<option value="KS">&nbsp;&nbsp;&nbsp;Kansas</option>
-<option value="KY">&nbsp;&nbsp;&nbsp;Kentucky</option>
-<option value="LA">&nbsp;&nbsp;&nbsp;Louisiana</option>
-<option value="ME">&nbsp;&nbsp;&nbsp;Maine</option>
-<option value="MD">&nbsp;&nbsp;&nbsp;Maryland</option>
-<option value="MA">&nbsp;&nbsp;&nbsp;Massachusetts</option>
-<option value="MI">&nbsp;&nbsp;&nbsp;Michigan</option>
-<option value="MN">&nbsp;&nbsp;&nbsp;Minnesota</option>
-<option value="MS">&nbsp;&nbsp;&nbsp;Mississippi</option>
-<option value="MO">&nbsp;&nbsp;&nbsp;Missouri</option>
-<option value="MT">&nbsp;&nbsp;&nbsp;Montana</option>
-<option value="NE">&nbsp;&nbsp;&nbsp;Nebraska</option>
-<option value="NV">&nbsp;&nbsp;&nbsp;Nevada</option>
-<option value="NH">&nbsp;&nbsp;&nbsp;New Hampshire</option>
-<option value="NJ">&nbsp;&nbsp;&nbsp;New Jersey</option>
-<option value="NM">&nbsp;&nbsp;&nbsp;New Mexico</option>
-<option value="NY">&nbsp;&nbsp;&nbsp;New York</option>
-<option value="NC">&nbsp;&nbsp;&nbsp;North Carolina</option>
-<option value="ND">&nbsp;&nbsp;&nbsp;North Dakota</option>
-<option value="OH">&nbsp;&nbsp;&nbsp;Ohio</option>
-<option value="OK">&nbsp;&nbsp;&nbsp;Oklahoma</option>
-<option value="OR">&nbsp;&nbsp;&nbsp;Oregon</option>
-<option value="PA">&nbsp;&nbsp;&nbsp;Pennsylvania</option>
-<option value="RI">&nbsp;&nbsp;&nbsp;Rhode Island</option>
-<option value="SC">&nbsp;&nbsp;&nbsp;South Carolina</option>
-<option value="SD">&nbsp;&nbsp;&nbsp;South Dakota</option>
-<option value="TN">&nbsp;&nbsp;&nbsp;Tennessee</option>
-<option value="TX">&nbsp;&nbsp;&nbsp;Texas</option>
-<option value="UT">&nbsp;&nbsp;&nbsp;Utah</option>
-<option value="VT">&nbsp;&nbsp;&nbsp;Vermont</option>
-<option value="VA">&nbsp;&nbsp;&nbsp;Virginia</option>
-<option value="WA">&nbsp;&nbsp;&nbsp;Washington</option>
-<option value="WV">&nbsp;&nbsp;&nbsp;West Virginia</option>
-<option value="WI">&nbsp;&nbsp;&nbsp;Wisconsin</option>
-<option value="WY">&nbsp;&nbsp;&nbsp;Wyoming</option>
-		</select>
-</td>
-	<td id="columnCreate7">&nbsp;&nbsp;Employer state :</td>
-	<td id="columnCreate8">
-<select name="employerState" id="employerState">
-
-<option value="noState">Choose state</option>
-<option value="AL">&nbsp;&nbsp;&nbsp;Alabama</option>
-<option value="AK">&nbsp;&nbsp;&nbsp;Alaska</option>
-<option value="AZ">&nbsp;&nbsp;&nbsp;Arizona</option>
-<option value="AR">&nbsp;&nbsp;&nbsp;Arkansas</option>
-<option value="CA">&nbsp;&nbsp;&nbsp;California</option>
-<option value="CO">&nbsp;&nbsp;&nbsp;Colorado</option>
-<option value="CT">&nbsp;&nbsp;&nbsp;Connecticut</option>
-<option value="DE">&nbsp;&nbsp;&nbsp;Delaware</option>
-<option value="FL">&nbsp;&nbsp;&nbsp;Florida</option>
-<option value="GA">&nbsp;&nbsp;&nbsp;Georgia</option>
-<option value="HI">&nbsp;&nbsp;&nbsp;Hawaii</option>
-<option value="ID">&nbsp;&nbsp;&nbsp;Idaho</option>
-<option value="IL">&nbsp;&nbsp;&nbsp;Illinois</option>
-<option value="IN">&nbsp;&nbsp;&nbsp;Indiana</option>
-<option value="IA">&nbsp;&nbsp;&nbsp;Iowa</option>
-<option value="KS">&nbsp;&nbsp;&nbsp;Kansas</option>
-<option value="KY">&nbsp;&nbsp;&nbsp;Kentucky</option>
-<option value="LA">&nbsp;&nbsp;&nbsp;Louisiana</option>
-<option value="ME">&nbsp;&nbsp;&nbsp;Maine</option>
-<option value="MD">&nbsp;&nbsp;&nbsp;Maryland</option>
-<option value="MA">&nbsp;&nbsp;&nbsp;Massachusetts</option>
-<option value="MI">&nbsp;&nbsp;&nbsp;Michigan</option>
-<option value="MN">&nbsp;&nbsp;&nbsp;Minnesota</option>
-<option value="MS">&nbsp;&nbsp;&nbsp;Mississippi</option>
-<option value="MO">&nbsp;&nbsp;&nbsp;Missouri</option>
-<option value="MT">&nbsp;&nbsp;&nbsp;Montana</option>
-<option value="NE">&nbsp;&nbsp;&nbsp;Nebraska</option>
-<option value="NV">&nbsp;&nbsp;&nbsp;Nevada</option>
-<option value="NH">&nbsp;&nbsp;&nbsp;New Hampshire</option>
-<option value="NJ">&nbsp;&nbsp;&nbsp;New Jersey</option>
-<option value="NM">&nbsp;&nbsp;&nbsp;New Mexico</option>
-<option value="NY">&nbsp;&nbsp;&nbsp;New York</option>
-<option value="NC">&nbsp;&nbsp;&nbsp;North Carolina</option>
-<option value="ND">&nbsp;&nbsp;&nbsp;North Dakota</option>
-<option value="OH">&nbsp;&nbsp;&nbsp;Ohio</option>
-<option value="OK">&nbsp;&nbsp;&nbsp;Oklahoma</option>
-<option value="OR">&nbsp;&nbsp;&nbsp;Oregon</option>
-<option value="PA">&nbsp;&nbsp;&nbsp;Pennsylvania</option>
-<option value="RI">&nbsp;&nbsp;&nbsp;Rhode Island</option>
-<option value="SC">&nbsp;&nbsp;&nbsp;South Carolina</option>
-<option value="SD">&nbsp;&nbsp;&nbsp;South Dakota</option>
-<option value="TN">&nbsp;&nbsp;&nbsp;Tennessee</option>
-<option value="TX">&nbsp;&nbsp;&nbsp;Texas</option>
-<option value="UT">&nbsp;&nbsp;&nbsp;Utah</option>
-<option value="VT">&nbsp;&nbsp;&nbsp;Vermont</option>
-<option value="VA">&nbsp;&nbsp;&nbsp;Virginia</option>
-<option value="WA">&nbsp;&nbsp;&nbsp;Washington</option>
-<option value="WV">&nbsp;&nbsp;&nbsp;West Virginia</option>
-<option value="WI">&nbsp;&nbsp;&nbsp;Wisconsin</option>
-<option value="WY">&nbsp;&nbsp;&nbsp;Wyoming</option>
-		</select>
+<option value="AL">&nbsp;&nbsp;&nbsp;Alabama</option><option value="AK">&nbsp;&nbsp;&nbsp;Alaska</option>
+<option value="AZ">&nbsp;&nbsp;&nbsp;Arizona</option><option value="AR">&nbsp;&nbsp;&nbsp;Arkansas</option>
+<option value="CA">&nbsp;&nbsp;&nbsp;California</option><option value="CO">&nbsp;&nbsp;&nbsp;Colorado</option>
+<option value="CT">&nbsp;&nbsp;&nbsp;Connecticut</option><option value="DE">&nbsp;&nbsp;&nbsp;Delaware</option>
+<option value="FL">&nbsp;&nbsp;&nbsp;Florida</option><option value="GA">&nbsp;&nbsp;&nbsp;Georgia</option>
+<option value="HI">&nbsp;&nbsp;&nbsp;Hawaii</option><option value="ID">&nbsp;&nbsp;&nbsp;Idaho</option>
+<option value="IL">&nbsp;&nbsp;&nbsp;Illinois</option><option value="IN">&nbsp;&nbsp;&nbsp;Indiana</option>
+<option value="IA">&nbsp;&nbsp;&nbsp;Iowa</option><option value="KS">&nbsp;&nbsp;&nbsp;Kansas</option>
+<option value="KY">&nbsp;&nbsp;&nbsp;Kentucky</option><option value="LA">&nbsp;&nbsp;&nbsp;Louisiana</option>
+<option value="ME">&nbsp;&nbsp;&nbsp;Maine</option><option value="MD">&nbsp;&nbsp;&nbsp;Maryland</option>
+<option value="MA">&nbsp;&nbsp;&nbsp;Massachusetts</option><option value="MI">&nbsp;&nbsp;&nbsp;Michigan</option>
+<option value="MN">&nbsp;&nbsp;&nbsp;Minnesota</option><option value="MS">&nbsp;&nbsp;&nbsp;Mississippi</option>
+<option value="MO">&nbsp;&nbsp;&nbsp;Missouri</option><option value="MT">&nbsp;&nbsp;&nbsp;Montana</option>
+<option value="NE">&nbsp;&nbsp;&nbsp;Nebraska</option><option value="NV">&nbsp;&nbsp;&nbsp;Nevada</option>
+<option value="NH">&nbsp;&nbsp;&nbsp;New Hampshire</option><option value="NJ">&nbsp;&nbsp;&nbsp;New Jersey</option>
+<option value="NM">&nbsp;&nbsp;&nbsp;New Mexico</option><option value="NY">&nbsp;&nbsp;&nbsp;New York</option>
+<option value="NC">&nbsp;&nbsp;&nbsp;North Carolina</option><option value="ND">&nbsp;&nbsp;&nbsp;North Dakota</option>
+<option value="OH">&nbsp;&nbsp;&nbsp;Ohio</option><option value="OK">&nbsp;&nbsp;&nbsp;Oklahoma</option>
+<option value="OR">&nbsp;&nbsp;&nbsp;Oregon</option><option value="PA">&nbsp;&nbsp;&nbsp;Pennsylvania</option>
+<option value="RI">&nbsp;&nbsp;&nbsp;Rhode Island</option><option value="SC">&nbsp;&nbsp;&nbsp;South Carolina</option>
+<option value="SD">&nbsp;&nbsp;&nbsp;South Dakota</option><option value="TN">&nbsp;&nbsp;&nbsp;Tennessee</option>
+<option value="TX">&nbsp;&nbsp;&nbsp;Texas</option><option value="UT">&nbsp;&nbsp;&nbsp;Utah</option>
+<option value="VT">&nbsp;&nbsp;&nbsp;Vermont</option><option value="VA">&nbsp;&nbsp;&nbsp;Virginia</option>
+<option value="WA">&nbsp;&nbsp;&nbsp;Washington</option><option value="WV">&nbsp;&nbsp;&nbsp;West Virginia</option>
+<option value="WI">&nbsp;&nbsp;&nbsp;Wisconsin</option><option value="WY">&nbsp;&nbsp;&nbsp;Wyoming</option></select>
 </td>
 </tr>
 <tr>
 	<td id="columnCreate5">&nbsp;&nbsp;Patient ZIP :</td>
 	<td id="columnCreate6"> <input type="text" name="patientZip" id="patientZip" 
 			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
+</tr>
+<tr>
+	<td id="columnCreate5">&nbsp;&nbsp;Phone number :</td>
+	<td id="columnCreate6"> <input type="text" name="patientPhoneNumber" id="patientPhoneNumber" 
+			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
+</tr>
+
+
+	</table><table class="table table-bordered table-condensed" id="registerRightBottomTable">
+
+
+<tr>
+	<td id="columnCreate7">&nbsp;&nbsp;Employer name :</td>
+	<td id="columnCreate8"> <input type="text" name="employerName" id="employerName"
+			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
+</tr>
+<tr>
+	<td id="columnCreate7">&nbsp;&nbsp;Employer address :</td>
+	<td id="columnCreate8"> <input type="text" name="employerAddress" id="employerAddress"
+			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
+</tr>
+<tr>
+	<td id="columnCreate7">&nbsp;&nbsp;Employer city :</td>
+	<td id="columnCreate8"> <input type="text" name="employerCity" id="employerCity" 
+			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
+</tr>
+<tr>
+	<td id="columnCreate7">&nbsp;&nbsp;Employer state :</td>
+	<td id="columnCreate8">
+<select name="employerState" id="employerState">
+<option value="noState">Choose state</option>
+<option value="AL">&nbsp;&nbsp;&nbsp;Alabama</option><option value="AK">&nbsp;&nbsp;&nbsp;Alaska</option>
+<option value="AZ">&nbsp;&nbsp;&nbsp;Arizona</option><option value="AR">&nbsp;&nbsp;&nbsp;Arkansas</option>
+<option value="CA">&nbsp;&nbsp;&nbsp;California</option><option value="CO">&nbsp;&nbsp;&nbsp;Colorado</option>
+<option value="CT">&nbsp;&nbsp;&nbsp;Connecticut</option><option value="DE">&nbsp;&nbsp;&nbsp;Delaware</option>
+<option value="FL">&nbsp;&nbsp;&nbsp;Florida</option><option value="GA">&nbsp;&nbsp;&nbsp;Georgia</option>
+<option value="HI">&nbsp;&nbsp;&nbsp;Hawaii</option><option value="ID">&nbsp;&nbsp;&nbsp;Idaho</option>
+<option value="IL">&nbsp;&nbsp;&nbsp;Illinois</option><option value="IN">&nbsp;&nbsp;&nbsp;Indiana</option>
+<option value="IA">&nbsp;&nbsp;&nbsp;Iowa</option><option value="KS">&nbsp;&nbsp;&nbsp;Kansas</option>
+<option value="KY">&nbsp;&nbsp;&nbsp;Kentucky</option><option value="LA">&nbsp;&nbsp;&nbsp;Louisiana</option>
+<option value="ME">&nbsp;&nbsp;&nbsp;Maine</option><option value="MD">&nbsp;&nbsp;&nbsp;Maryland</option>
+<option value="MA">&nbsp;&nbsp;&nbsp;Massachusetts</option><option value="MI">&nbsp;&nbsp;&nbsp;Michigan</option>
+<option value="MN">&nbsp;&nbsp;&nbsp;Minnesota</option><option value="MS">&nbsp;&nbsp;&nbsp;Mississippi</option>
+<option value="MO">&nbsp;&nbsp;&nbsp;Missouri</option><option value="MT">&nbsp;&nbsp;&nbsp;Montana</option>
+<option value="NE">&nbsp;&nbsp;&nbsp;Nebraska</option><option value="NV">&nbsp;&nbsp;&nbsp;Nevada</option>
+<option value="NH">&nbsp;&nbsp;&nbsp;New Hampshire</option><option value="NJ">&nbsp;&nbsp;&nbsp;New Jersey</option>
+<option value="NM">&nbsp;&nbsp;&nbsp;New Mexico</option><option value="NY">&nbsp;&nbsp;&nbsp;New York</option>
+<option value="NC">&nbsp;&nbsp;&nbsp;North Carolina</option><option value="ND">&nbsp;&nbsp;&nbsp;North Dakota</option>
+<option value="OH">&nbsp;&nbsp;&nbsp;Ohio</option><option value="OK">&nbsp;&nbsp;&nbsp;Oklahoma</option>
+<option value="OR">&nbsp;&nbsp;&nbsp;Oregon</option><option value="PA">&nbsp;&nbsp;&nbsp;Pennsylvania</option>
+<option value="RI">&nbsp;&nbsp;&nbsp;Rhode Island</option><option value="SC">&nbsp;&nbsp;&nbsp;South Carolina</option>
+<option value="SD">&nbsp;&nbsp;&nbsp;South Dakota</option><option value="TN">&nbsp;&nbsp;&nbsp;Tennessee</option>
+<option value="TX">&nbsp;&nbsp;&nbsp;Texas</option><option value="UT">&nbsp;&nbsp;&nbsp;Utah</option>
+<option value="VT">&nbsp;&nbsp;&nbsp;Vermont</option><option value="VA">&nbsp;&nbsp;&nbsp;Virginia</option>
+<option value="WA">&nbsp;&nbsp;&nbsp;Washington</option><option value="WV">&nbsp;&nbsp;&nbsp;West Virginia</option>
+<option value="WI">&nbsp;&nbsp;&nbsp;Wisconsin</option><option value="WY">&nbsp;&nbsp;&nbsp;Wyoming</option></select>
+</td>
+</tr>
+<tr>
 	<td id="columnCreate7">&nbsp;&nbsp;Employer ZIP :</td>
 	<td id="columnCreate8"> <input type="text" name="employerZip" id="employerZip" 
 			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
 </tr>
 <tr>
-	<td id="columnCreate5">&nbsp;&nbsp;Patient phone number :</td>
-	<td id="columnCreate6"> <input type="text" name="patientPhoneNumber" id="patientPhoneNumber" 
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
-	<td id="columnCreate7">&nbsp;&nbsp;Employer phone number :</td>
+	<td id="columnCreate7">&nbsp;&nbsp;Phone number :</td>
 	<td id="columnCreate8"> <input type="text" name="employerPhoneNumber" id="employerPhoneNumber" 
 			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
 </tr>
-</table>-->
+</table>
 		<a href="" class="btn btn-success" id="create_patient_btn">Ok</a>
 		<a href="" class="btn btn-danger" id="cancel_patient_btn">Cancel</a>
 </form>
