@@ -120,13 +120,32 @@ public class PatientDAOImpl implements PatientDAO {
         
         @Override
 		public boolean isPatientValid(Patient patient) {
-			// TODO Auto-generated method stub
-        	// TODO Auto-generated method stub
-        	// TODO Auto-generated method stub
-        	// TODO Auto-generated method stub
-        	// TODO Auto-generated method stub
-			return true;
-		}
+        	if ( (patient.getSSN().length()!=9) ||
+        		(patient.getFirstName().length()<2) || (patient.getFirstName().length()>20) ||
+        		(patient.getLastName().length()<2) || (patient.getLastName().length()>20) ||
+        		patient.getDateOfBirth().toString().isEmpty() ||	// DO WE NEED ANYTHING ?
+        		patient.getGender().toString().isEmpty() ||	//	Do we need this? There is a default expression.
+        		//patient.getMaritalStatus().toString().isEmpty() && NOT OBLIGATORY !!!
+        		patient.getRace().toString().isEmpty() ||	//	Do we need this? There is a default expression.
+        		//patient.getReligion().toString().isEmpty() && NOT OBLIGATORY !!!
+        		patient.getLanguage().toString().isEmpty() ||	//	Do we need this? There is a default expression.
+        		(patient.getPatientAddress().length()<2) || (patient.getPatientAddress().length()>20) ||
+        		(patient.getPatientCity().length()<2) || (patient.getPatientCity().length()>20) && 
+        		patient.getPatientState().toString().isEmpty() ||	//	Do we need this? There is a default expression.
+        		(patient.getPatientZip().length()!=5) ||
+        		(patient.getPatientPhoneNumber().length()!=10) ||
+        		(patient.getEmployerName().length()<2) || (patient.getEmployerName().length()>20) ||
+        		(patient.getEmployerAddress().length()<2) || (patient.getEmployerAddress().length()>20) ||
+        		(patient.getEmployerCity().length()<2) || (patient.getEmployerCity().length()>20) || 
+        		patient.getEmployerState().toString().isEmpty() ||	//	Do we need this? There is a default expression.
+        		(patient.getEmployerZip().length()!=5) ||
+        		(patient.getEmployerPhoneNumber().length()!=10) ) {
+        		System.out.println("	Validation failed");
+        		return false;
+        	}
+        	System.out.println("	Validation success");
+        	return true;
+        }
 
         @Override
         public void updatePatient(Patient patient) {

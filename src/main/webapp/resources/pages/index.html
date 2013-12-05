@@ -309,18 +309,17 @@
 <tr>
 	<td id="columnCreate5">&nbsp;&nbsp;Patient address :</td>
 	<td id="columnCreate6"> <input type="text" name="patientAddress" id="patientAddress"
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
+			value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
 </tr>
 <tr>
 	<td id="columnCreate5">&nbsp;&nbsp;Patient city :</td>
 	<td id="columnCreate6"> <input type="text" name="patientCity" id="patientCity" 
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
+			value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
 </tr>
 <tr>
 	<td id="columnCreate5">&nbsp;&nbsp;Patient state :</td>
 	<td id="columnCreate6">
 <select name="patientState" id="patientState">
-<option value="noState">Choose state</option>
 <option value="AL">&nbsp;&nbsp;&nbsp;Alabama</option><option value="AK">&nbsp;&nbsp;&nbsp;Alaska</option>
 <option value="AZ">&nbsp;&nbsp;&nbsp;Arizona</option><option value="AR">&nbsp;&nbsp;&nbsp;Arkansas</option>
 <option value="CA">&nbsp;&nbsp;&nbsp;California</option><option value="CO">&nbsp;&nbsp;&nbsp;Colorado</option>
@@ -349,14 +348,14 @@
 </td>
 </tr>
 <tr>
-	<td id="columnCreate5">&nbsp;&nbsp;Patient ZIP :</td>
+	<td id="columnCreate5">&nbsp;&nbsp;Patient ZIP-code :</td>
 	<td id="columnCreate6"> <input type="text" name="patientZip" id="patientZip" 
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
+			value="" class="validate[required,custom[integer],maxSize[5],minSize[5]] text-input"/></td>
 </tr>
 <tr>
 	<td id="columnCreate5">&nbsp;&nbsp;Phone number :</td>
 	<td id="columnCreate6"> <input type="text" name="patientPhoneNumber" id="patientPhoneNumber" 
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
+			<value="" class="validate[required,custom[integer],maxSize[10],minSize[10]] text-input"/></td>
 </tr>
 
 
@@ -366,23 +365,22 @@
 <tr>
 	<td id="columnCreate7">&nbsp;&nbsp;Employer name :</td>
 	<td id="columnCreate8"> <input type="text" name="employerName" id="employerName"
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
+			value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
 </tr>
 <tr>
 	<td id="columnCreate7">&nbsp;&nbsp;Employer address :</td>
 	<td id="columnCreate8"> <input type="text" name="employerAddress" id="employerAddress"
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
+			value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
 </tr>
 <tr>
 	<td id="columnCreate7">&nbsp;&nbsp;Employer city :</td>
 	<td id="columnCreate8"> <input type="text" name="employerCity" id="employerCity" 
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
+			value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
 </tr>
 <tr>
 	<td id="columnCreate7">&nbsp;&nbsp;Employer state :</td>
 	<td id="columnCreate8">
 <select name="employerState" id="employerState">
-<option value="noState">Choose state</option>
 <option value="AL">&nbsp;&nbsp;&nbsp;Alabama</option><option value="AK">&nbsp;&nbsp;&nbsp;Alaska</option>
 <option value="AZ">&nbsp;&nbsp;&nbsp;Arizona</option><option value="AR">&nbsp;&nbsp;&nbsp;Arkansas</option>
 <option value="CA">&nbsp;&nbsp;&nbsp;California</option><option value="CO">&nbsp;&nbsp;&nbsp;Colorado</option>
@@ -411,14 +409,14 @@
 </td>
 </tr>
 <tr>
-	<td id="columnCreate7">&nbsp;&nbsp;Employer ZIP :</td>
+	<td id="columnCreate7">&nbsp;&nbsp;Employer ZIP-code :</td>
 	<td id="columnCreate8"> <input type="text" name="employerZip" id="employerZip" 
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
+			value="" class="validate[required,custom[integer],maxSize[6],minSize[6]] text-input"/></td>
 </tr>
 <tr>
 	<td id="columnCreate7">&nbsp;&nbsp;Phone number :</td>
 	<td id="columnCreate8"> <input type="text" name="employerPhoneNumber" id="employerPhoneNumber" 
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
+			value="" class="validate[required,custom[integer],maxSize[10],minSize[10]] text-input"/></td>
 </tr>
 </table>
 		<a href="" class="btn btn-success" id="create_patient_btn">Ok</a>
