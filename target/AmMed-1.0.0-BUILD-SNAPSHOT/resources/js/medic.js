@@ -226,47 +226,29 @@ var DetailedInfoCreator = Backbone.View.extend({
 		e.preventDefault();
 		toastr.warning("Creating new patient cancelled") ;
 		myRouter.navigate("", {trigger: true} );
-		buttonClick();	// ADDED
+		buttonClick();
 	},
 	create: function(e) {
         e.preventDefault();
-        //if(validate()) {
+        if ( validate() ) {
         	var newPatientCreate = new PatientCreate({
         		ssn:$('#ssn').val(),
                 firstName:$('#firstName').val(),
                 lastName:$('#lastName').val(),
                 
-                //dateOfBirth:$('#date').val(),
+                dateOfBirth:Date.parse( $('#dateOfBirth').val() ),
+                /*dateOfBirth:$('#req').val(),*/
                 
-                dateOfBirth:Date.parse( $('#date').val() ),
-                
-                /*dateOfBirth:$(function() {
-                    $( "#datepicker" ).datepicker({
-                    	dateFormat : 'mm/dd/yy',
-                        changeMonth : true,
-                        changeYear : true,
-                        yearRange: '-100y:c+nn',
-                        maxDate: '-1d'
-                    });
-                  }),*/
-                
-                /*$("event tab ID").click(function(){
-                    $( "#displayallformshow #describestartdate" ).datepicker();
-                   $( "#displayallformshow #describeenddate" ).datepicker();
-               });*/
-
                 gender:$('#gender').val(),
                 maritalStatus:$('#maritalStatus').val(),
                 race:$('#race').val(),
                 religion:$('#religion').val(),
                 language:$('#language').val(),                
-                //Patient contacts:
-                patientAddress:$('#patientAddress').val(),
-                patientCity:$('#patientCity').val(),
-                patientState:$('#patientState').val(),
-                patientZip:$('#patientZip').val(),
-                patientPhoneNumber:$('#patientPhoneNumber').val(),                
-                //Employer contacts:
+                	patientAddress:$('#patientAddress').val(),
+                	patientCity:$('#patientCity').val(),
+                	patientState:$('#patientState').val(),
+                	patientZip:$('#patientZip').val(),
+                	patientPhoneNumber:$('#patientPhoneNumber').val(),                
                 employerName:$('#employerName').val(),
                 employerAddress:$('#employerAddress').val(),
                 employerCity:$('#employerCity').val(),                
@@ -277,10 +259,10 @@ var DetailedInfoCreator = Backbone.View.extend({
            console.log(newPatientCreate);
            newPatientCreate.save();
            toastr.success("New patient was successfully added!") ;
-           //updatePaging();	// ADDED
+           updatePaging();
            myRouter.navigate("", {trigger: true} );
            buttonClick();
-        //}
+        }
     },
     render: function(model) {
         $(this.el).html(this.template(model));
@@ -486,6 +468,16 @@ function closeDetailedInfoCreator() {
 }
 
 
+		//VALIDATION
+
+	function validate() {
+		if ($('#registerPatientForm').validationEngine('validate')) {
+			return true;
+		}
+	}
+
+	
 
 
 
+	
