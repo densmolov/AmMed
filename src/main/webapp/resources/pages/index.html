@@ -214,7 +214,7 @@
 <form class="form-horizontal well" id="registerPatientForm" >
 
 	<legend id="ibs">Creating a new patient</legend>
-
+<!--
 <table class="table table-bordered table table-condensed">
 <tr>
 	<td id="columnCreate1">SSN :&nbsp;&nbsp;</td>
@@ -266,10 +266,10 @@
 	<td id="columnCreate1">Date of birth :&nbsp;&nbsp;</td>
 	<td id="columnCreate2"> <input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="format: YYYY-MM-DD" 
 			value="" class="validate[required,custom[date]] text-input"/></td>
-
+-->
 <!-- for datepicker
 <input type="text" id="req" name="req" class="validate[required] text-input datepicker" value=""> -->
-
+<!--
 	<td id="columnCreate3">Marital status :&nbsp;&nbsp;</td>	
 	<td id="columnCreate4">
 		<select name="maritalStatus" id="maritalStatus">
@@ -293,10 +293,179 @@
 			<option value="OTHER">&nbsp;&nbsp;&nbsp;other</option>
 		</select></td>
 </tr>
-</table>
-
+</table>-->
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------->
 <legend id="smalllegend">Patient contacts:</legend>
-<table class="table table-bordered table table-condensed">
+
+<!--<div id="registerDiv">-->
+		<table class="table table-bordered table table-condensed" id="leftTable">
+		<tr>
+			<td id="columnCreate1">SSN :&nbsp;&nbsp;</td>
+			<td id="columnCreate2"> <input type="text" name="ssn" id="ssn" placeholder="format: 123-12-1234" 
+				value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input" /></td>
+		</tr>
+		<tr>
+			<td id="columnCreate1">First name :&nbsp;&nbsp;</td>
+			<td id="columnCreate2"> <input type="text" name="firstName" id="firstName" 
+				value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
+		</tr>
+		<tr>
+			<td id="columnCreate1">Last name :&nbsp;&nbsp;</td>
+			<td id="columnCreate2"> <input type="text" name="lastName" id="lastName" 
+				value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
+		</tr>
+		<tr>
+			<td id="columnCreate1">Date of birth :&nbsp;&nbsp;</td>
+			<td id="columnCreate2"> <input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="format: YYYY-MM-DD" 
+				value="" class="validate[required,custom[date]] text-input"/></td>
+		</tr>
+		</table><table class="table table-bordered table table-condensed" id="rightTable">
+		<tr>
+			<td id="columnCreate3">Language :&nbsp;&nbsp;</td>
+			<td id="columnCreate4">
+			<select name="language" id="language">
+			<option value="ENGLISH">&nbsp;&nbsp;&nbsp;English</option>
+			<option value="SPANISH">&nbsp;&nbsp;&nbsp;Spanish</option>
+			<option value="FRENCH">&nbsp;&nbsp;&nbsp;French</option>
+			<option value="ARABIC">&nbsp;&nbsp;&nbsp;Arabic</option>
+			<option value="CHINESE">&nbsp;&nbsp;&nbsp;Chinese</option>
+			<option value="DUTCH">&nbsp;&nbsp;&nbsp;Dutch</option>
+			<option value="VIETNAMESE">&nbsp;&nbsp;&nbsp;Vietnamese</option>
+			<option value="FINNISH">&nbsp;&nbsp;&nbsp;Finnish</option>
+			<option value="GERMAN">&nbsp;&nbsp;&nbsp;German</option>
+			<option value="RUSSIAN">&nbsp;&nbsp;&nbsp;Russian</option>
+			<option value="INDIAN">&nbsp;&nbsp;&nbsp;Indian</option>
+			<option value="ITALIAN">&nbsp;&nbsp;&nbsp;Italian</option>
+			<option value="OTHER">&nbsp;&nbsp;&nbsp;other</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td id="columnCreate3">Gender :&nbsp;&nbsp;</td>
+			<td id="columnCreate4">
+			<select name="gender" id="gender">
+			<option value="MALE">&nbsp;&nbsp;&nbsp;male</option>
+			<option value="FEMALE">&nbsp;&nbsp;&nbsp;female</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td id="columnCreate3">Race :&nbsp;&nbsp;</td>
+			<td id="columnCreate4">
+			<select name="race" id="race">
+			<option value="WHITE">&nbsp;&nbsp;&nbsp;white</option>
+			<option value="BLACK">&nbsp;&nbsp;&nbsp;black</option>
+			<option value="ASIAN">&nbsp;&nbsp;&nbsp;asian</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td id="columnCreate3">Marital status :&nbsp;&nbsp;</td>	
+			<td id="columnCreate4">
+			<select name="maritalStatus" id="maritalStatus">
+			<option value="MARRIED">&nbsp;&nbsp;&nbsp;married</option>
+			<option value="SINGLE">&nbsp;&nbsp;&nbsp;single</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td id="columnCreate3">Religion :&nbsp;&nbsp;</td>
+			<td id="columnCreate4">
+			<select name="religion" id="religion">
+			<option value="ATHEIST">&nbsp;&nbsp;&nbsp;atheist</option>
+			<option value="CHRISTIANITY">&nbsp;&nbsp;&nbsp;Christianity</option>
+			<option value="ISLAM">&nbsp;&nbsp;&nbsp;Islam</option>
+			<option value="HINDUISM">&nbsp;&nbsp;&nbsp;Hinduism</option>
+			<option value="SHENISM">&nbsp;&nbsp;&nbsp;Shenism</option>
+			<option value="BUDDHISM">&nbsp;&nbsp;&nbsp;Buddhism</option>
+			<option value="OTHER">&nbsp;&nbsp;&nbsp;other</option>
+			</select></td>
+			</tr>
+		</table>
+<!--</div>-->
+
+
+
+
+
+
+<!--<tr>
+	<td id="columnCreate1">SSN :&nbsp;&nbsp;</td>
+	<td id="columnCreate2"> <input type="text" name="ssn" id="ssn" placeholder="format: 123-12-1234" 
+			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input" /></td>
+	<td id="columnCreate3">Language :&nbsp;&nbsp;</td>
+	<td id="columnCreate4">
+		<select name="language" id="language">
+			<option value="ENGLISH">&nbsp;&nbsp;&nbsp;English</option>
+			<option value="SPANISH">&nbsp;&nbsp;&nbsp;Spanish</option>
+			<option value="FRENCH">&nbsp;&nbsp;&nbsp;French</option>
+			<option value="ARABIC">&nbsp;&nbsp;&nbsp;Arabic</option>
+			<option value="CHINESE">&nbsp;&nbsp;&nbsp;Chinese</option>
+			<option value="DUTCH">&nbsp;&nbsp;&nbsp;Dutch</option>
+			<option value="VIETNAMESE">&nbsp;&nbsp;&nbsp;Vietnamese</option>
+			<option value="FINNISH">&nbsp;&nbsp;&nbsp;Finnish</option>
+			<option value="GERMAN">&nbsp;&nbsp;&nbsp;German</option>
+			<option value="RUSSIAN">&nbsp;&nbsp;&nbsp;Russian</option>
+			<option value="INDIAN">&nbsp;&nbsp;&nbsp;Indian</option>
+			<option value="ITALIAN">&nbsp;&nbsp;&nbsp;Italian</option>
+			<option value="OTHER">&nbsp;&nbsp;&nbsp;other</option>
+		</select></td>
+</tr>
+<tr>
+	<td id="columnCreate1">First name :&nbsp;&nbsp;</td>
+	<td id="columnCreate2"> <input type="text" name="firstName" id="firstName" 
+			value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
+	<td id="columnCreate3">Gender :&nbsp;&nbsp;</td>
+	<td id="columnCreate4">
+		<select name="gender" id="gender">
+			<option value="MALE">&nbsp;&nbsp;&nbsp;male</option>
+			<option value="FEMALE">&nbsp;&nbsp;&nbsp;female</option>
+		</select></td>
+</tr>
+<tr>
+	<td id="columnCreate1">Last name :&nbsp;&nbsp;</td>
+	<td id="columnCreate2"> <input type="text" name="lastName" id="lastName" 
+			value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
+	<td id="columnCreate3">Race :&nbsp;&nbsp;</td>
+	<td id="columnCreate4">
+		<select name="race" id="race">
+			<option value="WHITE">&nbsp;&nbsp;&nbsp;white</option>
+			<option value="BLACK">&nbsp;&nbsp;&nbsp;black</option>
+			<option value="ASIAN">&nbsp;&nbsp;&nbsp;asian</option>
+		</select>
+		</td>
+</tr>
+<tr>
+	<td id="columnCreate1">Date of birth :&nbsp;&nbsp;</td>
+	<td id="columnCreate2"> <input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="format: YYYY-MM-DD" 
+			value="" class="validate[required,custom[date]] text-input"/></td>
+	<td id="columnCreate3">Marital status :&nbsp;&nbsp;</td>	
+	<td id="columnCreate4">
+		<select name="maritalStatus" id="maritalStatus">
+			<option value="MARRIED">&nbsp;&nbsp;&nbsp;married</option>
+			<option value="SINGLE">&nbsp;&nbsp;&nbsp;single</option>
+		</select>
+		</td>
+</tr>
+<tr>
+	<td id="columnCreate1">Religion :&nbsp;&nbsp;</td>
+	<td id="columnCreate2">
+		<select name="religion" id="religion">
+			<option value="ATHEIST">&nbsp;&nbsp;&nbsp;atheist</option>
+			<option value="CHRISTIANITY">&nbsp;&nbsp;&nbsp;Christianity</option>
+			<option value="ISLAM">&nbsp;&nbsp;&nbsp;Islam</option>
+			<option value="HINDUISM">&nbsp;&nbsp;&nbsp;Hinduism</option>
+			<option value="SHENISM">&nbsp;&nbsp;&nbsp;Shenism</option>
+			<option value="BUDDHISM">&nbsp;&nbsp;&nbsp;Buddhism</option>
+			<option value="OTHER">&nbsp;&nbsp;&nbsp;other</option>
+		</select></td>
+</tr>-->
+</table>
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<!--<legend id="smalllegend">Patient contacts:</legend>
+<table class="table table-bordered table table-condensed">-->
 
 
 					<!--td id="columnCreate1"> :&nbsp;&nbsp;</td>
@@ -304,7 +473,7 @@
 								value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>		
 						<td id="columnCreate3">Race :&nbsp;&nbsp;</td-->
 
-
+<!--
 <tr>
 	<td id="columnCreate5">&nbsp;&nbsp;Oh, la-la ! :</td>
 	<td id="columnCreate6">aaa</td>
@@ -460,7 +629,7 @@
 	<td id="columnCreate8"> <input type="text" name="employerPhoneNumber" id="employerPhoneNumber" 
 			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input"/></td>
 </tr>
-</table>
+</table>-->
 		<a href="" class="btn btn-success" id="create_patient_btn">Ok</a>
 		<a href="" class="btn btn-danger" id="cancel_patient_btn">Cancel</a>
 </form>
