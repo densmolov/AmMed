@@ -230,7 +230,11 @@ var DetailedInfoCreator = Backbone.View.extend({
 	},
 	create: function(e) {
         e.preventDefault();
-        if ( validate() ) {
+        if ( validate() ) {							//if($("#ssn").inputmask("isComplete")){
+        	$("#ssn").inputmask("999-99-9999");
+        	$("#date").inputmask("y/m/d");
+        	$("#patientPhoneNumber").inputmask("mask", {"mask": "(999) 999-9999"});
+        	$("#employerPhoneNumber").inputmask("mask", {"mask": "(999) 999-9999"});
         	var newPatientCreate = new PatientCreate({
         		ssn:$('#ssn').val(),
                 firstName:$('#firstName').val(),
@@ -466,6 +470,18 @@ function closeDetailedInfo() {
 function closeDetailedInfoCreator() {
     $(".container#createshowinfoCreate").fadeOut();
 }
+
+
+
+		//INPUT MASK
+
+/*$(document).ready(function(){
+	$("#ssn").inputmask("999-99-9999");
+	$("#dateOfBirth").inputmask("yyyy/mm/dd");
+	$("#patientPhoneNumber").inputmask("(999) 999-9999"); //specifying fn & options
+	$("#employerPhoneNumber").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
+
+});*/
 
 
 		//VALIDATION

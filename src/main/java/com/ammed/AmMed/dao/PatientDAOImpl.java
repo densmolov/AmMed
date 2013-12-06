@@ -120,7 +120,7 @@ public class PatientDAOImpl implements PatientDAO {
         
         @Override
 		public boolean isPatientValid(Patient patient) {
-        	if ( (patient.getSSN().length()!=9) ||
+        	if ( (patient.getSSN().length()!=11) ||
         		(patient.getFirstName().length()<2) || (patient.getFirstName().length()>20) ||
         		(patient.getLastName().length()<2) || (patient.getLastName().length()>20) ||
         		patient.getDateOfBirth().toString().isEmpty() ||	// DO WE NEED ANYTHING ?
@@ -133,13 +133,13 @@ public class PatientDAOImpl implements PatientDAO {
         		(patient.getPatientCity().length()<2) || (patient.getPatientCity().length()>20) && 
         		patient.getPatientState().toString().isEmpty() ||	//	Do we need this? There is a default expression.
         		(patient.getPatientZip().length()!=5) ||
-        		(patient.getPatientPhoneNumber().length()!=10) ||
+        		(patient.getPatientPhoneNumber().length()!=14) ||
         		(patient.getEmployerName().length()<2) || (patient.getEmployerName().length()>20) ||
         		(patient.getEmployerAddress().length()<2) || (patient.getEmployerAddress().length()>20) ||
         		(patient.getEmployerCity().length()<2) || (patient.getEmployerCity().length()>20) || 
         		patient.getEmployerState().toString().isEmpty() ||	//	Do we need this? There is a default expression.
         		(patient.getEmployerZip().length()!=5) ||
-        		(patient.getEmployerPhoneNumber().length()!=10) ) {
+        		(patient.getEmployerPhoneNumber().length()!=14) ) {
         		System.out.println("	Validation failed");
         		return false;
         	}
