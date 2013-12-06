@@ -96,6 +96,9 @@ $(function () {
     var myRouter = new MyRouter();
     
     Backbone.history.start({pushState: true, root: "/AmMed/medic"});
+    /*****REMOVE*****/
+    $("#ssn").inputmask("999-99-9999");
+    /*****REMOVE*****/
     
     var Start = Backbone.View.extend({
         el: $(".content"),
@@ -230,11 +233,13 @@ var DetailedInfoCreator = Backbone.View.extend({
 	},
 	create: function(e) {
         e.preventDefault();
-        if ( validate() ) {							//if($("#ssn").inputmask("isComplete")){
+        if ( validate() ) {
+        	/*UGLY MASKS*/
         	$("#ssn").inputmask("999-99-9999");
+        	//$("#ssn").inputmask("999-99-9999", {'autoUnmask' : true});
         	$("#date").inputmask("y/m/d");
-        	$("#patientPhoneNumber").inputmask("mask", {"mask": "(999) 999-9999"});
-        	$("#employerPhoneNumber").inputmask("mask", {"mask": "(999) 999-9999"});
+        	$("#patientPhoneNumber").inputmask("(999) 999-9999");
+        	$("#employerPhoneNumber").inputmask("(999) 999-9999");
         	var newPatientCreate = new PatientCreate({
         		ssn:$('#ssn').val(),
                 firstName:$('#firstName').val(),
@@ -473,16 +478,6 @@ function closeDetailedInfoCreator() {
 
 
 
-		//INPUT MASK
-
-/*$(document).ready(function(){
-	$("#ssn").inputmask("999-99-9999");
-	$("#dateOfBirth").inputmask("yyyy/mm/dd");
-	$("#patientPhoneNumber").inputmask("(999) 999-9999"); //specifying fn & options
-	$("#employerPhoneNumber").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
-
-});*/
-
 
 		//VALIDATION
 
@@ -491,8 +486,6 @@ function closeDetailedInfoCreator() {
 			return true;
 		}
 	}
-
-	
 
 
 
