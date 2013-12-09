@@ -122,14 +122,17 @@ legend {
 	margin-top: 15px;
 }
 
-#firstcolumn {
+#infoColumn1 {
 	width: 35%;
 }
-#secondcolumn {
+#infoColumn2 {
 	background-color: rgb(250, 250, 250);
 }
-#thirdcolumn, #fifthcolumn {
-	width: 35%;
+#infoColumn3 {
+	width: 20%;
+}
+#infoColumn4 {
+	width: 30%;
 	background-color: rgb(250, 250, 250);
 }
 
@@ -181,7 +184,7 @@ legend {
 	width: 100%;
 }
 
-#smalllegend {
+#contactsBottom {
 	font-size: 14px;
 	color: #08c;
 }

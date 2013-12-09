@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>    
     <script type="text/javascript" src="js/jquery.js"></script>
     		<script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jsrender.min.js"></script>
     <script type="text/javascript" src="js/underscore.js"></script>
     <script type="text/javascript" src="js/backbone.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
@@ -127,80 +128,86 @@
 
 <div id="patientTemplate"></div>
 
-<script type="text/template" id="showinfotemplate">
+<script type="text/x-jsrender" id="showinfotemplate">
 <div class="container" id="createshowinfo">
 	<form class="form-horizontal well">
-	<legend>Full information on patient <span id="thename"><%=firstName + ' ' + lastName%></span></legend>
+	<legend>Full information on patient <span id="thename">{{:firstName + ' ' + lastName}}</span></legend>
 <table class="table table-bordered table table-condensed">
 <tr>
-	<td id="firstcolumn">SSN</td>
-	<td id="secondcolumn"><%=ssn%></td>
+	<td id="infoColumn1">SSN</td>
+	<td id="infoColumn2">{{:ssn}}</td>
 </tr>
 <tr>
-	<td id="firstcolumn">First name</td>
-	<td id="secondcolumn"><%=firstName%></td>
+	<td id="infoColumn1">First name</td>
+	<td id="infoColumn2">{{:firstName}}</td>
 </tr>
 <tr>
-	<td id="firstcolumn">Last name</td>
-	<td id="secondcolumn"><%=lastName%></td>
+	<td id="infoColumn1">Last name</td>
+	<td id="infoColumn2">{{:lastName}}</td>
 </tr>
 <tr>
-	<td id="firstcolumn">Date of birth</td>
-	<td id="secondcolumn"><%=dateOfBirth%></td>
+	<td id="infoColumn1">Date of birth</td>
+	<td id="infoColumn2">{{:dateOfBirth}}</td>
 </tr>
 <tr>
-	<td id="firstcolumn">Gender</td>
-	<td id="secondcolumn"><%=gender.toLowerCase()%></td>
+	<td id="infoColumn1">Gender</td>
+	<td id="infoColumn2">{{:gender.toLowerCase()}}</td>
 </tr>
 <tr>
-	<td id="firstcolumn">Marital status</td>
-	<td id="secondcolumn"><%=maritalStatus.toLowerCase()%></td>
+	<td id="infoColumn1">Marital status</td>
+	<td id="infoColumn2">{{:maritalStatus.toLowerCase()}}</td>
 </tr>
 <tr>
-	<td id="firstcolumn">Race</td>
-	<td id="secondcolumn"><%=race.toLowerCase()%></td>
+	<td id="infoColumn1">Race</td>
+	<td id="infoColumn2">{{:race.toLowerCase()}}</td>
 </tr>
 <tr>
-	<td id="firstcolumn">Religion</td>
-	<td id="secondcolumn"><%=religion.toLowerCase()%></td>
+	<td id="infoColumn1">Religion</td>
+	<td id="infoColumn2">{{:religion.toLowerCase()}}</td>
 </tr>
 <tr>
-	<td id="firstcolumn">Language</td>
-	<td id="secondcolumn"><%=language.toLowerCase()%></td>
+	<td id="infoColumn1">Language</td>
+	<td id="infoColumn2">{{:language.toLowerCase()}}</td>
 </tr>
 </table>
 
-<legend id="smalllegend">Patient contacts:</legend>
+<legend id="contactsBottom">Contacts:</legend>
 <table class="table table-bordered table table-condensed">
 <tr>
-	<td id="thirdcolumn"><%=firstName + ' ' + lastName%></td>
-	<td id="fourthcolumn">Full name (Employer name)</td>
-	<td id="fifthcolumn"><%=employerName%></td>
+	<td id="infoColumn3">Full client's name</td>
+	<td id="infoColumn4">{{:firstName + ' ' + lastName}}</td>
+	<td id="infoColumn3">Employer name</td>
+	<td id="infoColumn4">{{:employerName}}</td>
 </tr>
 <tr>
-	<td id="thirdcolumn"><%=patientAddress%></td>
-	<td id="fourthcolumn">Address</td>
-	<td id="fifthcolumn"><%=employerAddress%></td>
+	<td id="infoColumn3">Address</td>
+	<td id="infoColumn4">{{:patientAddress}}</td>
+	<td id="infoColumn3">Address</td>
+	<td id="infoColumn4">{{:employerAddress}}</td>
 </tr>
 <tr>
-	<td id="thirdcolumn"><%=patientCity%></td>
-	<td id="fourthcolumn">City</td>
-	<td id="fifthcolumn"><%=employerCity%></td>
+	<td id="infoColumn3">City</td>
+	<td id="infoColumn4">{{:patientCity}}</td>
+	<td id="infoColumn3">City</td>
+	<td id="infoColumn4">{{:employerCity}}</td>
 </tr>
 <tr>
-	<td id="thirdcolumn"><%=patientState%></td>
-	<td id="fourthcolumn">State</td>
-	<td id="fifthcolumn"><%=employerState%></td>
+	<td id="infoColumn3">State</td>
+	<td id="infoColumn4">{{:patientState}}</td>
+	<td id="infoColumn3">State</td>
+	<td id="infoColumn4">{{:employerState}}</td>
 </tr>
 <tr>
-	<td id="thirdcolumn"><%=patientZip%></td>
-	<td id="fourthcolumn">Zip</td>
-	<td id="fifthcolumn"><%=employerZip%></td>
+	<td id="infoColumn3">Zip-code</td>
+	<td id="infoColumn4">{{:patientZip}}</td>
+	<td id="infoColumn3">Zip-code</td>
+	<td id="infoColumn4">{{:employerZip}}</td>
 </tr>
 <tr>
-	<td id="thirdcolumn"><%=patientPhoneNumber%></td>
-	<td id="fourthcolumn">Phone number</td>
-	<td id="fifthcolumn"><%=employerPhoneNumber%></td>
+	<td id="infoColumn3">Phone number</td>
+	<td id="infoColumn4">{{:patientPhoneNumber}}</td>
+	<td id="infoColumn3">Phone number</td>
+	<td id="infoColumn4">{{:employerPhoneNumber}}</td>
 </tr>
 </table>
 		<a href="" class="btn btn-success" id="change_status_btn">Confirm changes</a>
@@ -446,13 +453,18 @@
   });
 </script -->
 
-
-<script id="rowpatient" type="text/template">
+<script id="rowpatient" type="text/x-jsrender">
+	<td>{{:ssn}}</td>
+	<td>{{:firstName + ' ' + lastName}}</td>
+	<td>{{:patientPhoneNumber}}</td>
+	<td><a href="" title="Full info on this patient" id="info">Details</a></td>
+</script>
+<!-- <script id="rowpatient" type="text/template">
     <td><%=ssn%></td>
 	<td><%=firstName + ' ' + lastName%></td>
 	<td><%=patientPhoneNumber%></td>
 	<td><a href="" title="Full info on this patient" id="info">Details</a></td>
-</script>
+</script> -->
 
 <!-- <p>Date: <input type="text" id="datepicker"></p>
 <script>

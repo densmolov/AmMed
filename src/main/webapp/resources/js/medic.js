@@ -160,11 +160,11 @@ $(function () {
     
     var start = new Start();
         
-    PatientView = Backbone.View.extend({
-        tagName: 'tr',
-        template: _.template($("#rowpatient").html()),
+	PatientView = Backbone.View.extend({
+		tagName: 'tr',
+        template: $.templates("#rowpatient"),
         events: {
-            "click #info": "clicked"
+        	"click #info": "clicked"
         },
         clicked: function(e){
             e.preventDefault();
@@ -174,7 +174,7 @@ $(function () {
             _.bind(this.render, this);
         },
         render: function() {
-            var element = this.template(this.model.toJSON());
+        	var element = this.template.render(this.model.toJSON());
             console.log(this.model.toJSON());
             $(this.el).html(element);
             return this;
@@ -188,7 +188,7 @@ var DetailedInfo = Backbone.View.extend({
 		//baseUrl: 'medic/patients/:id',
 		baseUrl: 'medic/patients/',
 		el: $("#patientTemplate"),
-	template: _.template($("#showinfotemplate").html()),
+	template: $.templates("#showinfotemplate"),
 	events: {
 		"click .btn-success#change_status_btn": "accept",
 		//"click .btn-success#edit_btn": "edit",
@@ -209,9 +209,10 @@ var DetailedInfo = Backbone.View.extend({
 		var that = this;
 		detailedPatient.fetch({
 			success:function(){
-				var element = that.template(detailedPatient.toJSON());
+				var element = that.template.render(detailedPatient.toJSON());
 				console.log(detailedPatient.toJSON());
 				$(that.el).html(element);
+				//return this;
 			}
 		});
 	}
@@ -284,9 +285,9 @@ var DetailedInfoCreator = Backbone.View.extend({
 
         
 	AllPatientView = Backbone.View.extend({
-        el : $('#patientListFrame'),
+		el : $('#patientListFrame'),
         initialize : function() {
-            _.bindAll(this, 'addOne', 'addAll', 'render');
+        	_.bindAll(this, 'addOne', 'addAll', 'render');
             patients.bind('reset', this.addAll);
             patients.bind('add', this.addOne);
             patients.fetch();
@@ -298,7 +299,7 @@ var DetailedInfoCreator = Backbone.View.extend({
             this.$('#tablePatients').append(view.render().el);
         },
         addAll : function() {
-                patients.each(this.addOne);
+        	patients.each(this.addOne);
         }
     });        
         
