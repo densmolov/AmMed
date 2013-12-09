@@ -162,7 +162,8 @@ $(function () {
         
 	PatientView = Backbone.View.extend({
 		tagName: 'tr',
-        template: $.templates("#rowpatient"),
+		template: $.templates("#rowpatient"),
+		//template: $.templates("#rowpatient"),
         events: {
         	"click #info": "clicked"
         },
@@ -175,6 +176,7 @@ $(function () {
         },
         render: function() {
         	var element = this.template.render(this.model.toJSON());
+        	//var element = this.template.render(this.model.toJSON());
             console.log(this.model.toJSON());
             $(this.el).html(element);
             return this;
@@ -188,7 +190,8 @@ var DetailedInfo = Backbone.View.extend({
 		//baseUrl: 'medic/patients/:id',
 		baseUrl: 'medic/patients/',
 		el: $("#patientTemplate"),
-	template: $.templates("#showInfoTemplate"),
+		template: $.templates("#showInfoTemplate"),
+		//template: $.templates("#showInfoTemplate"),
 	events: {
 		"click .btn-success#change_status_btn": "accept",
 		//"click .btn-success#edit_btn": "edit",
@@ -205,16 +208,16 @@ var DetailedInfo = Backbone.View.extend({
 		myRouter.navigate("", {trigger: true} );
 	},	
 	render: function(id) {
-		var detailedPatient = new Patient ( {id: id} );
-		var that = this;
-		detailedPatient.fetch({
-			success:function(){
-				var element = that.template.render(detailedPatient.toJSON());
-				console.log(detailedPatient.toJSON());
-				$(that.el).html(element);
-				return this;
-			}
-		});
+        var detailedPatient = new Patient ( {id: id} );
+        var that = this;
+        detailedPatient.fetch({
+                success:function(){
+                        var element = that.template.render(detailedPatient.toJSON());
+                        console.log(detailedPatient.toJSON());
+                        $(that.el).html(element);
+                        return this;
+                }
+        });
 	}
 	});
 
@@ -275,7 +278,7 @@ var DetailedInfoCreator = Backbone.View.extend({
         }
     },
     render: function(model) {
-        $(this.el).html(this.template.render(model));
+    	$(this.el).html(this.template.render(model));
     }
 });
 

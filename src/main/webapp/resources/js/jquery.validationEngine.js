@@ -2074,4 +2074,3 @@
 	$(function(){$.validationEngine.defaults.promptPosition = methods.isRTL()?'topLeft':"topRight"});
 })(jQuery);
 
-
