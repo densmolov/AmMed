@@ -4,14 +4,19 @@
 <meta charset="utf-8"> 
 <title>Patient registration application</title>
 <meta name="description" content="Patient registration application">
+
+    <link rel="stylesheet" href="css/autocomplete.css" type="text/css">
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="css/jquery-ui.css" type="text/css"/>
     <link rel="stylesheet" href="css/styleMedic.css" type="text/css"/>
     <link rel="stylesheet" href="css/toastr.min.css" type="text/css"/>
-    <link rel="stylesheet" href="css/jquery-ui.css" type="text/css"/>
     <link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
 
+    <script type="text/javascript" src="js/autocomplete.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.autocomplete.html.js"></script>
     <script type="text/javascript" src="js/jsrender.min.js"></script>
     <script type="text/javascript" src="js/underscore.js"></script>
     <script type="text/javascript" src="js/backbone.js"></script>
@@ -46,6 +51,7 @@
 	
 	<a class="btn" id="createNewPatient-btn" href="">Register a new patient</a>
 	
+	
 
 	
 	<!--
@@ -71,6 +77,7 @@
             </div>	<!-- id="search-data" -->
             <div id="search-button">
                 <a class="btn" href="" id="search-btn">Search</a>
+                <input type="text" id="topic_title">
             </div>
         </div>	<!-- id="search" -->
     </form>
