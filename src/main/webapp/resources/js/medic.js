@@ -188,7 +188,7 @@ var DetailedInfo = Backbone.View.extend({
 		//baseUrl: 'medic/patients/:id',
 		baseUrl: 'medic/patients/',
 		el: $("#patientTemplate"),
-	template: $.templates("#showinfotemplate"),
+	template: $.templates("#showInfoTemplate"),
 	events: {
 		"click .btn-success#change_status_btn": "accept",
 		//"click .btn-success#edit_btn": "edit",
@@ -212,7 +212,7 @@ var DetailedInfo = Backbone.View.extend({
 				var element = that.template.render(detailedPatient.toJSON());
 				console.log(detailedPatient.toJSON());
 				$(that.el).html(element);
-				//return this;
+				return this;
 			}
 		});
 	}
@@ -220,8 +220,8 @@ var DetailedInfo = Backbone.View.extend({
 
 var DetailedInfoCreator = Backbone.View.extend({
 		baseUrl: 'medic/create',
-		el: $("#patientTemplateCreate"),
-	template: _.template($("#showinfotemplateCreate").html()),
+		el: $("#registerTemplate"),
+	template: $.templates("#createTemplate"),
 	events: {
 		"click #create_patient_btn": "create",
 		"click #cancel_patient_btn": "cancel",
@@ -275,7 +275,7 @@ var DetailedInfoCreator = Backbone.View.extend({
         }
     },
     render: function(model) {
-        $(this.el).html(this.template(model));
+        $(this.el).html(this.template.render(model));
     }
 });
 
@@ -471,10 +471,10 @@ function showModal(head, message, id) {
 
 
 function closeDetailedInfo() {
-    $(".container#createshowinfo").fadeOut();
+    $(".container#infoContainer").fadeOut();
 }
 function closeDetailedInfoCreator() {
-    $(".container#createshowinfoCreate").fadeOut();
+    $(".container#createContainer").fadeOut();
 }
 
 
