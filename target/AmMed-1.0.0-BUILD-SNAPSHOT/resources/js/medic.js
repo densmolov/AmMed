@@ -481,6 +481,40 @@ function closeDetailedInfoCreator() {
 }
 
 
+	//	AUTOCOMPLETE
+$(function() {
+	//var availableTags = PatientList;
+		var availableTags = [];
+		availableTags = PatientList;	//is it correct ?
+    /*var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];*/
+    $( "#tags" ).autocomplete({
+      source: availableTags,
+      delay: 300
+    });
+  });
 
 
 		//VALIDATION
