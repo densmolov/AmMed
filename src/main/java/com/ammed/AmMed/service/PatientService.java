@@ -22,6 +22,7 @@ public interface PatientService {
 	public void updatePatient(Patient patient);
      
 	public List<Patient> findPatient(String field, String value, int index);
+	public List<Patient> findPatientForAutocomplete(/*String field, */String value);
 	public int findPatientsQuantity();
 
 }

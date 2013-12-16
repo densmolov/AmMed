@@ -483,36 +483,46 @@ function closeDetailedInfoCreator() {
 
 	//	AUTOCOMPLETE
 $(function() {
-	//var availableTags = PatientList;
-		var availableTags = [];
-		availableTags = PatientList;	//is it correct ?
-    /*var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];*/
-    $( "#tags" ).autocomplete({
+		//var availableTags = [];
+		//availableTags = PatientList;	//is it correct ?
+    var availableTags = [
+      "John Silver",
+      "Arya Stark",
+      "Viktor Corvinus",
+      "Jaime Lannister",
+      "Michael Corbin",
+      "Jon Snow",
+      "Tyrion Lannister"
+    ];
+    $( "#criteria" ).autocomplete({
       source: availableTags,
-      delay: 300
+      delay: 300,
+      minLength: 2,
+      
+      source: function( request, response ) {
+    	  $.ajax({
+    		  url: "/AmMed/autocomplete",
+    		  type: "GET",
+    		  data: { term: request.term },
+    		  dataType: "json",
+    		  
+    		  //url: "http://localhost:8080/AmMed/autocomplete",
+    		  /*data: { term: $(".criteria").val()},
+    		  contentType: "application/json; charset=utf-8",
+    		  dataType: "json",
+              type: "GET",*/
+    		  success: function(data) {
+    			  response(data);
+    			  /*response($.map( data.geonames, function( obj ) {
+    				  return {
+    					  label: obj.firstName,
+                          value: obj.lastName,
+    				  };
+    			  }));*/
+    		  }
+    	  });
+      }
+ 
     });
   });
 

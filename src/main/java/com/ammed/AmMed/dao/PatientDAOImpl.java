@@ -171,6 +171,20 @@ public class PatientDAOImpl implements PatientDAO {
         	}
         	return null;
         }
+        @Override
+        public List<Patient> findPatientForAutocomplete(/*String field, */String value) {
+        	Session session = sessionFactory.getCurrentSession();
+        	Criteria criteria = session.createCriteria(Patient.class);
+        	String field = "firstName";
+        	criteria.add( Restrictions.like(field, value, MatchMode.START) );
+        	criteria.addOrder( Order.asc(field) );
+        	@SuppressWarnings("unchecked")
+        	List<Patient> findPatientList = (List<Patient>) criteria.list();
+        	if(findPatientList!=null && findPatientList.size()!=0) {
+        		return findPatientList;
+        	}
+        	return null;
+        }
 
         int quantity;
         

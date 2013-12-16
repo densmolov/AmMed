@@ -75,6 +75,10 @@ public class PatientServiceImpl implements PatientService {
                 return patientDAO.findPatient(field, value, index);
         }
         @Transactional
+        public List<Patient> findPatientForAutocomplete(/*String field, */String value) {
+            return patientDAO.findPatientForAutocomplete(/*field, */value);
+        }
+        @Transactional
         public int findPatientsQuantity() {
                 return patientDAO.findPatientsQuantity();
         }
