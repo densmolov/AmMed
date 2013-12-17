@@ -486,7 +486,6 @@ $(function() {
     $( "#criteria" ).autocomplete({
       delay: 200,
       minLength: 2,
-      
       source: function( request, response ) {
     	  $.ajax({
     		  url: "/AmMed/autocomplete",
@@ -495,20 +494,7 @@ $(function() {
     			  term: request.term
     			  },
     		  dataType: "json",
-    		  /*
-    		  contentType: "application/json; charset=utf-8"*/
     		  success: function(data) {
-    			  //response(data);
-    			  /*var results = $.map(data.items, function(patient) {
-    				  return patient.firstName;
-    			  });
-    			  response(results);*/
-    			  /*response($.map( data.patients, function(value, key) {
-    				  return {
-    					  label: value,
-                          value: key
-    				  };
-    			  }));*/
     			  response($.map( data, function( patient ) {
     				  return {
     					  label: patient.lastName + ", " + patient.firstName + ", SSN: " + patient.ssn,
@@ -517,8 +503,7 @@ $(function() {
     			  }));
     		  }
     	  });
-      }
- 
+      } 
     });
   });
 
