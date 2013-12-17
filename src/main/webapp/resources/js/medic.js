@@ -483,42 +483,38 @@ function closeDetailedInfoCreator() {
 
 	//	AUTOCOMPLETE
 $(function() {
-		//var availableTags = [];
-		//availableTags = PatientList;	//is it correct ?
-    var availableTags = [
-      "John Silver",
-      "Arya Stark",
-      "Viktor Corvinus",
-      "Jaime Lannister",
-      "Michael Corbin",
-      "Jon Snow",
-      "Tyrion Lannister"
-    ];
     $( "#criteria" ).autocomplete({
-      source: availableTags,
-      delay: 300,
+      delay: 200,
       minLength: 2,
       
       source: function( request, response ) {
     	  $.ajax({
     		  url: "/AmMed/autocomplete",
     		  type: "GET",
-    		  data: { term: request.term },
+    		  data: {
+    			  term: request.term
+    			  },
     		  dataType: "json",
-    		  
-    		  //url: "http://localhost:8080/AmMed/autocomplete",
-    		  /*data: { term: $(".criteria").val()},
-    		  contentType: "application/json; charset=utf-8",
-    		  dataType: "json",
-              type: "GET",*/
+    		  /*
+    		  contentType: "application/json; charset=utf-8"*/
     		  success: function(data) {
-    			  response(data);
-    			  /*response($.map( data.geonames, function( obj ) {
+    			  //response(data);
+    			  /*var results = $.map(data.items, function(patient) {
+    				  return patient.firstName;
+    			  });
+    			  response(results);*/
+    			  /*response($.map( data.patients, function(value, key) {
     				  return {
-    					  label: obj.firstName,
-                          value: obj.lastName,
+    					  label: value,
+                          value: key
     				  };
     			  }));*/
+    			  response($.map( data, function( patient ) {
+    				  return {
+    					  label: patient.lastName + ", " + patient.firstName + ", SSN: " + patient.ssn,
+                          value: patient.firstName
+    				  };
+    			  }));
     		  }
     	  });
       }
