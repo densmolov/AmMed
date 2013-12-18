@@ -156,7 +156,7 @@ public class PatientDAOImpl implements PatientDAO {
         public List<Patient> findPatient(String field, String value, int index) {
         	Session session = sessionFactory.getCurrentSession();
         	Criteria criteria = session.createCriteria(Patient.class);
-        	criteria.add( Restrictions.like(field, value, MatchMode.ANYWHERE) );	//MatchMode.START!!!!!!!!!!!!!!!!!!!!!!!!!
+        	criteria.add( Restrictions.like(field, value, MatchMode.START) );
         	criteria.addOrder( Order.asc(field) );
         	/*****/
         	quantity = criteria.list().size();

@@ -233,3 +233,7 @@ legend {
 	clear: both;
 }
 
+.ui-autocomplete li {
+    font-size: 14px;
+}
+

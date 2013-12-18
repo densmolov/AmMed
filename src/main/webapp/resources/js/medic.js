@@ -483,29 +483,73 @@ function closeDetailedInfoCreator() {
 
 	//	AUTOCOMPLETE
 $(function() {
-    $( "#criteria" ).autocomplete({
-      delay: 200,
-      minLength: 2,
-      source: function( request, response ) {
-    	  $.ajax({
-    		  url: "/AmMed/autocomplete",
-    		  type: "GET",
-    		  data: {
-    			  term: request.term
-    			  },
-    		  dataType: "json",
-    		  success: function(data) {
-    			  response($.map( data, function( patient ) {
-    				  return {
-    					  label: patient.lastName + ", " + patient.firstName + ", SSN: " + patient.ssn,
-                          value: patient.firstName
-    				  };
-    			  }));
-    		  }
-    	  });
-      } 
-    });
-  });
+	$("#criteria").autocomplete({
+		delay: 200,
+		minLength: 2,
+		source: function( request, response ) {
+			$.ajax({
+				url: "/AmMed/autocomplete",
+				type: "GET",
+				data: {
+					term: request.term
+				},
+				dataType: "json",
+				success: function(data) {
+					response($.map( data, function( patient ) {
+						return {
+							label: patient.lastName + ", " + patient.firstName + ", SSN: " + patient.ssn,
+							value: patient.firstName
+						};
+					}));
+				}
+			});			
+		},
+		focus: function(event, ui) {
+            $("input#criteria").val(ui.item.label);
+        },
+		select: function(event, ui) {
+			$("input#criteria").val(ui.item.value);
+			$("#search-btn").click();	//	works not as desired
+			//$("input#criteria").val(ui.item.value);
+		    //$("#searchForm").submit();
+		  }
+		/*****/
+		/*
+		$("input#criteria").autocomplete({
+			  source: autocomplete,
+			  select: function(event, ui) {
+			    $("input#criteria").val(ui.item.value);
+			    //$("#searchform").submit();
+			  }
+			})
+		*/
+		/*****/
+		/*
+		select: function(event, ui) {
+			$("#criteria").val(ui.item.label);
+			//$("#hiddenDiv").val(ui.item.value);
+		}*/
+	});   
+	});
+
+/*
+if ( $("#criteria").data() ) {
+
+// some jQueryUI versions may use different keys for the object. so to make sure,
+// put a breakpoint on the following line and add a watch for $(selector).data(). 
+// then you can find out what key is used by your jQueryUI script.
+
+    /*var ac = $("#criteria").data('uiAutocomplete');
+    if ( ac ) {
+       // do what you want with the autoComplete object. below is the changed version of an example from jqueryUI autocomplete tutorial
+
+       ac._renderItem = function(ul, item) {
+            return $("<li>")
+                .append("<a>" + item.label + "</a>")
+                .appendTo(ul);
+        };
+    }
+}*/
 
 
 		//VALIDATION
