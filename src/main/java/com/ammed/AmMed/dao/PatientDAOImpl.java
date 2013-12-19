@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
@@ -155,17 +156,18 @@ public class PatientDAOImpl implements PatientDAO {
         @Override
         public List<Patient> findPatient(String field, String value, int index) {
         	Session session = sessionFactory.getCurrentSession();
-        	Criteria criteria = session.createCriteria(Patient.class);
-        	criteria.add( Restrictions.like(field, value, MatchMode.START) );
-        	criteria.addOrder( Order.asc(field) );
+        	Criteria criterion = session.createCriteria(Patient.class);
+        	criterion.add( Restrictions.like(field, value, MatchMode.START) );
+        	criterion.addOrder( Order.asc(field) );
+        	//criteria.addOrder( Order.asc(value) );
         	/*****/
-        	quantity = criteria.list().size();
+        	quantity = criterion.list().size();
         	System.out.println("	quantity should be shown for the first time ... " + quantity);
         	/*****/
-        	criteria.setFirstResult((index - 1) * 5);
-        	criteria.setMaxResults(5);
+        	criterion.setFirstResult((index - 1) * 5);
+        	criterion.setMaxResults(5);
         	@SuppressWarnings("unchecked")
-        	List<Patient> findPatientList = (List<Patient>) criteria.list();
+        	List<Patient> findPatientList = (List<Patient>) criterion.list();
         	if(findPatientList!=null && findPatientList.size()!=0) {
         		return findPatientList;
         	}
@@ -174,12 +176,15 @@ public class PatientDAOImpl implements PatientDAO {
         @Override
         public List<Patient> findPatientForAutocomplete(/*String field, */String value) {
         	Session session = sessionFactory.getCurrentSession();
-        	Criteria criteria = session.createCriteria(Patient.class);
-        	String field = "firstName";
-        	criteria.add( Restrictions.like(field, value, MatchMode.START) );
-        	criteria.addOrder( Order.asc(field) );
+        	Criteria criterion = session.createCriteria(Patient.class);
+        	Disjunction or = Restrictions.disjunction();
+        	or.add(Restrictions.like("firstName", value, MatchMode.START));
+        	or.add(Restrictions.like("lastName", value, MatchMode.START));
+        	or.add(Restrictions.like("SSN", value, MatchMode.START));
+        	criterion.add(or);
+        	criterion.addOrder( Order.asc("SSN") );
         	@SuppressWarnings("unchecked")
-        	List<Patient> findPatientList = (List<Patient>) criteria.list();
+        	List<Patient> findPatientList = (List<Patient>) criterion.list();
         	if(findPatientList!=null && findPatientList.size()!=0) {
         		return findPatientList;
         	}

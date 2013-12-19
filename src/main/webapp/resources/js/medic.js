@@ -30,13 +30,13 @@ var SearchPatientList = Backbone.Collection.extend({
     baseUrl: 'medic/patients/find',
     initialize: function() {
         _.bindAll(this, 'url');
-        this.field=$('#filter').val();
+        //this.field=$('#filter').val();
         this.value=$('#criteria').val();
         this.index = index;
     },
     url: function() {
         return this.baseUrl + '?' + $.param({
-            field: this.field,
+            //field: this.field,
             value: this.value,
             index: this.index
         });
@@ -97,7 +97,7 @@ $(function () {
     
     Backbone.history.start({pushState: true, root: "/AmMed/medic"});
     /*****REMOVE*****/
-    $("#ssn").inputmask("999-99-9999");
+    //$("#ssn").inputmask("999-99-9999");
     /*****REMOVE*****/
     
     var Start = Backbone.View.extend({
@@ -239,7 +239,7 @@ var DetailedInfoCreator = Backbone.View.extend({
         e.preventDefault();
         if ( validate() ) {
         	/*UGLY MASKS*/
-        	$("#ssn").inputmask("999-99-9999");
+        	//$("#ssn").inputmask("999-99-9999");	//	TURN IT ON !!!
         	//$("#ssn").inputmask("999-99-9999", {'autoUnmask' : true});
         	$("#date").inputmask("y/m/d");
         	$("#patientPhoneNumber").inputmask("(999) 999-9999");
@@ -484,7 +484,7 @@ function closeDetailedInfoCreator() {
 	//	AUTOCOMPLETE
 $(function() {
 	$("#criteria").autocomplete({
-		delay: 200,
+		delay: 300,
 		minLength: 2,
 		source: function( request, response ) {
 			$.ajax({
@@ -508,28 +508,19 @@ $(function() {
             $("input#criteria").val(ui.item.label);
         },
 		select: function(event, ui) {
+			alert('You chose ' + ui.item.label );
 			$("input#criteria").val(ui.item.value);
-			$("#search-btn").click();	//	works not as desired
-			//$("input#criteria").val(ui.item.value);
+			$("#search-btn").click();
 		    //$("#searchForm").submit();
 		  }
-		/*****/
-		/*
-		$("input#criteria").autocomplete({
-			  source: autocomplete,
-			  select: function(event, ui) {
-			    $("input#criteria").val(ui.item.value);
-			    //$("#searchform").submit();
-			  }
-			})
-		*/
-		/*****/
 		/*
 		select: function(event, ui) {
 			$("#criteria").val(ui.item.label);
 			//$("#hiddenDiv").val(ui.item.value);
 		}*/
-	});   
+	}).focus(function () {
+		$(this).autocomplete("search", this.value);
+	});
 	});
 
 /*
