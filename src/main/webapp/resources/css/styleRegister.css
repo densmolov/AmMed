@@ -56,15 +56,11 @@ legend {
 	margin: 100px auto auto auto;
 }
 
-#namename, #phonephone {
-	width: 30%;
+#namename, #phonephone, #ssnssn {
+	width: 27%;
 }
-#ssnssn {
-	width: 30%;
-}
-
-#patientbtn {
-	width: 8%;
+#patientbtn, #patientEditbtn {
+	width: 9%;
 	text-align:center;
 }
 
@@ -112,6 +108,7 @@ legend {
 #infoContainer form {
     box-shadow: 0px 0px 10px #AAA;
 }
+
 #createContainer {
 	margin-left: 300px;
 	position: absolute;
@@ -120,6 +117,16 @@ legend {
 #createContainer form {
     box-shadow: 0px 0px 10px #AAA;
 }
+
+#editContainer {
+	margin-left: 300px;
+	position: absolute;
+	bottom: 55px;
+}
+#editContainer form {
+    box-shadow: 0px 0px 10px #AAA;
+}
+
 
 #pages {
 	margin-top: 15px;

@@ -1,6 +1,6 @@
 var Views = { };
 var patients;
-/*What is going on?*/
+
 var AllPatientView;
 var PatientView;
 
@@ -65,7 +65,8 @@ $(function () {
     
     var MyRouter = Backbone.Router.extend({
        routes: {
-    	   "/patients/:id": 'informMe',
+    	   "/patients/:id": 'patientDetails',
+    	   "/edit/:id": 'editPatient',
     	   "": 'start',
     	   "/create": "create",
     	   //"/patients/edit": 'edit'
@@ -75,9 +76,13 @@ $(function () {
           closeDetailedInfo();
           closeDetailedInfoCreator();
         },
-        informMe: function(id) {
+        patientDetails: function(id) {
         	this.id = id;
         	Views.detailedInfo.render(id);
+        },
+        editPatient: function(id) {
+        	this.id = id;
+        	Views.editInfo.render(id);//_____________________________________________________________________________________
         },
         create: function() {
         	console.log('I am here');
@@ -162,11 +167,17 @@ $(function () {
 		tagName: 'tr',
 		template: $.templates("#rowpatient"),
         events: {
-        	"click #info": "clicked"
+        	"click #info": "clicked",
+        	"click #infoEditButton": "edit"
         },
         clicked: function(e){
             e.preventDefault();
+            //myRouter.navigate('/edit/' + this.model.get("patientId"), {trigger:true});
             myRouter.navigate('/patients/' + this.model.get("patientId"), {trigger:true});
+        },
+        edit: function(e){
+            e.preventDefault();
+            myRouter.navigate('/edit/' + this.model.get("patientId"), {trigger:true});
         },
         initialize: function(){
             _.bind(this.render, this);
@@ -189,7 +200,7 @@ var DetailedInfo = Backbone.View.extend({
 		template: $.templates("#showInfoTemplate"),
 	events: {
 		"click .btn-success#change_status_btn": "accept",
-		//"click .btn-success#edit_btn": "edit",
+		"click .btn-success#edit_btn": "edit",
 		"click .btn-danger#cancel_btn": "cancel"
 	},
 	cancel: function(e) {
@@ -197,6 +208,10 @@ var DetailedInfo = Backbone.View.extend({
 		toastr.warning("Closing with no changes") ;
 		myRouter.navigate("", {trigger: true} );
 	},
+	edit: function(e){
+        e.preventDefault();
+        myRouter.navigate('/edit/' + this.model.get("patientId"), {trigger:true});
+    },
 	accept: function(e) {
 		e.preventDefault();
 		toastr.success("Changes applied") ;
@@ -206,15 +221,53 @@ var DetailedInfo = Backbone.View.extend({
         var detailedPatient = new Patient ( {id: id} );
         var that = this;
         detailedPatient.fetch({
-                success:function(){
-                        var element = that.template.render(detailedPatient.toJSON());
-                        console.log(detailedPatient.toJSON());
-                        $(that.el).html(element);
-                        return this;
-                }
+        	success:function(){
+        		var element = that.template.render(detailedPatient.toJSON());
+        		console.log(detailedPatient.toJSON());
+        		$(that.el).html(element);
+        		return this;
+        	}
         });
 	}
 	});
+
+/*_______________________________________________________________________________*/
+
+var EditInfo = Backbone.View.extend({
+	//baseUrl: 'medic/patients/:id',
+	baseUrl: 'medic/edit/',
+	el: $("#editTemplateDiv"),
+	template: $.templates("#editTemplate"),
+events: {
+	"click .btn-success#change_status_btn": "accept",
+	"click .btn-danger#cancel_btn": "cancel"
+},
+cancel: function(e) {
+	e.preventDefault();
+	toastr.warning("Closing with no changes") ;
+	myRouter.navigate("", {trigger: true} );
+},
+accept: function(e) {
+	e.preventDefault();
+	toastr.success("Changes applied") ;
+	myRouter.navigate("", {trigger: true} );
+},	
+render: function(id) {
+    var detailedPatient = new Patient ( {id: id} );
+    var that = this;
+    detailedPatient.fetch({
+    	success:function(){
+    		var element = that.template.render(detailedPatient.toJSON());
+    		console.log(detailedPatient.toJSON());
+    		//$("#ssn").val = "121212121";???????????????????????????????????
+    		$(that.el).html(element);
+    		return this;
+    	}
+    });
+}
+});
+/*_______________________________________________________________________________*/
+
 
 var DetailedInfoCreator = Backbone.View.extend({
 		baseUrl: 'medic/create',
@@ -303,6 +356,9 @@ var DetailedInfoCreator = Backbone.View.extend({
         
     Views = {
             detailedInfo: new DetailedInfo(),
+            /*****/
+            editInfo: new EditInfo(),
+            /*****/
             detailedInfoCreator: new DetailedInfoCreator(),
             allPatientView: new AllPatientView()
     };
@@ -470,6 +526,9 @@ function showModal(head, message, id) {
 
 function closeDetailedInfo() {
     $(".container#infoContainer").fadeOut();
+}
+function closeEditInfo() {
+    $(".container#editContainer").fadeOut();
 }
 function closeDetailedInfoCreator() {
     $(".container#createContainer").fadeOut();

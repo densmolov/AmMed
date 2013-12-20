@@ -90,7 +90,12 @@ public class HomeController {
         public @ResponseBody
         Patient getPatientById(@PathVariable("id") int patientId) {
             return patientService.getPatientById(patientId);
-        }        
+        }
+        @RequestMapping(value = "/medic/edit/{id}", method = RequestMethod.GET)
+        public @ResponseBody
+        Patient getPatientByIdForEditing(@PathVariable("id") int patientId) {
+            return getPatientById(patientId);
+        }
 
         @RequestMapping(value = "/medic/update")        //?????????????????????????????????????????? refresh ??
         public String updateUser(@ModelAttribute Patient patient, BindingResult result) {
@@ -99,3 +104,22 @@ public class HomeController {
         }
         
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
