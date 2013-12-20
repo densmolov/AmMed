@@ -188,8 +188,8 @@ var DetailedInfo = Backbone.View.extend({
 		el: $("#patientTemplate"),
 		template: $.templates("#showInfoTemplate"),
 	events: {
-		"click .btn-success#change_status_btn": "accept",
-		//"click .btn-success#edit_btn": "edit",
+		"click .btn-success#confirm_btn": "accept",
+		//"click .btn-info#edit_btn": "edit",
 		"click .btn-danger#cancel_btn": "cancel"
 	},
 	cancel: function(e) {
@@ -201,17 +201,27 @@ var DetailedInfo = Backbone.View.extend({
 		e.preventDefault();
 		toastr.success("Changes applied") ;
 		myRouter.navigate("", {trigger: true} );
-	},	
+	},/*
+	edit: function() {
+        closeUserEditor();
+        if(Views.detailedInfo!=null) {
+            Views.detailedInfo.render(creationModel);
+        }
+    },*/
+    /*edit: function(e) {
+    	e.preventDefault();
+    	myRouter.navigate("/patients/edit", true);
+	},*/
 	render: function(id) {
-        var detailedPatient = new Patient ( {id: id} );
+		var detailedPatient = new Patient ( {id: id} );
         var that = this;
         detailedPatient.fetch({
-                success:function(){
-                        var element = that.template.render(detailedPatient.toJSON());
-                        console.log(detailedPatient.toJSON());
-                        $(that.el).html(element);
-                        return this;
-                }
+        	success:function(){
+        		var element = that.template.render(detailedPatient.toJSON());
+        		console.log(detailedPatient.toJSON());
+        		$(that.el).html(element);
+        		return this;
+        	}
         });
 	}
 	});
