@@ -11,22 +11,20 @@
     <link rel="stylesheet" href="css/styleRegister.css" type="text/css"/>
     <link rel="stylesheet" href="css/toastr.min.css" type="text/css"/>
     <link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
-    
-    <script type="text/javascript" src="js/app.js"></script>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.autocomplete.html.js"></script>
+    <script type="text/javascript" src="js/jsrender.min.js"></script>
+    <script type="text/javascript" src="js/underscore.js"></script>
     <script type="text/javascript" src="js/backbone.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/toastr.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/date.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.inputmask.js"></script>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/jquery.ui.autocomplete.html.js"></script>
-    <script type="text/javascript" src="js/jquery.validationEngine-en.js" charset="utf-8"></script>
-	<script type="text/javascript" src="js/jquery.validationEngine.js" charset="utf-8"></script>    
-    <script type="text/javascript" src="js/jquery-ui.js"></script>
-    <script type="text/javascript" src="js/jsrender.min.js"></script>
-    <script type="text/javascript" src="js/toastr.min.js"></script>    
-    <script type="text/javascript" src="js/underscore.js"></script> 
-  
+    <script src="js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
@@ -36,54 +34,54 @@
     <div class="navbar-inner">
         <span class="brand"><span id="ibs">Patient registration application</span></span>
 
-        <div id="userinfo">			
+        <div id="userinfo">                        
             <span id="userinfoSpan">Log out&nbsp;&nbsp;
             <a href="" title="Log Out" id="buttonLogout"><img src="img/logout.png"/></a>&nbsp;&nbsp;&nbsp;</span>
-        </div>	
+        </div>        
     </div>
 </div>
 
 <div class="content">
-	<div>
-	<div id="onthispage">On this page you can register a new patient, edit 
-									existing patients and search the patients in the database</div>
+        <div>
+        <div id="onthispage">On this page you can register a new patient, edit 
+                                                                        existing patients and search the patients in the database</div>
+        </div>
+        
+        <a class="btn" id="createNewPatient-btn" href="">Register a new patient</a>
+        
+        
+
+        
+        <!--
+        <input type="text" name="ssn" id="ssn" maxlength="11" 
+                                value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input" />-->
+
+                                
+                                
+                                
+<form class="form-inline well" id="searchForm">
+	<legend>Search by</legend>
+	<div id="search" class="form-inline">
+		<input type="text" name="searchValue" id="searchValue"/>
+		<a class="btn" type="submit" href="" id="search-btn">Search</a>
 	</div>
-	
-	<a class="btn" id="createNewPatient-btn" href="">Register a new patient</a>
-	
-	
-
-	
-	<!--
-	<input type="text" name="ssn" id="ssn" maxlength="11" 
-				value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input" />-->
-
-				
-				
-				
-	<form class="form-inline well" id="searchForm">
-        <legend>Search by</legend>
-        <div id="search" class="form-inline">
-			<input type="text" name="searchValue" id="searchValue"/>
-			<a class="btn" type="submit" href="" id="search-btn">Search</a>
-        </div>	<!-- id="search" -->
-    </form>
-	
-	<div id="patientListFrame">
-	<table class="table table-hover" id="tablePatients">
-			<thead>
+</form>
+        
+        <div id="patientListFrame">
+        <table class="table table-hover" id="tablePatients">
+                        <thead>
             <tr>
                 <td id="ssnssn">SSN</td>
                 <td id="namename">Patient's name</td>
-				<td id="phonephone">Phone number</td>
-				<td id="patientbtn"></td>
+                                <td id="phonephone">Phone number</td>
+                                <td id="patientbtn"></td>
             </tr>
             </thead>
         </table>
-	</div>
-		
-		
-		
+        </div>
+                
+                
+                
     <div class="footer">
         <div id="pages">
             &nbsp;&nbsp;&nbsp;&nbsp;Page <span id="pageIndex"></span> of <span id="totalPages"></span>
@@ -96,7 +94,7 @@
         </div>
     </div>
 
-	
+        
 
     <div id="foot">
 
@@ -104,7 +102,7 @@
 </div>
 
 
-</div>	<!-- <div id="mainDiv"> -->
+</div>        <!-- <div id="mainDiv"> -->
 
 
 <div class="modal hide" id="modal">
@@ -125,97 +123,97 @@
 
 <script type="text/x-jsrender" id="showInfoTemplate">
 <div class="container" id="infoContainer">
-	<form class="form-horizontal well">
-	<legend>Full information on patient <span id="thename">{{:firstName + ' ' + lastName}}</span></legend>
+        <form class="form-horizontal well">
+        <legend>Full information on patient <span id="thename">{{:firstName + ' ' + lastName}}</span></legend>
 <table class="table table-bordered table table-condensed">
 <tr>
-	<td id="infoColumn1">SSN</td>
-	<td id="infoColumn2">{{:ssn}}</td>
+        <td id="infoColumn1">SSN</td>
+        <td id="infoColumn2">{{:ssn}}</td>
 </tr>
 <tr>
-	<td id="infoColumn1">First name</td>
-	<td id="infoColumn2">{{:firstName}}</td>
+        <td id="infoColumn1">First name</td>
+        <td id="infoColumn2">{{:firstName}}</td>
 </tr>
 <tr>
-	<td id="infoColumn1">Last name</td>
-	<td id="infoColumn2">{{:lastName}}</td>
+        <td id="infoColumn1">Last name</td>
+        <td id="infoColumn2">{{:lastName}}</td>
 </tr>
 <tr>
-	<td id="infoColumn1">Date of birth</td>
-	<td id="infoColumn2">{{:dateOfBirth}}</td>
+        <td id="infoColumn1">Date of birth</td>
+        <td id="infoColumn2">{{:dateOfBirth}}</td>
 </tr>
 <tr>
-	<td id="infoColumn1">Gender</td>
-	<td id="infoColumn2">{{:gender.toLowerCase()}}</td>
+        <td id="infoColumn1">Gender</td>
+        <td id="infoColumn2">{{:gender.toLowerCase()}}</td>
 </tr>
 <tr>
-	<td id="infoColumn1">Marital status</td>
-	<td id="infoColumn2">{{:maritalStatus.toLowerCase()}}</td>
+        <td id="infoColumn1">Marital status</td>
+        <td id="infoColumn2">{{:maritalStatus.toLowerCase()}}</td>
 </tr>
 <tr>
-	<td id="infoColumn1">Race</td>
-	<td id="infoColumn2">{{:race.toLowerCase()}}</td>
+        <td id="infoColumn1">Race</td>
+        <td id="infoColumn2">{{:race.toLowerCase()}}</td>
 </tr>
 <tr>
-	<td id="infoColumn1">Religion</td>
-	<td id="infoColumn2">{{:religion.toLowerCase()}}</td>
+        <td id="infoColumn1">Religion</td>
+        <td id="infoColumn2">{{:religion.toLowerCase()}}</td>
 </tr>
 <tr>
-	<td id="infoColumn1">Language</td>
-	<td id="infoColumn2">{{:language.toLowerCase()}}</td>
+        <td id="infoColumn1">Language</td>
+        <td id="infoColumn2">{{:language.toLowerCase()}}</td>
 </tr>
 </table>
 
 <legend id="contactsBottom">Contacts:</legend>
 <table class="table table-bordered table table-condensed">
 <tr>
-	<td id="infoColumn3">Full client's name</td>
-	<td id="infoColumn4">{{:firstName + ' ' + lastName}}</td>
-	<td id="infoColumn3">Employer name</td>
-	<td id="infoColumn4">{{:employerName}}</td>
+        <td id="infoColumn3">Full client's name</td>
+        <td id="infoColumn4">{{:firstName + ' ' + lastName}}</td>
+        <td id="infoColumn3">Employer name</td>
+        <td id="infoColumn4">{{:employerName}}</td>
 </tr>
 <tr>
-	<td id="infoColumn3">Address</td>
-	<td id="infoColumn4">{{:patientAddress}}</td>
-	<td id="infoColumn3">Address</td>
-	<td id="infoColumn4">{{:employerAddress}}</td>
+        <td id="infoColumn3">Address</td>
+        <td id="infoColumn4">{{:patientAddress}}</td>
+        <td id="infoColumn3">Address</td>
+        <td id="infoColumn4">{{:employerAddress}}</td>
 </tr>
 <tr>
-	<td id="infoColumn3">City</td>
-	<td id="infoColumn4">{{:patientCity}}</td>
-	<td id="infoColumn3">City</td>
-	<td id="infoColumn4">{{:employerCity}}</td>
+        <td id="infoColumn3">City</td>
+        <td id="infoColumn4">{{:patientCity}}</td>
+        <td id="infoColumn3">City</td>
+        <td id="infoColumn4">{{:employerCity}}</td>
 </tr>
 <tr>
-	<td id="infoColumn3">State</td>
-	<td id="infoColumn4">{{:patientState}}</td>
-	<td id="infoColumn3">State</td>
-	<td id="infoColumn4">{{:employerState}}</td>
+        <td id="infoColumn3">State</td>
+        <td id="infoColumn4">{{:patientState}}</td>
+        <td id="infoColumn3">State</td>
+        <td id="infoColumn4">{{:employerState}}</td>
 </tr>
 <tr>
-	<td id="infoColumn3">Zip-code</td>
-	<td id="infoColumn4">{{:patientZip}}</td>
-	<td id="infoColumn3">Zip-code</td>
-	<td id="infoColumn4">{{:employerZip}}</td>
+        <td id="infoColumn3">Zip-code</td>
+        <td id="infoColumn4">{{:patientZip}}</td>
+        <td id="infoColumn3">Zip-code</td>
+        <td id="infoColumn4">{{:employerZip}}</td>
 </tr>
 <tr>
-	<td id="infoColumn3">Phone number</td>
-	<td id="infoColumn4">{{:patientPhoneNumber}}</td>
-	<td id="infoColumn3">Phone number</td>
-	<td id="infoColumn4">{{:employerPhoneNumber}}</td>
+        <td id="infoColumn3">Phone number</td>
+        <td id="infoColumn4">{{:patientPhoneNumber}}</td>
+        <td id="infoColumn3">Phone number</td>
+        <td id="infoColumn4">{{:employerPhoneNumber}}</td>
 </tr>
 </table>
-		<a href="" class="btn btn-success" id="confirm_btn">Confirm changes</a>
-		<a href="" class="btn btn-info" id="edit_btn">Edit profile</a>
-		<a href="" class="btn btn-danger" id="cancel_btn">Cancel</a>
-	</form>
+                <a href="" class="btn btn-success" id="change_status_btn">Confirm changes</a>
+                <a href="" class="btn btn-info" id="edit_btn">Edit profile</a>
+                <a href="" class="btn btn-danger" id="cancel_btn">Cancel</a>
+        </form>
 </div>
 </script>
 
 
-	<!--
-	____________________________________________________________________________________________
-	-->
+        <!--
+        ____________________________________________________________________________________________
+        -->
 
 
 <div id="registerTemplate"></div>
@@ -225,216 +223,216 @@
 
 <form class="form-horizontal well" id="registerPatientForm" >
 
-	<legend id="ibs">Creating a new patient</legend>
+        <legend id="ibs">Creating a new patient</legend>
 
-		<table class="table table-bordered table-condensed" id="registerLeftTopTable">
-		<tr>
-			<td id="columnCreate1">SSN :</td>
-			<td id="columnCreate2"> <input type="text" name="ssn" id="ssn" maxlength="9" 
-				value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input" /></td>
-		</tr>
-		<tr>
-			<td id="columnCreate1">First name :</td>
-			<td id="columnCreate2"> <input type="text" name="firstName" id="firstName" maxlength="20" 
-				value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
-		</tr>
-		<tr>
-			<td id="columnCreate1">Last name :</td>
-			<td id="columnCreate2"> <input type="text" name="lastName" id="lastName" maxlength="20" 
-				value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
-		</tr>
-		<tr>
-			<td id="columnCreate1">Date of birth :</td>
-			<td id="columnCreate2"> <input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="yyyy-mm-dd" 
-				value="" class="validate[required,custom[date],past[NOW]] text-input"/></td>
-		</tr>
-
-
-	</table><table class="table table-bordered table-condensed" id="registerRightTopTable">
+                <table class="table table-bordered table-condensed" id="registerLeftTopTable">
+                <tr>
+                        <td id="columnCreate1">SSN :</td>
+                        <td id="columnCreate2"> <input type="text" name="ssn" id="ssn" maxlength="9" 
+                                value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input" /></td>
+                </tr>
+                <tr>
+                        <td id="columnCreate1">First name :</td>
+                        <td id="columnCreate2"> <input type="text" name="firstName" id="firstName" maxlength="20" 
+                                value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
+                </tr>
+                <tr>
+                        <td id="columnCreate1">Last name :</td>
+                        <td id="columnCreate2"> <input type="text" name="lastName" id="lastName" maxlength="20" 
+                                value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
+                </tr>
+                <tr>
+                        <td id="columnCreate1">Date of birth :</td>
+                        <td id="columnCreate2"> <input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="yyyy-mm-dd" 
+                                value="" class="validate[required,custom[date],past[NOW]] text-input"/></td>
+                </tr>
 
 
-		<tr>
-			<td id="columnCreate3">Language :</td>
-			<td id="columnCreate4">
-			<select name="language" id="language">
-			<option value="ENGLISH">&nbsp;&nbsp;&nbsp;English</option>
-			<option value="SPANISH">&nbsp;&nbsp;&nbsp;Spanish</option>
-			<option value="FRENCH">&nbsp;&nbsp;&nbsp;French</option>
-			<option value="ARABIC">&nbsp;&nbsp;&nbsp;Arabic</option>
-			<option value="CHINESE">&nbsp;&nbsp;&nbsp;Chinese</option>
-			<option value="DUTCH">&nbsp;&nbsp;&nbsp;Dutch</option>
-			<option value="VIETNAMESE">&nbsp;&nbsp;&nbsp;Vietnamese</option>
-			<option value="FINNISH">&nbsp;&nbsp;&nbsp;Finnish</option>
-			<option value="GERMAN">&nbsp;&nbsp;&nbsp;German</option>
-			<option value="RUSSIAN">&nbsp;&nbsp;&nbsp;Russian</option>
-			<option value="INDIAN">&nbsp;&nbsp;&nbsp;Indian</option>
-			<option value="ITALIAN">&nbsp;&nbsp;&nbsp;Italian</option>
-			<option value="OTHER">&nbsp;&nbsp;&nbsp;other</option>
-			</select></td>
-		</tr>
-		<tr>
-			<td id="columnCreate3">Gender :</td>
-			<td id="columnCreate4">
-			<select name="gender" id="gender">
-			<option value="MALE">&nbsp;&nbsp;&nbsp;male</option>
-			<option value="FEMALE">&nbsp;&nbsp;&nbsp;female</option>
-			</select></td>
-		</tr>
-		<tr>
-			<td id="columnCreate3">Race :</td>
-			<td id="columnCreate4">
-			<select name="race" id="race">
-			<option value="WHITE">&nbsp;&nbsp;&nbsp;white</option>
-			<option value="BLACK">&nbsp;&nbsp;&nbsp;black</option>
-			<option value="ASIAN">&nbsp;&nbsp;&nbsp;asian</option>
-			</select>
-			</td>
-		</tr>
-		<tr>
-			<td id="columnCreate3">Marital status :</td>	
-			<td id="columnCreate4">
-			<select name="maritalStatus" id="maritalStatus">
-			<option value="MARRIED">&nbsp;&nbsp;&nbsp;married</option>
-			<option value="SINGLE">&nbsp;&nbsp;&nbsp;single</option>
-			</select>
-			</td>
-		</tr>
-		<tr>
-			<td id="columnCreate3">Religion :</td>
-			<td id="columnCreate4">
-			<select name="religion" id="religion">
-			<option value="ATHEIST">&nbsp;&nbsp;&nbsp;atheist</option>
-			<option value="CHRISTIANITY">&nbsp;&nbsp;&nbsp;Christianity</option>
-			<option value="ISLAM">&nbsp;&nbsp;&nbsp;Islam</option>
-			<option value="HINDUISM">&nbsp;&nbsp;&nbsp;Hinduism</option>
-			<option value="SHENISM">&nbsp;&nbsp;&nbsp;Shenism</option>
-			<option value="BUDDHISM">&nbsp;&nbsp;&nbsp;Buddhism</option>
-			<option value="OTHER">&nbsp;&nbsp;&nbsp;other</option>
-			</select></td>
-			</tr>
+        </table><table class="table table-bordered table-condensed" id="registerRightTopTable">
 
 
-	</table></br><p><legend id="smalllegend">Patient contacts:</legend></p><table class="table table-bordered table-condensed" 
-																								id="registerLeftBottomTable">
+                <tr>
+                        <td id="columnCreate3">Language :</td>
+                        <td id="columnCreate4">
+                        <select name="language" id="language">
+                        <option value="ENGLISH">&nbsp;&nbsp;&nbsp;English</option>
+                        <option value="SPANISH">&nbsp;&nbsp;&nbsp;Spanish</option>
+                        <option value="FRENCH">&nbsp;&nbsp;&nbsp;French</option>
+                        <option value="ARABIC">&nbsp;&nbsp;&nbsp;Arabic</option>
+                        <option value="CHINESE">&nbsp;&nbsp;&nbsp;Chinese</option>
+                        <option value="DUTCH">&nbsp;&nbsp;&nbsp;Dutch</option>
+                        <option value="VIETNAMESE">&nbsp;&nbsp;&nbsp;Vietnamese</option>
+                        <option value="FINNISH">&nbsp;&nbsp;&nbsp;Finnish</option>
+                        <option value="GERMAN">&nbsp;&nbsp;&nbsp;German</option>
+                        <option value="RUSSIAN">&nbsp;&nbsp;&nbsp;Russian</option>
+                        <option value="INDIAN">&nbsp;&nbsp;&nbsp;Indian</option>
+                        <option value="ITALIAN">&nbsp;&nbsp;&nbsp;Italian</option>
+                        <option value="OTHER">&nbsp;&nbsp;&nbsp;other</option>
+                        </select></td>
+                </tr>
+                <tr>
+                        <td id="columnCreate3">Gender :</td>
+                        <td id="columnCreate4">
+                        <select name="gender" id="gender">
+                        <option value="MALE">&nbsp;&nbsp;&nbsp;male</option>
+                        <option value="FEMALE">&nbsp;&nbsp;&nbsp;female</option>
+                        </select></td>
+                </tr>
+                <tr>
+                        <td id="columnCreate3">Race :</td>
+                        <td id="columnCreate4">
+                        <select name="race" id="race">
+                        <option value="WHITE">&nbsp;&nbsp;&nbsp;white</option>
+                        <option value="BLACK">&nbsp;&nbsp;&nbsp;black</option>
+                        <option value="ASIAN">&nbsp;&nbsp;&nbsp;asian</option>
+                        </select>
+                        </td>
+                </tr>
+                <tr>
+                        <td id="columnCreate3">Marital status :</td>        
+                        <td id="columnCreate4">
+                        <select name="maritalStatus" id="maritalStatus">
+                        <option value="MARRIED">&nbsp;&nbsp;&nbsp;married</option>
+                        <option value="SINGLE">&nbsp;&nbsp;&nbsp;single</option>
+                        </select>
+                        </td>
+                </tr>
+                <tr>
+                        <td id="columnCreate3">Religion :</td>
+                        <td id="columnCreate4">
+                        <select name="religion" id="religion">
+                        <option value="ATHEIST">&nbsp;&nbsp;&nbsp;atheist</option>
+                        <option value="CHRISTIANITY">&nbsp;&nbsp;&nbsp;Christianity</option>
+                        <option value="ISLAM">&nbsp;&nbsp;&nbsp;Islam</option>
+                        <option value="HINDUISM">&nbsp;&nbsp;&nbsp;Hinduism</option>
+                        <option value="SHENISM">&nbsp;&nbsp;&nbsp;Shenism</option>
+                        <option value="BUDDHISM">&nbsp;&nbsp;&nbsp;Buddhism</option>
+                        <option value="OTHER">&nbsp;&nbsp;&nbsp;other</option>
+                        </select></td>
+                        </tr>
+
+
+        </table></br><p><legend id="smalllegend">Patient contacts:</legend></p><table class="table table-bordered table-condensed" 
+                                                                                                                                                                                                id="registerLeftBottomTable">
 
 
 <tr>
-	<td id="columnCreate5">&nbsp;&nbsp;Patient address :</td>
-	<td id="columnCreate6"> <input type="text" name="patientAddress" id="patientAddress" maxlength="20" 
-			value="" class="validate[required] text-input"/></td>
+        <td id="columnCreate5">&nbsp;&nbsp;Patient address :</td>
+        <td id="columnCreate6"> <input type="text" name="patientAddress" id="patientAddress" maxlength="20" 
+                        value="" class="validate[required] text-input"/></td>
 </tr>
 <tr>
-	<td id="columnCreate5">&nbsp;&nbsp;Patient city :</td>
-	<td id="columnCreate6"> <input type="text" name="patientCity" id="patientCity" maxlength="20" 
-			value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
+        <td id="columnCreate5">&nbsp;&nbsp;Patient city :</td>
+        <td id="columnCreate6"> <input type="text" name="patientCity" id="patientCity" maxlength="20" 
+                        value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
 </tr>
 <tr>
-	<td id="columnCreate5">&nbsp;&nbsp;Patient state :</td>
-	<td id="columnCreate6">
+        <td id="columnCreate5">&nbsp;&nbsp;Patient state :</td>
+        <td id="columnCreate6">
 <select name="patientState" id="patientState">
-<option value="AL">&nbsp;&nbsp;&nbsp;Alabama</option>		<option value="AK">&nbsp;&nbsp;&nbsp;Alaska</option>
-<option value="AZ">&nbsp;&nbsp;&nbsp;Arizona</option>		<option value="AR">&nbsp;&nbsp;&nbsp;Arkansas</option>
-<option value="CA">&nbsp;&nbsp;&nbsp;California</option>	<option value="CO">&nbsp;&nbsp;&nbsp;Colorado</option>
-<option value="CT">&nbsp;&nbsp;&nbsp;Connecticut</option>	<option value="DE">&nbsp;&nbsp;&nbsp;Delaware</option>
-<option value="FL">&nbsp;&nbsp;&nbsp;Florida</option>		<option value="GA">&nbsp;&nbsp;&nbsp;Georgia</option>
-<option value="HI">&nbsp;&nbsp;&nbsp;Hawaii</option>		<option value="ID">&nbsp;&nbsp;&nbsp;Idaho</option>
-<option value="IL">&nbsp;&nbsp;&nbsp;Illinois</option>		<option value="IN">&nbsp;&nbsp;&nbsp;Indiana</option>
-<option value="IA">&nbsp;&nbsp;&nbsp;Iowa</option>			<option value="KS">&nbsp;&nbsp;&nbsp;Kansas</option>
-<option value="KY">&nbsp;&nbsp;&nbsp;Kentucky</option>		<option value="LA">&nbsp;&nbsp;&nbsp;Louisiana</option>
-<option value="ME">&nbsp;&nbsp;&nbsp;Maine</option>			<option value="MD">&nbsp;&nbsp;&nbsp;Maryland</option>
-<option value="MA">&nbsp;&nbsp;&nbsp;Massachusetts</option>	<option value="MI">&nbsp;&nbsp;&nbsp;Michigan</option>
-<option value="MN">&nbsp;&nbsp;&nbsp;Minnesota</option>		<option value="MS">&nbsp;&nbsp;&nbsp;Mississippi</option>
-<option value="MO">&nbsp;&nbsp;&nbsp;Missouri</option>		<option value="MT">&nbsp;&nbsp;&nbsp;Montana</option>
-<option value="NE">&nbsp;&nbsp;&nbsp;Nebraska</option>		<option value="NV">&nbsp;&nbsp;&nbsp;Nevada</option>
-<option value="NH">&nbsp;&nbsp;&nbsp;New Hampshire</option>	<option value="NJ">&nbsp;&nbsp;&nbsp;New Jersey</option>
-<option value="NM">&nbsp;&nbsp;&nbsp;New Mexico</option>	<option value="NY">&nbsp;&nbsp;&nbsp;New York</option>
-<option value="NC">&nbsp;&nbsp;&nbsp;North Carolina</option>	<option value="ND">&nbsp;&nbsp;&nbsp;North Dakota</option>
-<option value="OH">&nbsp;&nbsp;&nbsp;Ohio</option>			<option value="OK">&nbsp;&nbsp;&nbsp;Oklahoma</option>
-<option value="OR">&nbsp;&nbsp;&nbsp;Oregon</option>		<option value="PA">&nbsp;&nbsp;&nbsp;Pennsylvania</option>
-<option value="RI">&nbsp;&nbsp;&nbsp;Rhode Island</option>	<option value="SC">&nbsp;&nbsp;&nbsp;South Carolina</option>
-<option value="SD">&nbsp;&nbsp;&nbsp;South Dakota</option>	<option value="TN">&nbsp;&nbsp;&nbsp;Tennessee</option>
-<option value="TX">&nbsp;&nbsp;&nbsp;Texas</option>			<option value="UT">&nbsp;&nbsp;&nbsp;Utah</option>
-<option value="VT">&nbsp;&nbsp;&nbsp;Vermont</option>		<option value="VA">&nbsp;&nbsp;&nbsp;Virginia</option>
-<option value="WA">&nbsp;&nbsp;&nbsp;Washington</option>	<option value="WV">&nbsp;&nbsp;&nbsp;West Virginia</option>
-<option value="WI">&nbsp;&nbsp;&nbsp;Wisconsin</option>		<option value="WY">&nbsp;&nbsp;&nbsp;Wyoming</option>
+<option value="AL">&nbsp;&nbsp;&nbsp;Alabama</option>                <option value="AK">&nbsp;&nbsp;&nbsp;Alaska</option>
+<option value="AZ">&nbsp;&nbsp;&nbsp;Arizona</option>                <option value="AR">&nbsp;&nbsp;&nbsp;Arkansas</option>
+<option value="CA">&nbsp;&nbsp;&nbsp;California</option>        <option value="CO">&nbsp;&nbsp;&nbsp;Colorado</option>
+<option value="CT">&nbsp;&nbsp;&nbsp;Connecticut</option>        <option value="DE">&nbsp;&nbsp;&nbsp;Delaware</option>
+<option value="FL">&nbsp;&nbsp;&nbsp;Florida</option>                <option value="GA">&nbsp;&nbsp;&nbsp;Georgia</option>
+<option value="HI">&nbsp;&nbsp;&nbsp;Hawaii</option>                <option value="ID">&nbsp;&nbsp;&nbsp;Idaho</option>
+<option value="IL">&nbsp;&nbsp;&nbsp;Illinois</option>                <option value="IN">&nbsp;&nbsp;&nbsp;Indiana</option>
+<option value="IA">&nbsp;&nbsp;&nbsp;Iowa</option>                        <option value="KS">&nbsp;&nbsp;&nbsp;Kansas</option>
+<option value="KY">&nbsp;&nbsp;&nbsp;Kentucky</option>                <option value="LA">&nbsp;&nbsp;&nbsp;Louisiana</option>
+<option value="ME">&nbsp;&nbsp;&nbsp;Maine</option>                        <option value="MD">&nbsp;&nbsp;&nbsp;Maryland</option>
+<option value="MA">&nbsp;&nbsp;&nbsp;Massachusetts</option>        <option value="MI">&nbsp;&nbsp;&nbsp;Michigan</option>
+<option value="MN">&nbsp;&nbsp;&nbsp;Minnesota</option>                <option value="MS">&nbsp;&nbsp;&nbsp;Mississippi</option>
+<option value="MO">&nbsp;&nbsp;&nbsp;Missouri</option>                <option value="MT">&nbsp;&nbsp;&nbsp;Montana</option>
+<option value="NE">&nbsp;&nbsp;&nbsp;Nebraska</option>                <option value="NV">&nbsp;&nbsp;&nbsp;Nevada</option>
+<option value="NH">&nbsp;&nbsp;&nbsp;New Hampshire</option>        <option value="NJ">&nbsp;&nbsp;&nbsp;New Jersey</option>
+<option value="NM">&nbsp;&nbsp;&nbsp;New Mexico</option>        <option value="NY">&nbsp;&nbsp;&nbsp;New York</option>
+<option value="NC">&nbsp;&nbsp;&nbsp;North Carolina</option>        <option value="ND">&nbsp;&nbsp;&nbsp;North Dakota</option>
+<option value="OH">&nbsp;&nbsp;&nbsp;Ohio</option>                        <option value="OK">&nbsp;&nbsp;&nbsp;Oklahoma</option>
+<option value="OR">&nbsp;&nbsp;&nbsp;Oregon</option>                <option value="PA">&nbsp;&nbsp;&nbsp;Pennsylvania</option>
+<option value="RI">&nbsp;&nbsp;&nbsp;Rhode Island</option>        <option value="SC">&nbsp;&nbsp;&nbsp;South Carolina</option>
+<option value="SD">&nbsp;&nbsp;&nbsp;South Dakota</option>        <option value="TN">&nbsp;&nbsp;&nbsp;Tennessee</option>
+<option value="TX">&nbsp;&nbsp;&nbsp;Texas</option>                        <option value="UT">&nbsp;&nbsp;&nbsp;Utah</option>
+<option value="VT">&nbsp;&nbsp;&nbsp;Vermont</option>                <option value="VA">&nbsp;&nbsp;&nbsp;Virginia</option>
+<option value="WA">&nbsp;&nbsp;&nbsp;Washington</option>        <option value="WV">&nbsp;&nbsp;&nbsp;West Virginia</option>
+<option value="WI">&nbsp;&nbsp;&nbsp;Wisconsin</option>                <option value="WY">&nbsp;&nbsp;&nbsp;Wyoming</option>
 </select>
 </td>
 </tr>
 <tr>
-	<td id="columnCreate5">&nbsp;&nbsp;Patient ZIP-code :</td>
-	<td id="columnCreate6"> <input type="text" name="patientZip" id="patientZip"  maxlength="5" 
-			value="" class="validate[required,custom[integer],maxSize[5],minSize[5]] text-input"/></td>
+        <td id="columnCreate5">&nbsp;&nbsp;Patient ZIP-code :</td>
+        <td id="columnCreate6"> <input type="text" name="patientZip" id="patientZip"  maxlength="5" 
+                        value="" class="validate[required,custom[integer],maxSize[5],minSize[5]] text-input"/></td>
 </tr>
 <tr>
-	<td id="columnCreate5">&nbsp;&nbsp;Phone number :</td>
-	<td id="columnCreate6"> <input type="text" name="patientPhoneNumber" id="patientPhoneNumber" maxlength="14" 
-			<value="" class="validate[custom[integer],maxSize[10],minSize[10]] text-input"/></td>
+        <td id="columnCreate5">&nbsp;&nbsp;Phone number :</td>
+        <td id="columnCreate6"> <input type="text" name="patientPhoneNumber" id="patientPhoneNumber" maxlength="14" 
+                        <value="" class="validate[custom[integer],maxSize[10],minSize[10]] text-input"/></td>
 </tr>
 
 
-	</table><table class="table table-bordered table-condensed" id="registerRightBottomTable">
+        </table><table class="table table-bordered table-condensed" id="registerRightBottomTable">
 
 
 <tr>
-	<td id="columnCreate7">&nbsp;&nbsp;Employer name :</td>
-	<td id="columnCreate8"> <input type="text" name="employerName" id="employerName" maxlength="20" 
-			value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
+        <td id="columnCreate7">&nbsp;&nbsp;Employer name :</td>
+        <td id="columnCreate8"> <input type="text" name="employerName" id="employerName" maxlength="20" 
+                        value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
 </tr>
 <tr>
-	<td id="columnCreate7">&nbsp;&nbsp;Employer address :</td>
-	<td id="columnCreate8"> <input type="text" name="employerAddress" id="employerAddress" maxlength="20" 
-			value="" class="validate[required] text-input"/></td>
+        <td id="columnCreate7">&nbsp;&nbsp;Employer address :</td>
+        <td id="columnCreate8"> <input type="text" name="employerAddress" id="employerAddress" maxlength="20" 
+                        value="" class="validate[required] text-input"/></td>
 </tr>
 <tr>
-	<td id="columnCreate7">&nbsp;&nbsp;Employer city :</td>
-	<td id="columnCreate8"> <input type="text" name="employerCity" id="employerCity" maxlength="20" 
-			value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
+        <td id="columnCreate7">&nbsp;&nbsp;Employer city :</td>
+        <td id="columnCreate8"> <input type="text" name="employerCity" id="employerCity" maxlength="20" 
+                        value="" class="validate[required,custom[onlyLetterSp]] text-input"/></td>
 </tr>
 <tr>
-	<td id="columnCreate7">&nbsp;&nbsp;Employer state :</td>
-	<td id="columnCreate8">
+        <td id="columnCreate7">&nbsp;&nbsp;Employer state :</td>
+        <td id="columnCreate8">
 <select name="employerState" id="employerState">
-<option value="AL">&nbsp;&nbsp;&nbsp;Alabama</option>		<option value="AK">&nbsp;&nbsp;&nbsp;Alaska</option>
-<option value="AZ">&nbsp;&nbsp;&nbsp;Arizona</option>		<option value="AR">&nbsp;&nbsp;&nbsp;Arkansas</option>
-<option value="CA">&nbsp;&nbsp;&nbsp;California</option>	<option value="CO">&nbsp;&nbsp;&nbsp;Colorado</option>
-<option value="CT">&nbsp;&nbsp;&nbsp;Connecticut</option>	<option value="DE">&nbsp;&nbsp;&nbsp;Delaware</option>
-<option value="FL">&nbsp;&nbsp;&nbsp;Florida</option>		<option value="GA">&nbsp;&nbsp;&nbsp;Georgia</option>
-<option value="HI">&nbsp;&nbsp;&nbsp;Hawaii</option>		<option value="ID">&nbsp;&nbsp;&nbsp;Idaho</option>
-<option value="IL">&nbsp;&nbsp;&nbsp;Illinois</option>		<option value="IN">&nbsp;&nbsp;&nbsp;Indiana</option>
-<option value="IA">&nbsp;&nbsp;&nbsp;Iowa</option>			<option value="KS">&nbsp;&nbsp;&nbsp;Kansas</option>
-<option value="KY">&nbsp;&nbsp;&nbsp;Kentucky</option>		<option value="LA">&nbsp;&nbsp;&nbsp;Louisiana</option>
-<option value="ME">&nbsp;&nbsp;&nbsp;Maine</option>			<option value="MD">&nbsp;&nbsp;&nbsp;Maryland</option>
-<option value="MA">&nbsp;&nbsp;&nbsp;Massachusetts</option>	<option value="MI">&nbsp;&nbsp;&nbsp;Michigan</option>
-<option value="MN">&nbsp;&nbsp;&nbsp;Minnesota</option>		<option value="MS">&nbsp;&nbsp;&nbsp;Mississippi</option>
-<option value="MO">&nbsp;&nbsp;&nbsp;Missouri</option>		<option value="MT">&nbsp;&nbsp;&nbsp;Montana</option>
-<option value="NE">&nbsp;&nbsp;&nbsp;Nebraska</option>		<option value="NV">&nbsp;&nbsp;&nbsp;Nevada</option>
-<option value="NH">&nbsp;&nbsp;&nbsp;New Hampshire</option>	<option value="NJ">&nbsp;&nbsp;&nbsp;New Jersey</option>
-<option value="NM">&nbsp;&nbsp;&nbsp;New Mexico</option>	<option value="NY">&nbsp;&nbsp;&nbsp;New York</option>
-<option value="NC">&nbsp;&nbsp;&nbsp;North Carolina</option>	<option value="ND">&nbsp;&nbsp;&nbsp;North Dakota</option>
-<option value="OH">&nbsp;&nbsp;&nbsp;Ohio</option>			<option value="OK">&nbsp;&nbsp;&nbsp;Oklahoma</option>
-<option value="OR">&nbsp;&nbsp;&nbsp;Oregon</option>		<option value="PA">&nbsp;&nbsp;&nbsp;Pennsylvania</option>
-<option value="RI">&nbsp;&nbsp;&nbsp;Rhode Island</option>	<option value="SC">&nbsp;&nbsp;&nbsp;South Carolina</option>
-<option value="SD">&nbsp;&nbsp;&nbsp;South Dakota</option>	<option value="TN">&nbsp;&nbsp;&nbsp;Tennessee</option>
-<option value="TX">&nbsp;&nbsp;&nbsp;Texas</option>			<option value="UT">&nbsp;&nbsp;&nbsp;Utah</option>
-<option value="VT">&nbsp;&nbsp;&nbsp;Vermont</option>		<option value="VA">&nbsp;&nbsp;&nbsp;Virginia</option>
-<option value="WA">&nbsp;&nbsp;&nbsp;Washington</option>	<option value="WV">&nbsp;&nbsp;&nbsp;West Virginia</option>
-<option value="WI">&nbsp;&nbsp;&nbsp;Wisconsin</option>		<option value="WY">&nbsp;&nbsp;&nbsp;Wyoming</option>
+<option value="AL">&nbsp;&nbsp;&nbsp;Alabama</option>                <option value="AK">&nbsp;&nbsp;&nbsp;Alaska</option>
+<option value="AZ">&nbsp;&nbsp;&nbsp;Arizona</option>                <option value="AR">&nbsp;&nbsp;&nbsp;Arkansas</option>
+<option value="CA">&nbsp;&nbsp;&nbsp;California</option>        <option value="CO">&nbsp;&nbsp;&nbsp;Colorado</option>
+<option value="CT">&nbsp;&nbsp;&nbsp;Connecticut</option>        <option value="DE">&nbsp;&nbsp;&nbsp;Delaware</option>
+<option value="FL">&nbsp;&nbsp;&nbsp;Florida</option>                <option value="GA">&nbsp;&nbsp;&nbsp;Georgia</option>
+<option value="HI">&nbsp;&nbsp;&nbsp;Hawaii</option>                <option value="ID">&nbsp;&nbsp;&nbsp;Idaho</option>
+<option value="IL">&nbsp;&nbsp;&nbsp;Illinois</option>                <option value="IN">&nbsp;&nbsp;&nbsp;Indiana</option>
+<option value="IA">&nbsp;&nbsp;&nbsp;Iowa</option>                        <option value="KS">&nbsp;&nbsp;&nbsp;Kansas</option>
+<option value="KY">&nbsp;&nbsp;&nbsp;Kentucky</option>                <option value="LA">&nbsp;&nbsp;&nbsp;Louisiana</option>
+<option value="ME">&nbsp;&nbsp;&nbsp;Maine</option>                        <option value="MD">&nbsp;&nbsp;&nbsp;Maryland</option>
+<option value="MA">&nbsp;&nbsp;&nbsp;Massachusetts</option>        <option value="MI">&nbsp;&nbsp;&nbsp;Michigan</option>
+<option value="MN">&nbsp;&nbsp;&nbsp;Minnesota</option>                <option value="MS">&nbsp;&nbsp;&nbsp;Mississippi</option>
+<option value="MO">&nbsp;&nbsp;&nbsp;Missouri</option>                <option value="MT">&nbsp;&nbsp;&nbsp;Montana</option>
+<option value="NE">&nbsp;&nbsp;&nbsp;Nebraska</option>                <option value="NV">&nbsp;&nbsp;&nbsp;Nevada</option>
+<option value="NH">&nbsp;&nbsp;&nbsp;New Hampshire</option>        <option value="NJ">&nbsp;&nbsp;&nbsp;New Jersey</option>
+<option value="NM">&nbsp;&nbsp;&nbsp;New Mexico</option>        <option value="NY">&nbsp;&nbsp;&nbsp;New York</option>
+<option value="NC">&nbsp;&nbsp;&nbsp;North Carolina</option>        <option value="ND">&nbsp;&nbsp;&nbsp;North Dakota</option>
+<option value="OH">&nbsp;&nbsp;&nbsp;Ohio</option>                        <option value="OK">&nbsp;&nbsp;&nbsp;Oklahoma</option>
+<option value="OR">&nbsp;&nbsp;&nbsp;Oregon</option>                <option value="PA">&nbsp;&nbsp;&nbsp;Pennsylvania</option>
+<option value="RI">&nbsp;&nbsp;&nbsp;Rhode Island</option>        <option value="SC">&nbsp;&nbsp;&nbsp;South Carolina</option>
+<option value="SD">&nbsp;&nbsp;&nbsp;South Dakota</option>        <option value="TN">&nbsp;&nbsp;&nbsp;Tennessee</option>
+<option value="TX">&nbsp;&nbsp;&nbsp;Texas</option>                        <option value="UT">&nbsp;&nbsp;&nbsp;Utah</option>
+<option value="VT">&nbsp;&nbsp;&nbsp;Vermont</option>                <option value="VA">&nbsp;&nbsp;&nbsp;Virginia</option>
+<option value="WA">&nbsp;&nbsp;&nbsp;Washington</option>        <option value="WV">&nbsp;&nbsp;&nbsp;West Virginia</option>
+<option value="WI">&nbsp;&nbsp;&nbsp;Wisconsin</option>                <option value="WY">&nbsp;&nbsp;&nbsp;Wyoming</option>
 </select>
 </td>
 </tr>
 <tr>
-	<td id="columnCreate7">&nbsp;&nbsp;Employer ZIP-code :</td>
-	<td id="columnCreate8"> <input type="text" name="employerZip" id="employerZip" maxlength="5" 
-			value="" class="validate[required,custom[integer],maxSize[5],minSize[5]] text-input"/></td>
+        <td id="columnCreate7">&nbsp;&nbsp;Employer ZIP-code :</td>
+        <td id="columnCreate8"> <input type="text" name="employerZip" id="employerZip" maxlength="5" 
+                        value="" class="validate[required,custom[integer],maxSize[5],minSize[5]] text-input"/></td>
 </tr>
 <tr>
-	<td id="columnCreate7">&nbsp;&nbsp;Phone number :</td>
-	<td id="columnCreate8"> <input type="text" name="employerPhoneNumber" id="employerPhoneNumber" maxlength="14" 
-			value="" class="validate[required,custom[integer],maxSize[10],minSize[10]] text-input"/></td>
+        <td id="columnCreate7">&nbsp;&nbsp;Phone number :</td>
+        <td id="columnCreate8"> <input type="text" name="employerPhoneNumber" id="employerPhoneNumber" maxlength="14" 
+                        value="" class="validate[required,custom[integer],maxSize[10],minSize[10]] text-input"/></td>
 </tr>
 </table>
-		<a href="" class="btn btn-success" id="create_patient_btn">Ok</a>
-		<a href="" class="btn btn-danger" id="cancel_patient_btn">Cancel</a>
+                <a href="" class="btn btn-success" id="create_patient_btn">Ok</a>
+                <a href="" class="btn btn-danger" id="cancel_patient_btn">Cancel</a>
 </form>
 </div>
 </script>
@@ -449,23 +447,23 @@
 </script -->
 
 <script id="rowpatient" type="text/x-jsrender">
-	<td>{{:ssn}}</td>
-	<td>{{:firstName + ' ' + lastName}}</td>
-	<td>{{:patientPhoneNumber}}</td>
-	<td><a href="" title="Full info on this patient" id="info">Details</a></td>
+        <td>{{:ssn}}</td>
+        <td>{{:firstName + ' ' + lastName}}</td>
+        <td>{{:patientPhoneNumber}}</td>
+        <td><a href="" title="Full info on this patient" id="info">Details</a></td>
 </script>
 <!-- <script id="rowpatient" type="text/template">
     <td><%=ssn%></td>
-	<td><%=firstName + ' ' + lastName%></td>
-	<td><%=patientPhoneNumber%></td>
-	<td><a href="" title="Full info on this patient" id="info">Details</a></td>
+        <td><%=firstName + ' ' + lastName%></td>
+        <td><%=patientPhoneNumber%></td>
+        <td><a href="" title="Full info on this patient" id="info">Details</a></td>
 </script> -->
 
 <!-- <p>Date: <input type="text" id="datepicker"></p>
 <script>
   $(function() {
     $( "#datepicker" ).datepicker({
-    	dateFormat : 'mm/dd/yy',
+            dateFormat : 'mm/dd/yy',
         changeMonth : true,
         changeYear : true,
         yearRange: '-100y:c+nn',
