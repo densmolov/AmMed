@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="css/styleRegister.css" type="text/css"/>
     <link rel="stylesheet" href="css/toastr.min.css" type="text/css"/>
     <link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
-    
-    <script type="text/javascript" src="js/app.js"></script>
+
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
     <script type="text/javascript" src="js/jquery.ui.autocomplete.html.js"></script>
@@ -21,6 +20,7 @@
     <script type="text/javascript" src="js/backbone.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/toastr.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/date.js"></script>
     <script type="text/javascript" src="js/jquery.inputmask.js"></script>
     <script src="js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
@@ -61,9 +61,21 @@
 				
 	<form class="form-inline well" id="searchForm">
         <legend>Search by</legend>
-        <div id="search" class="form-inline">
-			<input type="text" name="searchValue" id="searchValue"/>
-			<a class="btn" type="submit" href="" id="search-btn">Search</a>
+        <div id="search">
+            <div id="search-data">
+                <select name="filter" id="filter">
+                    <option value="firstName">First name</option>
+                    <option value="lastName">Last name</option>
+                	<option value="SSN">SSN</option>
+					<option value="patientPhoneNumber">Phone number</option>
+                </select>
+                
+                <input type="text" name="criteria" id="criteria"/>
+                
+            </div>	<!-- id="search-data" -->
+            <div id="search-button">
+                <a class="btn" type="submit" href="" id="search-btn">Search</a>
+            </div>
         </div>	<!-- id="search" -->
     </form>
 	
@@ -203,7 +215,7 @@
 	<td id="infoColumn4">{{:employerPhoneNumber}}</td>
 </tr>
 </table>
-		<a href="" class="btn btn-success" id="confirm_btn">Confirm changes</a>
+		<a href="" class="btn btn-success" id="change_status_btn">Confirm changes</a>
 		<a href="" class="btn btn-info" id="edit_btn">Edit profile</a>
 		<a href="" class="btn btn-danger" id="cancel_btn">Cancel</a>
 	</form>
