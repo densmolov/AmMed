@@ -1,6 +1,6 @@
 var Views = { };
 var patients;
-/*What is going on?*/
+
 var AllPatientView;
 var PatientView;
 
