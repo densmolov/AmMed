@@ -71,13 +71,13 @@ public class HomeController {
 
         @RequestMapping(value = "/medic/patients/find", method = RequestMethod.GET)
         public @ResponseBody
-        List<Patient> list(@RequestParam String field, @RequestParam String value, @RequestParam int index) {
-			return patientService.findPatient(field, value, index);
+        List<Patient> list(@RequestParam String value, @RequestParam int index) {
+			return patientService.findPatient(value, index);
         }
         @RequestMapping(value = "/autocomplete", method = RequestMethod.GET)
         public @ResponseBody
-        List<Patient> listAutocomplete(/*@RequestParam String field, */@RequestParam String term) {
-			return patientService.findPatientForAutocomplete(/*field, */term);
+        List<Patient> listAutocomplete(@RequestParam String term) {
+			return patientService.findPatientForAutocomplete(term);
         }
         
         @RequestMapping(value = "/medic/patients", method = RequestMethod.GET)

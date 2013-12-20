@@ -30,13 +30,11 @@ var SearchPatientList = Backbone.Collection.extend({
     baseUrl: 'medic/patients/find',
     initialize: function() {
         _.bindAll(this, 'url');
-        //this.field=$('#filter').val();
-        this.value=$('#criteria').val();
+        this.value=$('#searchValue').val();
         this.index = index;
     },
     url: function() {
         return this.baseUrl + '?' + $.param({
-            //field: this.field,
             value: this.value,
             index: this.index
         });
@@ -148,7 +146,7 @@ $(function () {
         },
         search: function(e) {
             e.preventDefault();
-            if($('#criteria').val()==="") {
+            if($('#searchValue').val()==="") {
                     search=false;
             } else {
                 search=true;
@@ -163,7 +161,6 @@ $(function () {
 	PatientView = Backbone.View.extend({
 		tagName: 'tr',
 		template: $.templates("#rowpatient"),
-		//template: $.templates("#rowpatient"),
         events: {
         	"click #info": "clicked"
         },
@@ -176,7 +173,6 @@ $(function () {
         },
         render: function() {
         	var element = this.template.render(this.model.toJSON());
-        	//var element = this.template.render(this.model.toJSON());
             console.log(this.model.toJSON());
             $(this.el).html(element);
             return this;
@@ -191,7 +187,6 @@ var DetailedInfo = Backbone.View.extend({
 		baseUrl: 'medic/patients/',
 		el: $("#patientTemplate"),
 		template: $.templates("#showInfoTemplate"),
-		//template: $.templates("#showInfoTemplate"),
 	events: {
 		"click .btn-success#change_status_btn": "accept",
 		//"click .btn-success#edit_btn": "edit",
@@ -483,7 +478,7 @@ function closeDetailedInfoCreator() {
 
 	//	AUTOCOMPLETE
 $(function() {
-	$("#criteria").autocomplete({
+	$("#searchValue").autocomplete({
 		delay: 300,
 		minLength: 2,
 		source: function( request, response ) {
@@ -505,17 +500,17 @@ $(function() {
 			});			
 		},
 		focus: function(event, ui) {
-            $("input#criteria").val(ui.item.label);
+            $("input#searchValue").val(ui.item.label);
         },
 		select: function(event, ui) {
 			alert('You chose ' + ui.item.label );
-			$("input#criteria").val(ui.item.value);
+			$("input#searchValue").val(ui.item.value);
 			$("#search-btn").click();
 		    //$("#searchForm").submit();
 		  }
 		/*
 		select: function(event, ui) {
-			$("#criteria").val(ui.item.label);
+			$("#searchValue").val(ui.item.label);
 			//$("#hiddenDiv").val(ui.item.value);
 		}*/
 	}).focus(function () {
@@ -524,13 +519,13 @@ $(function() {
 	});
 
 /*
-if ( $("#criteria").data() ) {
+if ( $("#searchValue").data() ) {
 
 // some jQueryUI versions may use different keys for the object. so to make sure,
 // put a breakpoint on the following line and add a watch for $(selector).data(). 
 // then you can find out what key is used by your jQueryUI script.
 
-    /*var ac = $("#criteria").data('uiAutocomplete');
+    /*var ac = $("#searchValue").data('uiAutocomplete');
     if ( ac ) {
        // do what you want with the autoComplete object. below is the changed version of an example from jqueryUI autocomplete tutorial
 

@@ -154,12 +154,15 @@ public class PatientDAOImpl implements PatientDAO {
         }
 
         @Override
-        public List<Patient> findPatient(String field, String value, int index) {
+        public List<Patient> findPatient(String value, int index) {
         	Session session = sessionFactory.getCurrentSession();
         	Criteria criterion = session.createCriteria(Patient.class);
-        	criterion.add( Restrictions.like(field, value, MatchMode.START) );
-        	criterion.addOrder( Order.asc(field) );
-        	//criteria.addOrder( Order.asc(value) );
+        	Disjunction or = Restrictions.disjunction();
+        	or.add(Restrictions.like("firstName", value, MatchMode.START));
+        	or.add(Restrictions.like("lastName", value, MatchMode.START));
+        	or.add(Restrictions.like("SSN", value, MatchMode.START));
+        	criterion.add(or);
+        	criterion.addOrder( Order.asc("SSN") );
         	/*****/
         	quantity = criterion.list().size();
         	System.out.println("	quantity should be shown for the first time ... " + quantity);
@@ -174,7 +177,7 @@ public class PatientDAOImpl implements PatientDAO {
         	return null;
         }
         @Override
-        public List<Patient> findPatientForAutocomplete(/*String field, */String value) {
+        public List<Patient> findPatientForAutocomplete(String value) {
         	Session session = sessionFactory.getCurrentSession();
         	Criteria criterion = session.createCriteria(Patient.class);
         	Disjunction or = Restrictions.disjunction();
