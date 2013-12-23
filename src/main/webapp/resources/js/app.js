@@ -267,6 +267,7 @@ render: function(id) {
     		var ident = detailedPatient.toJSON().language;
     		console.log('	detailedPatient.toJSON().language is ... ' + detailedPatient.toJSON().language);
     		$('#language').val(ident);
+    		//$('#language').val = ident;
     		/*****/
     		$(that.el).html(element);
     		return this;
@@ -566,20 +567,13 @@ $(function() {
 				}
 			});			
 		},
-		focus: function(event, ui) {
+		/*focus: function(event, ui) {
             $("input#searchValue").val(ui.item.label);
-        },
+        },*/
 		select: function(event, ui) {
-			alert('You chose ' + ui.item.label );
 			$("input#searchValue").val(ui.item.value);
 			$("#search-btn").click();
-		    //$("#searchForm").submit();
 		  }
-		/*
-		select: function(event, ui) {
-			$("#searchValue").val(ui.item.label);
-			//$("#hiddenDiv").val(ui.item.value);
-		}*/
 	}).focus(function () {
 		$(this).autocomplete("search", this.value);
 	});
