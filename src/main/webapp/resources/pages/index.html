@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head> 
-<meta charset="utf-8"> 
+<meta charset="utf-8">
 <title>Patient registration application</title>
 <meta name="description" content="Patient registration application">
 
@@ -75,7 +75,7 @@
                 <td id="namename">Patient's name</td>
 				<td id="phonephone">Phone number</td>
 				<td id="patientbtn"></td>
-				<td id="patientEditbtn"></td>
+				<td id=""></td>
             </tr>
             </thead>
         </table>
@@ -94,8 +94,8 @@
             <button class="btn" id="last">Last</button>
         </div>
     </div>
-
-        
+    
+    
 
     <div id="foot">
 
@@ -205,7 +205,7 @@
 </tr>
 </table>
                 <a href="" class="btn btn-success" id="change_status_btn">Confirm changes</a>
-                <a href="" class="btn btn-info" id="edit_btn">Edit profile</a>
+                <a href="" class="btn btn-info" id="edit_profile_btn">Edit profile</a>
                 <a href="" class="btn btn-danger" id="cancel_btn">Cancel</a>
         </form>
 </div>
@@ -229,22 +229,22 @@
 		<tr>
 		<td id="columnCreate1">SSN :</td>
 		<td id="columnCreate2"> <input type="text" name="ssn" id="ssn" maxlength="9" 
-			value="" class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input" placeholder="{{:ssn}}" /></td>
+			class="validate[required,custom[integer],maxSize[9],minSize[9]] text-input" value="{{:ssn}}" /></td>
 		</tr>
 		<tr>
 		<td id="columnCreate1">First name :</td>
 		<td id="columnCreate2"> <input type="text" name="firstName" id="firstName" maxlength="20" 
-			value="" class="validate[required,custom[onlyLetterSp]] text-input" placeholder="{{:firstName}}" /></td>
+			class="validate[required,custom[onlyLetterSp]] text-input" value="{{:firstName}}" /></td>
 		</tr>
 		<tr>
 		<td id="columnCreate1">Last name :</td>
 		<td id="columnCreate2"> <input type="text" name="lastName" id="lastName" maxlength="20" 
-			value="" class="validate[required,custom[onlyLetterSp]] text-input" placeholder="{{:lastName}}" /></td>
+			class="validate[required,custom[onlyLetterSp]] text-input" value="{{:lastName}}" /></td>
 		</tr>
 		<tr>
 		<td id="columnCreate1">Date of birth :</td>
 		<td id="columnCreate2"> <input type="text" name="dateOfBirth" id="dateOfBirth"
-			value="" class="validate[required,custom[date],past[NOW]] text-input" placeholder="{{:dateOfBirth}}" /></td>
+			class="validate[required,custom[date],past[NOW]] text-input" value="{{:dateOfBirth}}" /></td>
 		</tr>
 
 
@@ -255,7 +255,7 @@
                         <td id="columnCreate3">Language :</td>
                         <td id="columnCreate4">
                         <select name="language" id="language">
-                        <option value="ENGLISH">&nbsp;&nbsp;&nbsp;English</option>
+						<option value="ENGLISH">&nbsp;&nbsp;&nbsp;English</option>
                         <option value="SPANISH">&nbsp;&nbsp;&nbsp;Spanish</option>
                         <option value="FRENCH">&nbsp;&nbsp;&nbsp;French</option>
                         <option value="ARABIC">&nbsp;&nbsp;&nbsp;Arabic</option>
@@ -319,12 +319,12 @@
 <tr>
         <td id="columnCreate5">&nbsp;&nbsp;Patient address :</td>
         <td id="columnCreate6"> <input type="text" name="patientAddress" id="patientAddress" maxlength="20" 
-                        value="" class="validate[required] text-input" placeholder="{{:patientAddress}}" /></td>
+                        class="validate[required] text-input" value="{{:patientAddress}}" /></td>
 </tr>
 <tr>
         <td id="columnCreate5">&nbsp;&nbsp;Patient city :</td>
         <td id="columnCreate6"> <input type="text" name="patientCity" id="patientCity" maxlength="20" 
-                        value="" class="validate[required,custom[onlyLetterSp]] text-input" placeholder="{{:patientCity}}" /></td>
+                        class="validate[required,custom[onlyLetterSp]] text-input" value="{{:patientCity}}" /></td>
 </tr>
 <tr>
         <td id="columnCreate5">&nbsp;&nbsp;Patient state :</td>
@@ -361,12 +361,12 @@
 <tr>
 	<td id="columnCreate5">&nbsp;&nbsp;Patient ZIP-code :</td>
 	<td id="columnCreate6"> <input type="text" name="patientZip" id="patientZip"  maxlength="5" 
-		value="" class="validate[required,custom[integer],maxSize[5],minSize[5]] text-input" placeholder="{{:patientZip}}" /></td>
+		class="validate[required,custom[integer],maxSize[5],minSize[5]] text-input" value="{{:patientZip}}" /></td>
 </tr>
 <tr>
 	<td id="columnCreate5">&nbsp;&nbsp;Phone number :</td>
 	<td id="columnCreate6"> <input type="text" name="patientPhoneNumber" id="patientPhoneNumber" maxlength="14" 
-		<value="" class="validate[custom[integer],maxSize[10],minSize[10]] text-input" placeholder="{{:patientPhoneNumber}}" /></td>
+		class="validate[custom[integer],maxSize[10],minSize[10]] text-input" value="{{:patientPhoneNumber}}" /></td>
 </tr>
 
 
@@ -376,17 +376,17 @@
 <tr>
 	<td id="columnCreate7">&nbsp;&nbsp;Employer name :</td>
 	<td id="columnCreate8"> <input type="text" name="employerName" id="employerName" maxlength="20" 
-		value="" class="validate[required,custom[onlyLetterSp]] text-input" placeholder="{{:employerName}}" /></td>
+		class="validate[required,custom[onlyLetterSp]] text-input" value="{{:employerName}}" /></td>
 </tr>
 <tr>
 	<td id="columnCreate7">&nbsp;&nbsp;Employer address :</td>
 	<td id="columnCreate8"> <input type="text" name="employerAddress" id="employerAddress" maxlength="20" 
-		value="" class="validate[required] text-input" placeholder="{{:employerAddress}}" /></td>
+		class="validate[required] text-input" value="{{:employerAddress}}" /></td>
 </tr>
 <tr>
 	<td id="columnCreate7">&nbsp;&nbsp;Employer city :</td>
 	<td id="columnCreate8"> <input type="text" name="employerCity" id="employerCity" maxlength="20" 
-		value="" class="validate[required,custom[onlyLetterSp]] text-input" placeholder="{{:employerCity}}" /></td>
+		class="validate[required,custom[onlyLetterSp]] text-input" value="{{:employerCity}}" /></td>
 </tr>
 <tr>
         <td id="columnCreate7">&nbsp;&nbsp;Employer state :</td>
@@ -423,12 +423,12 @@
 <tr>
 	<td id="columnCreate7">&nbsp;&nbsp;Employer ZIP-code :</td>
 	<td id="columnCreate8"> <input type="text" name="employerZip" id="employerZip" maxlength="5" 
-		value="" class="validate[required,custom[integer],maxSize[5],minSize[5]] text-input" placeholder="{{:employerCity}}" /></td>
+		class="validate[required,custom[integer],maxSize[5],minSize[5]] text-input" value="{{:employerCity}}" /></td>
 </tr>
 <tr>
 	<td id="columnCreate7">&nbsp;&nbsp;Phone number :</td>
 	<td id="columnCreate8"> <input type="text" name="employerPhoneNumber" id="employerPhoneNumber" maxlength="14" 
-		value="" class="validate[required,custom[integer],maxSize[10],minSize[10]] text-input" placeholder="{{:employerCity}}" /></td>
+		class="validate[required,custom[integer],maxSize[10],minSize[10]] text-input" value="{{:employerCity}}" /></td>
 </tr>
 </table>
                 <a href="" class="btn btn-success" id="create_patient_btn">Confirm changes</a>
@@ -436,6 +436,7 @@
 </form>
 </div>
 </script>
+
         
 		<!--
         ____________________________________________________________________________________________

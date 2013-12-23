@@ -200,7 +200,7 @@ var DetailedInfo = Backbone.View.extend({
 		template: $.templates("#showInfoTemplate"),
 	events: {
 		"click .btn-success#change_status_btn": "accept",
-		"click .btn-success#edit_btn": "edit",
+		"click .btn-success#edit_profile_btn": "edit",
 		"click .btn-danger#cancel_btn": "cancel"
 	},
 	cancel: function(e) {
@@ -210,7 +210,7 @@ var DetailedInfo = Backbone.View.extend({
 	},
 	edit: function(e){
         e.preventDefault();
-        myRouter.navigate('/edit/' + this.model.get("patientId"), {trigger:true});
+        myRouter.navigate('/medic/edit/' + this.model.get("patientId"), {trigger:true});
     },
 	accept: function(e) {
 		e.preventDefault();
@@ -259,7 +259,15 @@ render: function(id) {
     	success:function(){
     		var element = that.template.render(detailedPatient.toJSON());
     		console.log(detailedPatient.toJSON());
-    		//$("#ssn").val = "121212121";???????????????????????????????????
+    		/*****/
+    		//	It works outside the pop-up window:
+    		//var ident = "ARABIC";
+    		//$('#language').val(ident);
+    		
+    		var ident = detailedPatient.toJSON().language;
+    		console.log('	detailedPatient.toJSON().language is ... ' + detailedPatient.toJSON().language);
+    		$('#language').val(ident);
+    		/*****/
     		$(that.el).html(element);
     		return this;
     	}
@@ -595,6 +603,9 @@ if ( $("#searchValue").data() ) {
         };
     }
 }*/
+
+
+	
 
 
 		//VALIDATION

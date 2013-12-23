@@ -199,7 +199,7 @@ legend {
 	color: #08c;
 }
 
-#change_status_btn, #edit_btn, #cancel_btn, #cancel_patient_btn, #create_patient_btn {
+#change_status_btn, #edit_profile_btn, #cancel_btn, #cancel_patient_btn, #create_patient_btn {
 	width: 127px;
 }
 
