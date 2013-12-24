@@ -558,21 +558,36 @@ $(function() {
 				dataType: "json",
 				success: function(data) {
 					response($.map( data, function( patient ) {
-														console.log('	And is it here? ...' + patient.patientId);///////////////////////
+						console.log('	And is it here? ...' + patient.patientId);///////////////////////
 						return {
 							label: patient.lastName + ", " + patient.firstName + ", SSN: " + patient.ssn,
-							value: request.term
+							value: request.term,
+							idOfPatient: patient.patientId
 						};
 					}));
 				}
-			});			
+			});
 		},
 		select: function(event, ui) {
-				var chosenPatientId = ui.item.id;////////////////////
-				console.log('	id is ...' + chosenPatientId);//////////////////
+			$.ajax({
+				type: "GET",
+				url: "/AmMed/medic/patients/" + ui.item.idOfPatient,
+				async: false,
+				dataType: "json",
+				success: function(patientFound) {
+					//patients = patientFound;
+					var ididid = patientFound.patientId;
+					console.log('	ididid is ' + ididid);
+				}
+			});
 			$("input#searchValue").val(ui.item.value);
 			$("#search-btn").click();
 		  }
+		/*select: function(event, ui) {
+			alert(ui.item.idOfPatient);
+			$("input#searchValue").val(ui.item.value);
+			$("#search-btn").click();
+		  }*/
 		/*****/
 
 		/*****/
