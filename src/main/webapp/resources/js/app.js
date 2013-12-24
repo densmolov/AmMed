@@ -172,7 +172,6 @@ $(function () {
         },
         clicked: function(e){
             e.preventDefault();
-            //myRouter.navigate('/edit/' + this.model.get("patientId"), {trigger:true});
             myRouter.navigate('/patients/' + this.model.get("patientId"), {trigger:true});
         },
         edit: function(e){
@@ -559,25 +558,29 @@ $(function() {
 				dataType: "json",
 				success: function(data) {
 					response($.map( data, function( patient ) {
+														console.log('	And is it here? ...' + patient.patientId);///////////////////////
 						return {
 							label: patient.lastName + ", " + patient.firstName + ", SSN: " + patient.ssn,
-							value: patient.firstName
+							value: request.term
 						};
 					}));
 				}
 			});			
 		},
-		/*focus: function(event, ui) {
-            $("input#searchValue").val(ui.item.label);
-        },*/
 		select: function(event, ui) {
+				var chosenPatientId = ui.item.id;////////////////////
+				console.log('	id is ...' + chosenPatientId);//////////////////
 			$("input#searchValue").val(ui.item.value);
 			$("#search-btn").click();
 		  }
+		/*****/
+
+		/*****/
 	}).focus(function () {
 		$(this).autocomplete("search", this.value);
 	});
-	});
+});
+
 
 /*
 if ( $("#searchValue").data() ) {
